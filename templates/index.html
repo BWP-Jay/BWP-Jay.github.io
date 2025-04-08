@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        .game-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        .message {
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e8f0fe;
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1.1em;
+            width: 150px;
+            border: 2px solid #1a73e8;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #1557b0;
+        }
+        .tries {
+            font-size: 1.2em;
+            color: #666;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Number Guessing Game</h1>
+        <div class="message">{{ session.message }}</div>
+        <div class="tries">Tries left: {{ session.tries }}</div>
+        
+        {% if not session.game_over %}
+        <form action="{{ url_for('guess') }}" method="post">
+            <div class="input-group">
+                <input type="number" name="guess" min="1" max="100" required placeholder="Enter your guess">
+            </div>
+            <button type="submit">Guess!</button>
+        </form>
+        {% else %}
+        <a href="{{ url_for('new_game') }}">
+            <button>Play Again</button>
+        </a>
+        {% endif %}
+    </div>
+</body>
+</html> 
