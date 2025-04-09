@@ -324,4 +324,35 @@ footer {
     .newsletter-form button {
         width: 100%;
     }
+}
+
+/* Shop Page Styles */
+.shop-header {
+    background: #f7fafc;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.shop-header h1 {
+    color: #2d3748;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
 } 
