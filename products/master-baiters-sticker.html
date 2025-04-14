@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Baiters Sticker - A fun and unique sticker for fishing enthusiasts. Perfect for personalizing your gear.">
+    <meta name="keywords" content="fishing stickers, fishing accessories, fishing gear, BackWater Pursuits">
+    <title>Master Baiters Sticker - BackWater Pursuits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a472a",
+              accent: "#FFD700",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      .product-image {
+        transition: opacity 0.3s ease-in-out;
+      }
+      .product-image:hover {
+        opacity: 0.9;
+      }
+      .shopping-cart {
+        position: fixed;
+        right: -400px;
+        top: 0;
+        width: 400px;
+        height: 100vh;
+        background: white;
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+        padding: 20px;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+      }
+      .shopping-cart.active {
+        right: 0;
+      }
+      .cart-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        display: none;
+        z-index: 999;
+      }
+      .cart-overlay.active {
+        display: block;
+      }
+      .cart-icon {
+        position: relative;
+        cursor: pointer;
+      }
+      .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background-color: #FFD700;
+        color: #1a472a;
+        border-radius: 50%;
+        padding: 0.2rem 0.5rem;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-primary text-accent shadow-md z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-2">
+                <img src="../images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" />
+                <h1 class="text-2xl font-bold">BACKWATER PURSUITS</h1>
+            </a>
+            <ul class="hidden md:flex gap-6 text-white font-medium">
+                <li><a href="../index.html#home" class="hover:text-accent transition-colors duration-300">Home</a></li>
+                <li><a href="../shop.html" class="hover:text-accent transition-colors duration-300">Shop</a></li>
+                <li><a href="../index.html#about" class="hover:text-accent transition-colors duration-300">About</a></li>
+                <li><a href="../index.html#contact" class="hover:text-accent transition-colors duration-300">Contact</a></li>
+            </ul>
+            <div class="cart-icon text-white hover:text-accent transition-colors duration-300">
+                <i class="fas fa-shopping-cart text-xl"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Product Details -->
+    <div class="pt-20 pb-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Product Images -->
+                <div class="space-y-4">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="../images/products/master-baiters-sticker.jpg" alt="Master Baiters Sticker" class="w-full h-auto product-image">
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">Master Baiters Sticker</h1>
+                    <p class="text-2xl text-accent font-bold mb-6">$2.88</p>
+                    
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold text-primary mb-2">Description</h2>
+                        <p class="text-gray-600">A fun and unique sticker for fishing enthusiasts. Perfect for personalizing your gear, water bottles, or any smooth surface. Show off your fishing passion with this humorous design!</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold text-primary mb-2">Features</h2>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>High-quality vinyl material</li>
+                            <li>Weather-resistant</li>
+                            <li>UV protected</li>
+                            <li>Easy to apply and remove</li>
+                            <li>Perfect for any smooth surface</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold text-primary mb-2">Care Instructions</h2>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Clean surface before applying</li>
+                            <li>Apply to smooth, dry surfaces</li>
+                            <li>Can be removed without leaving residue</li>
+                            <li>Not recommended for fabric surfaces</li>
+                        </ul>
+                    </div>
+
+                    <button class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div class="mt-12">
+                <h2 class="text-2xl font-bold text-primary mb-6">You May Also Like</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Related product cards will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-overlay"></div>
+    <div class="shopping-cart">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold text-primary">Shopping Cart</h2>
+            <button class="close-cart text-gray-500 hover:text-primary">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="cart-items space-y-4"></div>
+        <div class="cart-total mt-4 pt-4 border-t border-gray-200">
+            <div class="flex justify-between text-primary">
+                <span class="font-bold">Total:</span>
+                <span class="cart-total-amount">$0.00</span>
+            </div>
+            <button class="w-full bg-primary text-white py-2 px-4 rounded mt-4 hover:bg-accent hover:text-primary transition-colors duration-300">
+                Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-accent text-center py-6">
+        &copy; 2024 BackWater Pursuits. All rights reserved.
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html> 
