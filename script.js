@@ -197,15 +197,124 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Here you would typically redirect to a checkout page
-            alert('Proceeding to checkout...');
-            // For now, we'll just clear the cart
-            cart = [];
-            saveCart();
-            updateCartCount();
-            renderCartItems();
-            updateCartTotal();
-            closeCartSidebar();
+            // Redirect to checkout page
+            window.location.href = 'checkout.html';
+        });
+    }
+    
+    // Form validation for checkout page
+    const shippingForm = document.getElementById('shipping-form');
+    const paymentForm = document.getElementById('payment-form');
+    
+    if (shippingForm) {
+        shippingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate required fields
+            const requiredFields = shippingForm.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('border-red-500');
+                } else {
+                    field.classList.remove('border-red-500');
+                }
+            });
+            
+            // Validate email format
+            const emailField = shippingForm.querySelector('#email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailField.value)) {
+                isValid = false;
+                emailField.classList.add('border-red-500');
+            }
+            
+            // Validate ZIP code format
+            const zipField = shippingForm.querySelector('#zip');
+            const zipRegex = /^\d{5}(-\d{4})?$/;
+            if (!zipRegex.test(zipField.value)) {
+                isValid = false;
+                zipField.classList.add('border-red-500');
+            }
+            
+            if (isValid) {
+                // Save shipping information to localStorage
+                const shippingInfo = {
+                    firstName: shippingForm.querySelector('#first-name').value,
+                    lastName: shippingForm.querySelector('#last-name').value,
+                    email: shippingForm.querySelector('#email').value,
+                    address: shippingForm.querySelector('#address').value,
+                    city: shippingForm.querySelector('#city').value,
+                    state: shippingForm.querySelector('#state').value,
+                    zip: shippingForm.querySelector('#zip').value,
+                    saveInfo: shippingForm.querySelector('#save-info').checked
+                };
+                
+                localStorage.setItem('shippingInfo', JSON.stringify(shippingInfo));
+                
+                // Proceed to payment step
+                navigateToStep(3);
+            }
+        });
+    }
+    
+    if (paymentForm) {
+        paymentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate required fields
+            const requiredFields = paymentForm.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('border-red-500');
+                } else {
+                    field.classList.remove('border-red-500');
+                }
+            });
+            
+            // Validate card number format
+            const cardNumberField = paymentForm.querySelector('#card-number');
+            const cardNumberRegex = /^\d{4}\s?\d{4}\s?\d{4}\s?\d{4}$/;
+            if (!cardNumberRegex.test(cardNumberField.value.replace(/\s/g, ''))) {
+                isValid = false;
+                cardNumberField.classList.add('border-red-500');
+            }
+            
+            // Validate expiry date format
+            const expiryField = paymentForm.querySelector('#expiry');
+            const expiryRegex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+            if (!expiryRegex.test(expiryField.value)) {
+                isValid = false;
+                expiryField.classList.add('border-red-500');
+            }
+            
+            // Validate CVV format
+            const cvvField = paymentForm.querySelector('#cvv');
+            const cvvRegex = /^\d{3,4}$/;
+            if (!cvvRegex.test(cvvField.value)) {
+                isValid = false;
+                cvvField.classList.add('border-red-500');
+            }
+            
+            if (isValid) {
+                // Save payment information to localStorage (in a real application, this would be handled securely)
+                const paymentInfo = {
+                    cardName: paymentForm.querySelector('#card-name').value,
+                    cardNumber: paymentForm.querySelector('#card-number').value.replace(/\s/g, ''),
+                    expiry: paymentForm.querySelector('#expiry').value,
+                    saveCard: paymentForm.querySelector('#save-card').checked
+                };
+                
+                localStorage.setItem('paymentInfo', JSON.stringify(paymentInfo));
+                
+                // Proceed to confirmation step
+                navigateToStep(4);
+            }
         });
     }
     

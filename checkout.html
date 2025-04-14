@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Checkout your BackWater Pursuits fishing apparel">
+    <meta name="keywords" content="checkout, fishing apparel, BackWater Pursuits, payment">
+    <title>Checkout - BackWater Pursuits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a472a",
+              accent: "#FFD700",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      .checkout-step {
+        display: none;
+      }
+      .checkout-step.active {
+        display: block;
+      }
+      .step-indicator {
+        position: relative;
+      }
+      .step-indicator::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        width: 100%;
+        height: 2px;
+        background-color: #e5e7eb;
+        z-index: -1;
+      }
+      .step-indicator:last-child::after {
+        display: none;
+      }
+      .step-indicator.active .step-number {
+        background-color: #1a472a;
+        color: white;
+      }
+      .step-indicator.completed .step-number {
+        background-color: #FFD700;
+        color: #1a472a;
+      }
+      .step-indicator.completed::after {
+        background-color: #FFD700;
+      }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-primary text-accent shadow-md z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" />
+                <h1 class="text-2xl font-bold">BACKWATER PURSUITS</h1>
+            </a>
+            <ul class="hidden md:flex gap-6 text-white font-medium">
+                <li><a href="index.html#home" class="hover:text-accent transition-colors duration-300">Home</a></li>
+                <li><a href="index.html#products" class="hover:text-accent transition-colors duration-300">Shop</a></li>
+                <li><a href="index.html#about" class="hover:text-accent transition-colors duration-300">About</a></li>
+                <li><a href="index.html#contact" class="hover:text-accent transition-colors duration-300">Contact</a></li>
+            </ul>
+            <div class="cart-icon text-white hover:text-accent transition-colors duration-300">
+                <i class="fas fa-shopping-cart text-xl"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Checkout Section -->
+    <div class="pt-20 pb-12">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-bold text-primary mb-8 text-center">Checkout</h1>
+            
+            <!-- Checkout Steps -->
+            <div class="flex justify-between mb-8 max-w-3xl mx-auto">
+                <div class="step-indicator active flex flex-col items-center">
+                    <div class="step-number w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center mb-2">1</div>
+                    <span class="text-sm font-medium">Order Summary</span>
+                </div>
+                <div class="step-indicator flex flex-col items-center">
+                    <div class="step-number w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center mb-2">2</div>
+                    <span class="text-sm font-medium">Shipping</span>
+                </div>
+                <div class="step-indicator flex flex-col items-center">
+                    <div class="step-number w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center mb-2">3</div>
+                    <span class="text-sm font-medium">Payment</span>
+                </div>
+                <div class="step-indicator flex flex-col items-center">
+                    <div class="step-number w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center mb-2">4</div>
+                    <span class="text-sm font-medium">Confirmation</span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Checkout Forms -->
+                <div class="lg:col-span-2">
+                    <!-- Step 1: Order Summary -->
+                    <div class="checkout-step active bg-white rounded-lg shadow-md p-6 mb-6">
+                        <h2 class="text-xl font-bold text-primary mb-4">Order Summary</h2>
+                        <div class="order-items space-y-4 mb-6">
+                            <!-- Order items will be dynamically inserted here -->
+                        </div>
+                        <div class="border-t border-gray-200 pt-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Subtotal</span>
+                                <span class="font-medium" id="subtotal">$0.00</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Shipping</span>
+                                <span class="font-medium" id="shipping">$5.99</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Tax</span>
+                                <span class="font-medium" id="tax">$0.00</span>
+                            </div>
+                            <div class="flex justify-between font-bold text-lg text-primary">
+                                <span>Total</span>
+                                <span id="total">$0.00</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300 mt-6 next-step" data-next="2">
+                            Continue to Shipping
+                        </button>
+                    </div>
+                    
+                    <!-- Step 2: Shipping Information -->
+                    <div class="checkout-step bg-white rounded-lg shadow-md p-6 mb-6">
+                        <h2 class="text-xl font-bold text-primary mb-4">Shipping Information</h2>
+                        <form id="shipping-form" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                    <input type="text" id="first-name" name="first-name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                </div>
+                                <div>
+                                    <label for="last-name" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                    <input type="text" id="last-name" name="last-name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Street Address</label>
+                                <input type="text" id="address" name="address" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <label for="city" class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                                    <input type="text" id="city" name="city" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                </div>
+                                <div>
+                                    <label for="state" class="block text-sm font-medium text-gray-700 mb-1">State</label>
+                                    <select id="state" name="state" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                        <option value="">Select State</option>
+                                        <option value="AL">Alabama</option>
+                                        <option value="AK">Alaska</option>
+                                        <option value="AZ">Arizona</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="CA">California</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WA">Washington</option>
+                                        <option value="WV">West Virginia</option>
+                                        <option value="WI">Wisconsin</option>
+                                        <option value="WY">Wyoming</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="zip" class="block text-sm font-medium text-gray-700 mb-1">ZIP Code</label>
+                                    <input type="text" id="zip" name="zip" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="save-info" name="save-info" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                <label for="save-info" class="ml-2 block text-sm text-gray-700">Save this information for next time</label>
+                            </div>
+                            <div class="flex justify-between mt-6">
+                                <button type="button" class="bg-gray-200 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-300 transition-colors duration-300 prev-step" data-prev="1">
+                                    Back to Order Summary
+                                </button>
+                                <button type="button" class="bg-primary text-white py-2 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300 next-step" data-next="3">
+                                    Continue to Payment
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Step 3: Payment Information -->
+                    <div class="checkout-step bg-white rounded-lg shadow-md p-6 mb-6">
+                        <h2 class="text-xl font-bold text-primary mb-4">Payment Information</h2>
+                        <form id="payment-form" class="space-y-4">
+                            <div>
+                                <label for="card-name" class="block text-sm font-medium text-gray-700 mb-1">Name on Card</label>
+                                <input type="text" id="card-name" name="card-name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label for="card-number" class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                                <input type="text" id="card-number" name="card-number" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" placeholder="1234 5678 9012 3456" required>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="expiry" class="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
+                                    <input type="text" id="expiry" name="expiry" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" placeholder="MM/YY" required>
+                                </div>
+                                <div>
+                                    <label for="cvv" class="block text-sm font-medium text-gray-700 mb-1">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" placeholder="123" required>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="save-card" name="save-card" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                <label for="save-card" class="ml-2 block text-sm text-gray-700">Save this card for future purchases</label>
+                            </div>
+                            <div class="flex justify-between mt-6">
+                                <button type="button" class="bg-gray-200 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-300 transition-colors duration-300 prev-step" data-prev="2">
+                                    Back to Shipping
+                                </button>
+                                <button type="button" class="bg-primary text-white py-2 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300 next-step" data-next="4">
+                                    Place Order
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Step 4: Order Confirmation -->
+                    <div class="checkout-step bg-white rounded-lg shadow-md p-6 mb-6">
+                        <div class="text-center py-8">
+                            <i class="fas fa-check-circle text-6xl text-green-500 mb-4"></i>
+                            <h2 class="text-2xl font-bold text-primary mb-2">Order Confirmed!</h2>
+                            <p class="text-gray-600 mb-6">Thank you for your purchase. Your order has been received and is being processed.</p>
+                            <div class="bg-gray-100 p-4 rounded-lg mb-6">
+                                <p class="text-sm text-gray-600">Order Number: <span class="font-medium" id="order-number">#BWP-12345</span></p>
+                                <p class="text-sm text-gray-600">Estimated Delivery: <span class="font-medium" id="delivery-date">May 1, 2024</span></p>
+                            </div>
+                            <p class="text-gray-600 mb-6">We'll send you an email with your order details and tracking information once your order ships.</p>
+                            <a href="index.html" class="inline-block bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300">
+                                Continue Shopping
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Summary Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                        <h2 class="text-xl font-bold text-primary mb-4">Order Summary</h2>
+                        <div class="order-summary-items space-y-4 mb-6">
+                            <!-- Order summary items will be dynamically inserted here -->
+                        </div>
+                        <div class="border-t border-gray-200 pt-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Subtotal</span>
+                                <span class="font-medium" id="sidebar-subtotal">$0.00</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Shipping</span>
+                                <span class="font-medium" id="sidebar-shipping">$5.99</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Tax</span>
+                                <span class="font-medium" id="sidebar-tax">$0.00</span>
+                            </div>
+                            <div class="flex justify-between font-bold text-lg text-primary">
+                                <span>Total</span>
+                                <span id="sidebar-total">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-accent text-center py-6">
+        &copy; 2024 BackWater Pursuits. All rights reserved.
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get cart data from localStorage
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // Update order summary
+            updateOrderSummary();
+            
+            // Handle step navigation
+            document.querySelectorAll('.next-step').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextStep = this.getAttribute('data-next');
+                    navigateToStep(nextStep);
+                });
+            });
+            
+            document.querySelectorAll('.prev-step').forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevStep = this.getAttribute('data-prev');
+                    navigateToStep(prevStep);
+                });
+            });
+            
+            // Handle form submissions
+            document.getElementById('shipping-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // In a real application, you would validate and process the form data here
+                navigateToStep(3);
+            });
+            
+            document.getElementById('payment-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // In a real application, you would validate and process the payment here
+                navigateToStep(4);
+            });
+            
+            // Function to update order summary
+            function updateOrderSummary() {
+                const orderItems = document.querySelector('.order-items');
+                const orderSummaryItems = document.querySelector('.order-summary-items');
+                const subtotalElement = document.getElementById('subtotal');
+                const sidebarSubtotalElement = document.getElementById('sidebar-subtotal');
+                const taxElement = document.getElementById('tax');
+                const sidebarTaxElement = document.getElementById('sidebar-tax');
+                const totalElement = document.getElementById('total');
+                const sidebarTotalElement = document.getElementById('sidebar-total');
+                
+                // Clear existing items
+                orderItems.innerHTML = '';
+                orderSummaryItems.innerHTML = '';
+                
+                if (cart.length === 0) {
+                    orderItems.innerHTML = '<p class="text-gray-500 text-center py-4">Your cart is empty</p>';
+                    orderSummaryItems.innerHTML = '<p class="text-gray-500 text-center py-4">Your cart is empty</p>';
+                    return;
+                }
+                
+                let subtotal = 0;
+                
+                // Add each item to the order summary
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+                    
+                    // Create order item element
+                    const orderItem = document.createElement('div');
+                    orderItem.className = 'flex items-center gap-4 p-2 border-b border-gray-200';
+                    orderItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-primary">${item.name}</h4>
+                            <p class="text-sm text-gray-600">${item.size}${item.color ? ` - ${item.color}` : ''}</p>
+                            <p class="text-sm text-gray-600">Quantity: ${item.quantity}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-bold text-primary">$${itemTotal.toFixed(2)}</p>
+                        </div>
+                    `;
+                    orderItems.appendChild(orderItem);
+                    
+                    // Create sidebar order item element
+                    const sidebarItem = document.createElement('div');
+                    sidebarItem.className = 'flex items-center gap-2 p-2 border-b border-gray-200';
+                    sidebarItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-primary text-sm">${item.name}</h4>
+                            <p class="text-xs text-gray-600">${item.size}${item.color ? ` - ${item.color}` : ''} x ${item.quantity}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-bold text-primary text-sm">$${itemTotal.toFixed(2)}</p>
+                        </div>
+                    `;
+                    orderSummaryItems.appendChild(sidebarItem);
+                });
+                
+                // Calculate tax (assuming 8% tax rate)
+                const tax = subtotal * 0.08;
+                const shipping = 5.99;
+                const total = subtotal + tax + shipping;
+                
+                // Update totals
+                subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+                sidebarSubtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+                taxElement.textContent = `$${tax.toFixed(2)}`;
+                sidebarTaxElement.textContent = `$${tax.toFixed(2)}`;
+                totalElement.textContent = `$${total.toFixed(2)}`;
+                sidebarTotalElement.textContent = `$${total.toFixed(2)}`;
+            }
+            
+            // Function to navigate between steps
+            function navigateToStep(step) {
+                // Hide all steps
+                document.querySelectorAll('.checkout-step').forEach(stepElement => {
+                    stepElement.classList.remove('active');
+                });
+                
+                // Show the selected step
+                const selectedStep = document.querySelector(`.checkout-step:nth-child(${step})`);
+                if (selectedStep) {
+                    selectedStep.classList.add('active');
+                }
+                
+                // Update step indicators
+                document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
+                    if (index + 1 < step) {
+                        indicator.classList.add('completed');
+                        indicator.classList.remove('active');
+                    } else if (index + 1 === step) {
+                        indicator.classList.add('active');
+                        indicator.classList.remove('completed');
+                    } else {
+                        indicator.classList.remove('active', 'completed');
+                    }
+                });
+                
+                // If on the confirmation step, generate a random order number and delivery date
+                if (step === 4) {
+                    const orderNumber = document.getElementById('order-number');
+                    const deliveryDate = document.getElementById('delivery-date');
+                    
+                    // Generate a random order number
+                    const randomOrderNumber = 'BWP-' + Math.floor(10000 + Math.random() * 90000);
+                    orderNumber.textContent = randomOrderNumber;
+                    
+                    // Generate a delivery date (3-5 days from now)
+                    const today = new Date();
+                    const deliveryDays = Math.floor(3 + Math.random() * 3);
+                    const deliveryDateObj = new Date(today);
+                    deliveryDateObj.setDate(today.getDate() + deliveryDays);
+                    
+                    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    deliveryDate.textContent = deliveryDateObj.toLocaleDateString('en-US', options);
+                    
+                    // Clear the cart
+                    localStorage.removeItem('cart');
+                    updateCartCount();
+                }
+            }
+            
+            // Function to update cart count
+            function updateCartCount() {
+                const cartCount = document.querySelector('.cart-count');
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                cartCount.textContent = totalItems;
+            }
+            
+            // Initialize cart count
+            updateCartCount();
+        });
+    </script>
+</body>
+</html> 
