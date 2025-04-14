@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Down to Fish? Unisex Light Grey Dri-Fit - Premium fishing apparel from BackWater Pursuits">
-    <meta name="keywords" content="fishing t-shirt, dri-fit, fishing apparel, BackWater Pursuits">
-    <title>Down to Fish? Dri-Fit - BackWater Pursuits</title>
+    <meta name="description" content="Down to Fish T-shirt - A comfortable and stylish fishing-themed t-shirt perfect for any angler.">
+    <meta name="keywords" content="fishing apparel, fishing shirts, fishing t-shirts, BackWater Pursuits">
+    <title>Down to Fish T-shirt - BackWater Pursuits</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -22,11 +22,11 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-      .product-gallery img {
+      .product-image {
         transition: opacity 0.3s ease-in-out;
       }
-      .product-gallery img:hover {
-        opacity: 0.8;
+      .product-image:hover {
+        opacity: 0.9;
       }
       .size-selector input[type="radio"] {
         display: none;
@@ -96,7 +96,7 @@
             </a>
             <ul class="hidden md:flex gap-6 text-white font-medium">
                 <li><a href="../index.html#home" class="hover:text-accent transition-colors duration-300">Home</a></li>
-                <li><a href="../index.html#products" class="hover:text-accent transition-colors duration-300">Shop</a></li>
+                <li><a href="../shop.html" class="hover:text-accent transition-colors duration-300">Shop</a></li>
                 <li><a href="../index.html#about" class="hover:text-accent transition-colors duration-300">About</a></li>
                 <li><a href="../index.html#contact" class="hover:text-accent transition-colors duration-300">Contact</a></li>
             </ul>
@@ -107,56 +107,102 @@
         </nav>
     </header>
 
-    <!-- Product Section -->
+    <!-- Product Details -->
     <div class="pt-20 pb-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Product Gallery -->
-                <div class="product-gallery space-y-4">
-                    <img src="../images/products/down-to-fish.jpg" alt="Down to Fish? Light Grey Dri-Fit" class="w-full rounded-lg shadow-lg">
+                <!-- Product Images -->
+                <div class="space-y-4">
+                    <div class="product-images">
+                        <div class="main-image">
+                            <img src="../images/products/down-fish/down-to-fish-front.jpg" alt="Down to Fish T-shirt - Front" id="mainImage">
+                        </div>
+                        <div class="thumbnail-images">
+                            <img src="../images/products/down-fish/down-to-fish-front.jpg" alt="Down to Fish T-shirt - Front" onclick="changeImage(this.src)">
+                            <img src="../images/products/down-fish/down-to-fish-back.jpg" alt="Down to Fish T-shirt - Back" onclick="changeImage(this.src)">
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Product Info -->
-                <div class="space-y-6">
-                    <h1 class="text-3xl font-bold text-primary">Down to Fish? Unisex Light Grey Dri-Fit</h1>
-                    <p class="text-2xl font-bold text-accent">$26.00</p>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">Down to Fish T-shirt</h1>
+                    <p class="text-2xl text-accent font-bold mb-6">$24.99</p>
                     
-                    <!-- Size Selection -->
-                    <div class="space-y-2">
-                        <h3 class="font-bold text-primary">Select Size</h3>
-                        <div class="size-selector flex gap-4">
-                            <input type="radio" name="size" id="s" value="S">
-                            <label for="s">S</label>
-                            <input type="radio" name="size" id="m" value="M">
-                            <label for="m">M</label>
-                            <input type="radio" name="size" id="l" value="L">
-                            <label for="l">L</label>
-                            <input type="radio" name="size" id="xl" value="XL">
-                            <label for="xl">XL</label>
-                            <input type="radio" name="size" id="xxl" value="XXL">
-                            <label for="xxl">XXL</label>
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold text-primary mb-2">Description</h2>
+                        <p class="text-gray-600">The Down to Fish T-shirt is a comfortable and stylish addition to any angler's wardrobe. Featuring a playful fishing-themed design, this t-shirt is perfect for both casual wear and fishing trips.</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold text-primary mb-2">Features</h2>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>100% premium cotton for ultimate comfort</li>
+                            <li>Durable, high-quality printing that won't fade</li>
+                            <li>Classic fit with a modern design</li>
+                            <li>Machine washable for easy care</li>
+                            <li>Available in multiple sizes</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold text-primary mb-2">Size Guide</h2>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full text-sm text-gray-600">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="px-4 py-2">Size</th>
+                                        <th class="px-4 py-2">Chest (inches)</th>
+                                        <th class="px-4 py-2">Length (inches)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="px-4 py-2 border">S</td>
+                                        <td class="px-4 py-2 border">36-38</td>
+                                        <td class="px-4 py-2 border">28</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 border">M</td>
+                                        <td class="px-4 py-2 border">39-41</td>
+                                        <td class="px-4 py-2 border">29</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 border">L</td>
+                                        <td class="px-4 py-2 border">42-44</td>
+                                        <td class="px-4 py-2 border">30</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 border">XL</td>
+                                        <td class="px-4 py-2 border">45-47</td>
+                                        <td class="px-4 py-2 border">31</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
-                    <!-- Add to Cart -->
-                    <button class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300">
+                    <div class="mb-6">
+                        <h2 class="text-lg font-bold text-primary mb-2">Select Size</h2>
+                        <div class="grid grid-cols-4 gap-2">
+                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">S</button>
+                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">M</button>
+                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">L</button>
+                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">XL</button>
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300 add-to-cart">
                         Add to Cart
                     </button>
+                </div>
+            </div>
 
-                    <!-- Product Description -->
-                    <div class="space-y-4">
-                        <h3 class="font-bold text-primary">Product Details</h3>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700">
-                            <li>Dri-Fit material</li>
-                            <li>Moisture-wicking technology</li>
-                            <li>Light Grey color</li>
-                            <li>Unisex fit</li>
-                            <li>Machine washable</li>
-                        </ul>
-                        <p class="text-gray-700">
-                            Stay comfortable and stylish during your fishing adventures with our Down to Fish? Dri-Fit shirt. The moisture-wicking technology keeps you cool and dry, while the light grey color provides a versatile look that pairs well with any fishing gear.
-                        </p>
-                    </div>
+            <!-- Related Products -->
+            <div class="mt-12">
+                <h2 class="text-2xl font-bold text-primary mb-6">You May Also Like</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Related product cards will be dynamically added here -->
                 </div>
             </div>
         </div>

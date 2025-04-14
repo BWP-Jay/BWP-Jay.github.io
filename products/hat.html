@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Wishin' Fishin' T-shirt - A comfortable and stylish fishing-themed t-shirt perfect for any angler.">
-    <meta name="keywords" content="fishing apparel, fishing shirts, fishing t-shirts, BackWater Pursuits">
-    <title>Wishin' Fishin' T-shirt - BackWater Pursuits</title>
+    <meta name="description" content="BackWater Pursuits Hat - A stylish and comfortable fishing hat perfect for any angler.">
+    <meta name="keywords" content="fishing apparel, fishing hats, fishing accessories, BackWater Pursuits">
+    <title>BackWater Pursuits Hat - BackWater Pursuits</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -27,19 +27,6 @@
       }
       .product-image:hover {
         opacity: 0.9;
-      }
-      .size-selector input[type="radio"] {
-        display: none;
-      }
-      .size-selector label {
-        cursor: pointer;
-        padding: 0.5rem 1rem;
-        border: 2px solid #1a472a;
-        border-radius: 0.25rem;
-      }
-      .size-selector input[type="radio"]:checked + label {
-        background-color: #1a472a;
-        color: white;
       }
       .shopping-cart {
         position: fixed;
@@ -113,35 +100,37 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Product Images -->
                 <div class="space-y-4">
-                    <div class="product-images">
-                        <div class="main-image">
-                            <img src="../images/products/wishin-fishin/wishin-fishin-front.jpg" alt="Wishin' I was Fishin T-shirt - Front" id="mainImage">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="../images/products/hat/hat-front.jpg" alt="BackWater Pursuits Hat" class="w-full h-auto product-image">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                            <img src="../images/products/hat/hat-back.jpg" alt="BackWater Pursuits Hat Back" class="w-full h-auto product-image">
                         </div>
-                        <div class="thumbnail-images">
-                            <img src="../images/products/wishin-fishin/wishin-fishin-front.jpg" alt="Wishin' I was Fishin T-shirt - Front" onclick="changeImage(this.src)">
-                            <img src="../images/products/wishin-fishin/wishin-fishin-back.jpg" alt="Wishin' I was Fishin T-shirt - Back" onclick="changeImage(this.src)">
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                            <img src="../images/products/hat/hat-detail.jpg" alt="BackWater Pursuits Hat Detail" class="w-full h-auto product-image">
                         </div>
                     </div>
                 </div>
 
                 <!-- Product Info -->
                 <div class="bg-white rounded-lg shadow-md p-6">
-                    <h1 class="text-3xl font-bold text-primary mb-4">Wishin' Fishin' T-shirt</h1>
-                    <p class="text-2xl text-accent font-bold mb-6">$29.99</p>
+                    <h1 class="text-3xl font-bold text-primary mb-4">BackWater Pursuits Hat</h1>
+                    <p class="text-2xl text-accent font-bold mb-6">$19.99</p>
                     
                     <div class="mb-6">
                         <h2 class="text-lg font-bold text-primary mb-2">Description</h2>
-                        <p class="text-gray-600">The Wishin' Fishin' T-shirt is a comfortable and stylish addition to any angler's wardrobe. Featuring a playful fishing-themed design, this t-shirt is perfect for both casual wear and fishing trips.</p>
+                        <p class="text-gray-600">The BackWater Pursuits Hat is a stylish and comfortable addition to any angler's wardrobe. Featuring the BackWater Pursuits logo, this hat is perfect for both casual wear and fishing trips.</p>
                     </div>
 
                     <div class="mb-6">
                         <h2 class="text-lg font-bold text-primary mb-2">Features</h2>
                         <ul class="list-disc list-inside text-gray-600 space-y-2">
-                            <li>100% premium cotton for ultimate comfort</li>
-                            <li>Durable, high-quality printing that won't fade</li>
-                            <li>Classic fit with a modern design</li>
-                            <li>Machine washable for easy care</li>
-                            <li>Available in multiple sizes</li>
+                            <li>100% cotton for ultimate comfort</li>
+                            <li>Embroidered logo for durability</li>
+                            <li>Adjustable strap for a perfect fit</li>
+                            <li>Curved brim for sun protection</li>
+                            <li>One-size-fits-all design</li>
                         </ul>
                     </div>
 
@@ -152,43 +141,16 @@
                                 <thead>
                                     <tr class="bg-gray-100">
                                         <th class="px-4 py-2">Size</th>
-                                        <th class="px-4 py-2">Chest (inches)</th>
-                                        <th class="px-4 py-2">Length (inches)</th>
+                                        <th class="px-4 py-2">Head Circumference (inches)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="px-4 py-2 border">S</td>
-                                        <td class="px-4 py-2 border">36-38</td>
-                                        <td class="px-4 py-2 border">28</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-4 py-2 border">M</td>
-                                        <td class="px-4 py-2 border">39-41</td>
-                                        <td class="px-4 py-2 border">29</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-4 py-2 border">L</td>
-                                        <td class="px-4 py-2 border">42-44</td>
-                                        <td class="px-4 py-2 border">30</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-4 py-2 border">XL</td>
-                                        <td class="px-4 py-2 border">45-47</td>
-                                        <td class="px-4 py-2 border">31</td>
+                                        <td class="px-4 py-2 border">One Size</td>
+                                        <td class="px-4 py-2 border">21-24</td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-
-                    <div class="mb-6">
-                        <h2 class="text-lg font-bold text-primary mb-2">Select Size</h2>
-                        <div class="grid grid-cols-4 gap-2">
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">S</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">M</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">L</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">XL</button>
                         </div>
                     </div>
 
