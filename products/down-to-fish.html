@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Down to Fish? Unisex Light Grey Dri-Fit - Premium fishing apparel from BackWater Pursuits">
+    <meta name="keywords" content="fishing t-shirt, dri-fit, fishing apparel, BackWater Pursuits">
+    <title>Down to Fish? Dri-Fit - BackWater Pursuits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a472a",
+              accent: "#FFD700",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      .product-gallery img {
+        transition: opacity 0.3s ease-in-out;
+      }
+      .product-gallery img:hover {
+        opacity: 0.8;
+      }
+      .size-selector input[type="radio"] {
+        display: none;
+      }
+      .size-selector label {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border: 2px solid #1a472a;
+        border-radius: 0.25rem;
+      }
+      .size-selector input[type="radio"]:checked + label {
+        background-color: #1a472a;
+        color: white;
+      }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-primary text-accent shadow-md z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-2">
+                <img src="../images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" />
+                <h1 class="text-2xl font-bold">BACKWATER PURSUITS</h1>
+            </a>
+            <ul class="hidden md:flex gap-6 text-white font-medium">
+                <li><a href="../index.html#home" class="hover:text-accent transition-colors duration-300">Home</a></li>
+                <li><a href="../index.html#products" class="hover:text-accent transition-colors duration-300">Shop</a></li>
+                <li><a href="../index.html#about" class="hover:text-accent transition-colors duration-300">About</a></li>
+                <li><a href="../index.html#contact" class="hover:text-accent transition-colors duration-300">Contact</a></li>
+            </ul>
+            <div class="cart-icon text-white hover:text-accent transition-colors duration-300">
+                <i class="fas fa-shopping-cart text-xl"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Product Section -->
+    <div class="pt-20 pb-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Product Gallery -->
+                <div class="product-gallery space-y-4">
+                    <img src="../images/products/down-to-fish.jpg" alt="Down to Fish? Light Grey Dri-Fit" class="w-full rounded-lg shadow-lg">
+                </div>
+
+                <!-- Product Info -->
+                <div class="space-y-6">
+                    <h1 class="text-3xl font-bold text-primary">Down to Fish? Unisex Light Grey Dri-Fit</h1>
+                    <p class="text-2xl font-bold text-accent">$26.00</p>
+                    
+                    <!-- Size Selection -->
+                    <div class="space-y-2">
+                        <h3 class="font-bold text-primary">Select Size</h3>
+                        <div class="size-selector flex gap-4">
+                            <input type="radio" name="size" id="s" value="S">
+                            <label for="s">S</label>
+                            <input type="radio" name="size" id="m" value="M">
+                            <label for="m">M</label>
+                            <input type="radio" name="size" id="l" value="L">
+                            <label for="l">L</label>
+                            <input type="radio" name="size" id="xl" value="XL">
+                            <label for="xl">XL</label>
+                            <input type="radio" name="size" id="xxl" value="XXL">
+                            <label for="xxl">XXL</label>
+                        </div>
+                    </div>
+
+                    <!-- Add to Cart -->
+                    <button class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300">
+                        Add to Cart
+                    </button>
+
+                    <!-- Product Description -->
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-primary">Product Details</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Dri-Fit material</li>
+                            <li>Moisture-wicking technology</li>
+                            <li>Light Grey color</li>
+                            <li>Unisex fit</li>
+                            <li>Machine washable</li>
+                        </ul>
+                        <p class="text-gray-700">
+                            Stay comfortable and stylish during your fishing adventures with our Down to Fish? Dri-Fit shirt. The moisture-wicking technology keeps you cool and dry, while the light grey color provides a versatile look that pairs well with any fishing gear.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-accent text-center py-6">
+        &copy; 2024 BackWater Pursuits. All rights reserved.
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html> 

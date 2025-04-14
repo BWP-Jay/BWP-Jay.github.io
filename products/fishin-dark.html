@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fishin' in the Dark Unisex Dri-Fit - Premium fishing apparel from BackWater Pursuits">
+    <meta name="keywords" content="fishing t-shirt, dri-fit, fishing apparel, BackWater Pursuits, night fishing">
+    <title>Fishin' in the Dark Dri-Fit - BackWater Pursuits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a472a",
+              accent: "#FFD700",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      .product-gallery img {
+        transition: opacity 0.3s ease-in-out;
+      }
+      .product-gallery img:hover {
+        opacity: 0.8;
+      }
+      .size-selector input[type="radio"] {
+        display: none;
+      }
+      .size-selector label {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border: 2px solid #1a472a;
+        border-radius: 0.25rem;
+      }
+      .size-selector input[type="radio"]:checked + label {
+        background-color: #1a472a;
+        color: white;
+      }
+      .color-selector input[type="radio"] {
+        display: none;
+      }
+      .color-selector label {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border: 2px solid #1a472a;
+        border-radius: 0.25rem;
+      }
+      .color-selector input[type="radio"]:checked + label {
+        background-color: #1a472a;
+        color: white;
+      }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-primary text-accent shadow-md z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-2">
+                <img src="../images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" />
+                <h1 class="text-2xl font-bold">BACKWATER PURSUITS</h1>
+            </a>
+            <ul class="hidden md:flex gap-6 text-white font-medium">
+                <li><a href="../index.html#home" class="hover:text-accent transition-colors duration-300">Home</a></li>
+                <li><a href="../index.html#products" class="hover:text-accent transition-colors duration-300">Shop</a></li>
+                <li><a href="../index.html#about" class="hover:text-accent transition-colors duration-300">About</a></li>
+                <li><a href="../index.html#contact" class="hover:text-accent transition-colors duration-300">Contact</a></li>
+            </ul>
+            <div class="cart-icon text-white hover:text-accent transition-colors duration-300">
+                <i class="fas fa-shopping-cart text-xl"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Product Section -->
+    <div class="pt-20 pb-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Product Gallery -->
+                <div class="product-gallery space-y-4">
+                    <img src="../images/products/fishin-dark-orange.jpg" alt="Fishin' in the Dark Orange" class="w-full rounded-lg shadow-lg" id="orange-image">
+                    <img src="../images/products/fishin-dark-green.jpg" alt="Fishin' in the Dark Green" class="w-full rounded-lg shadow-lg hidden" id="green-image">
+                </div>
+
+                <!-- Product Info -->
+                <div class="space-y-6">
+                    <h1 class="text-3xl font-bold text-primary">Fishin' in the Dark Unisex Dri-Fit</h1>
+                    <p class="text-2xl font-bold text-accent">$26.00</p>
+                    
+                    <!-- Color Selection -->
+                    <div class="space-y-2">
+                        <h3 class="font-bold text-primary">Select Color</h3>
+                        <div class="color-selector flex gap-4">
+                            <input type="radio" name="color" id="orange" value="Orange" checked>
+                            <label for="orange">Orange</label>
+                            <input type="radio" name="color" id="green" value="Green">
+                            <label for="green">Green</label>
+                        </div>
+                    </div>
+
+                    <!-- Size Selection -->
+                    <div class="space-y-2">
+                        <h3 class="font-bold text-primary">Select Size</h3>
+                        <div class="size-selector flex gap-4">
+                            <input type="radio" name="size" id="s" value="S">
+                            <label for="s">S</label>
+                            <input type="radio" name="size" id="m" value="M">
+                            <label for="m">M</label>
+                            <input type="radio" name="size" id="l" value="L">
+                            <label for="l">L</label>
+                            <input type="radio" name="size" id="xl" value="XL">
+                            <label for="xl">XL</label>
+                            <input type="radio" name="size" id="xxl" value="XXL">
+                            <label for="xxl">XXL</label>
+                        </div>
+                    </div>
+
+                    <!-- Add to Cart -->
+                    <button class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300">
+                        Add to Cart
+                    </button>
+
+                    <!-- Product Description -->
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-primary">Product Details</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Dri-Fit material</li>
+                            <li>Moisture-wicking technology</li>
+                            <li>Available in Orange and Green</li>
+                            <li>Unisex fit</li>
+                            <li>Machine washable</li>
+                        </ul>
+                        <p class="text-gray-700">
+                            Perfect for night fishing adventures, our Fishin' in the Dark Dri-Fit shirt combines style with functionality. The moisture-wicking technology keeps you comfortable during those warm summer nights, while the vibrant colors ensure visibility in low-light conditions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-accent text-center py-6">
+        &copy; 2024 BackWater Pursuits. All rights reserved.
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Color selection functionality
+        const colorInputs = document.querySelectorAll('input[name="color"]');
+        const orangeImage = document.getElementById('orange-image');
+        const greenImage = document.getElementById('green-image');
+
+        colorInputs.forEach(input => {
+            input.addEventListener('change', (e) => {
+                if (e.target.value === 'Orange') {
+                    orangeImage.classList.remove('hidden');
+                    greenImage.classList.add('hidden');
+                } else {
+                    orangeImage.classList.add('hidden');
+                    greenImage.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
