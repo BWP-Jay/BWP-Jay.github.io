@@ -10,7 +10,7 @@
         theme: {
           extend: {
             colors: {
-              primary: "#006400",
+              primary: "#1a472a",
               accent: "#FFD700",
             },
           },
@@ -19,6 +19,27 @@
     </script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      .hero-background {
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-background img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.3;
+        z-index: 0;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+    </style>
 </head>
 <body class="bg-primary text-white font-sans">
     <!-- Navigation -->
@@ -42,12 +63,14 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="flex flex-col items-center justify-center text-center py-24 bg-primary">
-        <img src="images/products/logo.jpg" alt="Logo" class="h-32 mb-6" />
-        <h2 class="text-4xl font-bold mb-4 text-accent">Welcome to BackWater Pursuits</h2>
-        <p class="max-w-xl text-lg text-white">
-            Premium Fishing Apparel & Accessories
-        </p>
+    <section id="home" class="hero-background flex flex-col items-center justify-center text-center py-24 bg-primary min-h-screen">
+        <img src="images/products/logo.jpg" alt="Logo" class="absolute" />
+        <div class="hero-content">
+            <h2 class="text-4xl font-bold mb-4 text-accent">Welcome to BackWater Pursuits</h2>
+            <p class="max-w-xl text-lg text-white">
+                Premium Fishing Apparel & Accessories
+            </p>
+        </div>
     </section>
 
     <!-- Featured Products Section -->
