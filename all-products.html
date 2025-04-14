@@ -4,54 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Products - BackWater Pursuits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a472a",
+              accent: "#FFD700",
+            },
+          },
+        },
+      };
+    </script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-primary text-accent shadow-md z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" />
+                <h1 class="text-2xl font-bold">BACKWATER PURSUITS</h1>
+            </a>
+            <ul class="hidden md:flex gap-6 text-white font-medium">
+                <li><a href="index.html#home" class="hover:text-accent transition-colors duration-300">Home</a></li>
+                <li><a href="shop.html" class="hover:text-accent transition-colors duration-300">Shop</a></li>
+                <li><a href="index.html#about" class="hover:text-accent transition-colors duration-300">About</a></li>
+                <li><a href="index.html#contact" class="hover:text-accent transition-colors duration-300">Contact</a></li>
+            </ul>
+            <div class="cart-icon text-white hover:text-accent transition-colors duration-300">
+                <i class="fas fa-shopping-cart text-xl"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
     <!-- All Products Section -->
-    <section class="all-products">
-        <h2>All Products</h2>
-        <div class="product-card">
-            <img src="images/products/wishin-fishin-front.jpg" alt="Wishin' I was Fishin Unisex 100% Cotton Tee">
-            <h3>Wishin' I was Fishin Unisex 100% Cotton Tee</h3>
-            <p class="price">$29.88</p>
-            <p class="description">Experience the perfect blend of comfort and style with our Wishin' I was Fishin 100% Cotton T-Shirt. Made from 100% cotton, this gravel-colored tee is crafted from heavy cotton, perfect for those chillier days on the water.</p>
-            <button class="add-to-cart">Add to Cart</button>
+    <div class="pt-20 pb-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-primary text-center mb-8">All Products</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Wishin' I was Fishin T-Shirt -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <a href="products/wishin-fishin.html" class="block">
+                        <img src="images/products/wishin-fishin/wishin-fishin-front.jpg" alt="Wishin' I was Fishin Unisex 100% Cotton Tee" class="w-full h-64 object-cover">
+                    </a>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-primary mb-2">Wishin' I was Fishin Unisex 100% Cotton Tee</h3>
+                        <p class="text-accent font-bold mb-4">$29.88</p>
+                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Fishin' in the Dark T-Shirt -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <a href="products/fishin-dark.html" class="block">
+                        <img src="images/products/fishin-dark/orange/fishin-dark-front.jpg" alt="Fishin' in the Dark Unisex Dri-Fit - Orange" class="w-full h-64 object-cover">
+                    </a>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-primary mb-2">Fishin' in the Dark Unisex Dri-Fit</h3>
+                        <p class="text-accent font-bold mb-4">$26.00</p>
+                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Down to Fish T-Shirt -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <a href="products/down-to-fish.html" class="block">
+                        <img src="images/products/down-to-fish/down-to-fish-front.jpg" alt="Down to Fish? Unisex Light Grey Dri-Fit" class="w-full h-64 object-cover">
+                    </a>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-primary mb-2">Down to Fish? Unisex Light Grey Dri-Fit</h3>
+                        <p class="text-accent font-bold mb-4">$26.00</p>
+                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- DTF T-Shirt -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <a href="products/dtf.html" class="block">
+                        <img src="images/products/dtf/dtf-front.jpg" alt="DTF Unisex Dri-Fit" class="w-full h-64 object-cover">
+                    </a>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-primary mb-2">DTF Unisex Dri-Fit</h3>
+                        <p class="text-accent font-bold mb-4">$26.00</p>
+                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Master Baiters Sticker -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <a href="products/master-baiters-sticker.html" class="block">
+                        <img src="images/products/master-baiters-sticker.jpg" alt="Master Baiters Sticker" class="w-full h-64 object-cover">
+                    </a>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-primary mb-2">Master Baiters Sticker</h3>
+                        <p class="text-accent font-bold mb-4">$2.88</p>
+                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- BWP Sticker -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <a href="products/bwp-sticker.html" class="block">
+                        <img src="images/products/bwp-sticker.jpg" alt="BWP Sticker" class="w-full h-64 object-cover">
+                    </a>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-primary mb-2">BWP Sticker</h3>
+                        <p class="text-accent font-bold mb-4">$2.88</p>
+                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="product-card">
-            <img src="images/products/fishin-dark-orange.jpg" alt="Fishin' in the Dark Unisex Dri-Fit - Orange">
-            <h3>Fishin' in the Dark Unisex Dri-Fit</h3>
-            <p class="price">$26.00</p>
-            <p class="description">A stylish and comfortable Dri-Fit shirt perfect for night fishing adventures. Available in two colorways: orange and green.</p>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <div class="product-card">
-            <img src="images/products/down-to-fish.jpg" alt="Down to Fish? Unisex Light Grey Dri-Fit">
-            <h3>Down to Fish? Unisex Light Grey Dri-Fit</h3>
-            <p class="price">$26.00</p>
-            <p class="description">A comfortable and stylish Dri-Fit shirt perfect for any fishing adventure.</p>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <div class="product-card">
-            <img src="images/products/dtf-dri-fit.jpg" alt="DTF Unisex Dri-Fit">
-            <h3>DTF Unisex Dri-Fit</h3>
-            <p class="price">$26.00</p>
-            <p class="description">A versatile and comfortable Dri-Fit shirt, perfect for any fishing adventure.</p>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <div class="product-card">
-            <img src="images/products/master-baiters-sticker.jpg" alt="Master Baiters Sticker">
-            <h3>Master Baiters Sticker</h3>
-            <p class="price">$2.88</p>
-            <p class="description">A fun and unique sticker for fishing enthusiasts. Perfect for personalizing your gear.</p>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <div class="product-card">
-            <img src="images/products/bwp-sticker.jpg" alt="BWP Sticker">
-            <h3>BWP Sticker</h3>
-            <p class="price">$2.88</p>
-            <p class="description">A stylish sticker featuring the Back Water Pursuits logo. Perfect for adding a personal touch to your gear.</p>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-    </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-accent text-center py-6">
+        &copy; 2024 BackWater Pursuits. All rights reserved.
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html> 
