@@ -52,13 +52,26 @@ const products = [
 
 // Search functionality
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('Search script loaded');
+    
     const searchInput = document.getElementById('search-input');
     const searchResults = document.getElementById('search-results');
     const searchResultsGrid = document.getElementById('search-results-grid');
     const noResults = document.getElementById('no-results');
     const allProductsGrid = document.getElementById('all-products-grid');
 
-    if (!searchInput) return;
+    console.log('Search elements:', {
+        searchInput: searchInput,
+        searchResults: searchResults,
+        searchResultsGrid: searchResultsGrid,
+        noResults: noResults,
+        allProductsGrid: allProductsGrid
+    });
+
+    if (!searchInput) {
+        console.error('Search input not found');
+        return;
+    }
 
     // Function to create a product card
     function createProductCard(product) {
@@ -82,9 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to perform search
     function performSearch(query) {
+        console.log('Performing search with query:', query);
+        
         query = query.toLowerCase().trim();
         
         if (!query) {
+            console.log('Empty query, showing all products');
             searchResults.classList.add('hidden');
             allProductsGrid.classList.remove('hidden');
             return;
@@ -100,14 +116,18 @@ document.addEventListener('DOMContentLoaded', () => {
             return searchableText.includes(query);
         });
 
+        console.log('Search results:', results);
+
         // Update UI
         searchResults.classList.remove('hidden');
         allProductsGrid.classList.add('hidden');
         searchResultsGrid.innerHTML = '';
 
         if (results.length === 0) {
+            console.log('No results found');
             noResults.classList.remove('hidden');
         } else {
+            console.log('Showing results');
             noResults.classList.add('hidden');
             results.forEach(product => {
                 searchResultsGrid.innerHTML += createProductCard(product);
@@ -117,11 +137,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event listeners
     searchInput.addEventListener('input', (e) => {
+        console.log('Search input event:', e.target.value);
         performSearch(e.target.value);
     });
 
     searchInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
+            console.log('Search enter event');
             performSearch(e.target.value);
         }
     });
@@ -132,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const productId = e.target.dataset.productId;
             const product = products.find(p => p.id === productId);
             if (product) {
-                // Add to cart logic here
                 console.log(`Added ${product.name} to cart`);
             }
         }
