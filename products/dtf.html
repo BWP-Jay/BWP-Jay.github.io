@@ -84,6 +84,37 @@
         font-size: 0.8rem;
         font-weight: bold;
       }
+      /* Mobile-specific styles */
+      @media (max-width: 768px) {
+        .product-image {
+          max-height: 70vh;
+          object-fit: contain;
+        }
+        
+        .thumbnail-image {
+          height: 100px;
+          object-fit: cover;
+        }
+        
+        .size-btn {
+          padding: 0.75rem;
+          font-size: 1rem;
+        }
+        
+        .cart-sidebar {
+          width: 100%;
+          max-width: 100%;
+        }
+        
+        .size-guide-table {
+          font-size: 0.875rem;
+        }
+        
+        .size-guide-table th,
+        .size-guide-table td {
+          padding: 0.5rem;
+        }
+      }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen overflow-y-auto overflow-x-hidden">
@@ -112,15 +143,28 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Product Images -->
-                <div class="space-y-4">
-                    <div class="product-images">
-                        <div class="main-image">
-                            <img src="../images/products/dtf/dtf-front.jpg" alt="DTF T-shirt - Front" id="mainImage" class="w-full h-auto rounded-lg shadow-md">
-                        </div>
-                        <div class="thumbnail-images flex gap-4 mt-4">
-                            <img src="../images/products/dtf/dtf-front.jpg" alt="DTF T-shirt - Front" onclick="changeImage(this.src)" class="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity">
-                            <img src="../images/products/dtf/dtf-back.jpg" alt="DTF T-shirt - Back" onclick="changeImage(this.src)" class="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity">
-                        </div>
+                <div class="space-y-4" role="region" aria-label="Product images">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="../images/products/dtf/dtf-front.jpg" 
+                             alt="DTF Unisex Dri-Fit - Front View" 
+                             class="w-full h-auto product-image cursor-zoom-in"
+                             id="mainImage">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="changeImage('../images/products/dtf/dtf-front.jpg')" 
+                                class="bg-white rounded-lg shadow-md overflow-hidden focus:outline-none"
+                                aria-label="View front of shirt">
+                            <img src="../images/products/dtf/dtf-front.jpg" 
+                                 alt="DTF Unisex Dri-Fit - Front View Thumbnail" 
+                                 class="w-full h-auto thumbnail-image">
+                        </button>
+                        <button onclick="changeImage('../images/products/dtf/dtf-back.jpg')"
+                                class="bg-white rounded-lg shadow-md overflow-hidden focus:outline-none"
+                                aria-label="View back of shirt">
+                            <img src="../images/products/dtf/dtf-back.jpg" 
+                                 alt="DTF Unisex Dri-Fit - Back View Thumbnail" 
+                                 class="w-full h-auto thumbnail-image">
+                        </button>
                     </div>
                 </div>
 
@@ -235,10 +279,37 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/image-gallery.js"></script>
+    <script src="../js/mobile.js"></script>
     <script>
+        let selectedSize = null;
+
         function changeImage(src) {
             const mainImage = document.getElementById('mainImage');
             mainImage.src = src;
+            mainImage.alt = `DTF Unisex Dri-Fit - ${src.includes('front') ? 'Front' : 'Back'} View`;
+        }
+
+        function selectSize(size) {
+            selectedSize = size;
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.remove('border-2', 'border-primary');
+            });
+            event.target.classList.add('border-2', 'border-primary');
+        }
+
+        function addToCart() {
+            if (!selectedSize) {
+                alert('Please select a size');
+                return;
+            }
+            const product = {
+                name: "DTF Unisex Dri-Fit",
+                size: selectedSize,
+                price: 26.00
+            };
+            cart.addItem(product);
         }
     </script>
 </body>

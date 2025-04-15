@@ -83,6 +83,29 @@
         outline-offset: 2px;
         border-color: #1a472a;
       }
+      
+      /* Mobile-specific styles */
+      @media (max-width: 768px) {
+        .product-image {
+          max-height: 70vh;
+          object-fit: contain;
+        }
+        
+        .thumbnail-image {
+          height: 100px;
+          object-fit: cover;
+        }
+        
+        .size-btn, .color-btn {
+          padding: 0.75rem;
+          font-size: 1rem;
+        }
+        
+        .cart-sidebar {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen overflow-y-auto overflow-x-hidden">
@@ -118,7 +141,7 @@
                     <div class="bg-white rounded-lg shadow-md overflow-hidden">
                         <img src="../images/products/fishin-dark/orange/fishin-dark-front.jpg" 
                              alt="Fishin' in the Dark Unisex Dri-Fit - Front View" 
-                             class="w-full h-auto product-image"
+                             class="w-full h-auto product-image cursor-zoom-in"
                              id="mainImage">
                     </div>
                     <div class="grid grid-cols-2 gap-4">
@@ -127,14 +150,14 @@
                                 aria-label="View front of shirt">
                             <img src="../images/products/fishin-dark/orange/fishin-dark-front.jpg" 
                                  alt="Fishin' in the Dark Unisex Dri-Fit - Front View Thumbnail" 
-                                 class="w-full h-auto product-image">
+                                 class="w-full h-auto thumbnail-image">
                         </button>
                         <button onclick="changeImage('../images/products/fishin-dark/orange/fishin-dark-back.jpg')"
                                 class="bg-white rounded-lg shadow-md overflow-hidden focus:outline-none"
                                 aria-label="View back of shirt">
                             <img src="../images/products/fishin-dark/orange/fishin-dark-back.jpg" 
                                  alt="Fishin' in the Dark Unisex Dri-Fit - Back View Thumbnail" 
-                                 class="w-full h-auto product-image">
+                                 class="w-full h-auto thumbnail-image">
                         </button>
                     </div>
                 </div>
@@ -219,6 +242,8 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/image-gallery.js"></script>
     <script>
         let selectedColor = 'orange';
         let selectedSize = null;
@@ -232,7 +257,7 @@
         function changeColor(color) {
             selectedColor = color;
             const mainImage = document.getElementById('mainImage');
-            const thumbnails = document.querySelectorAll('.product-image');
+            const thumbnails = document.querySelectorAll('.thumbnail-image');
             
             // Update main image and thumbnails
             mainImage.src = `../images/products/fishin-dark/${color}/fishin-dark-front.jpg`;
@@ -259,15 +284,13 @@
                 alert('Please select a size');
                 return;
             }
-            // Add to cart logic here
             const product = {
                 name: "Fishin' in the Dark Unisex Dri-Fit",
                 color: selectedColor,
                 size: selectedSize,
                 price: 26.00
             };
-            // Call the addToCart function from script.js
-            window.addToCart(product);
+            cart.addItem(product);
         }
     </script>
 </body>
