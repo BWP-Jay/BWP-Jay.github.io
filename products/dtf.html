@@ -117,8 +117,9 @@
                         <div class="main-image">
                             <img src="../images/products/dtf/dtf-front.jpg" alt="DTF T-shirt - Front" id="mainImage">
                         </div>
-                        <div class="thumbnail-images">
-                            <img src="../images/products/dtf/dtf-back.jpg" alt="DTF T-shirt - Back" onclick="changeImage(this.src)">
+                        <div class="thumbnail-images flex gap-4">
+                            <img src="../images/products/dtf/dtf-front.jpg" alt="DTF T-shirt - Front" onclick="changeImage(this.src)" class="cursor-pointer">
+                            <img src="../images/products/dtf/dtf-back.jpg" alt="DTF T-shirt - Back" onclick="changeImage(this.src)" class="cursor-pointer">
                         </div>
                     </div>
                 </div>
@@ -234,5 +235,10 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
+    </script>
 </body>
 </html> 
