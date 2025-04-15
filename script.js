@@ -63,8 +63,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 const index = parseInt(this.getAttribute('data-index'));
                 if (cart[index].quantity > 1) {
                     cart[index].quantity--;
+                    showNotification(`${cart[index].name} quantity updated`);
                 } else {
+                    const itemName = cart[index].name;
                     cart.splice(index, 1);
+                    showNotification(`${itemName} removed from cart`);
                 }
                 saveCart();
                 renderCartItems();
@@ -77,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
             button.addEventListener('click', function() {
                 const index = parseInt(this.getAttribute('data-index'));
                 cart[index].quantity++;
+                showNotification(`${cart[index].name} quantity updated`);
                 saveCart();
                 renderCartItems();
                 updateCartCount();
@@ -87,11 +91,13 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', function() {
                 const index = parseInt(this.getAttribute('data-index'));
+                const itemName = cart[index].name;
                 cart.splice(index, 1);
                 saveCart();
                 renderCartItems();
                 updateCartCount();
                 updateCartTotal();
+                showNotification(`${itemName} removed from cart`);
             });
         });
     }
@@ -101,13 +107,48 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('cart', JSON.stringify(cart));
     }
     
+    // Notification system
+    function showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = `fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-300 translate-y-0 ${
+            type === 'success' ? 'bg-primary text-white' : 'bg-red-500 text-white'
+        }`;
+        
+        // Add icon based on type
+        const icon = document.createElement('i');
+        icon.className = `fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'} mr-2`;
+        notification.appendChild(icon);
+        
+        // Add message
+        const messageSpan = document.createElement('span');
+        messageSpan.textContent = message;
+        notification.appendChild(messageSpan);
+        
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+            notification.style.transform = 'translateY(0)';
+            notification.style.opacity = '1';
+        }, 100);
+        
+        // Remove after delay
+        setTimeout(() => {
+            notification.style.transform = 'translateY(100%)';
+            notification.style.opacity = '0';
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 3000);
+    }
+    
     // Add to cart functionality
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const productCard = this.closest('.product-card');
-            const productName = productCard.querySelector('h3').textContent;
+            const productCard = this.closest('.product-card, .bg-white');
+            const productName = productCard.querySelector('h1, h3').textContent;
             const productPrice = parseFloat(productCard.querySelector('.text-accent').textContent.replace('$', ''));
-            const productImage = productCard.querySelector('img').src;
+            const productImage = productCard.querySelector('#mainImage, img').src;
             
             // Get selected size
             const sizeSelector = document.querySelector('.size-selector');
@@ -117,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (selectedSizeInput) {
                     selectedSize = selectedSizeInput.value;
                 } else {
-                    alert('Please select a size');
+                    showNotification('Please select a size', 'error');
                     return;
                 }
             }
@@ -141,6 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (existingItemIndex !== -1) {
                 cart[existingItemIndex].quantity++;
+                showNotification(`${productName} quantity updated in cart`);
             } else {
                 cart.push({
                     name: productName,
@@ -150,20 +192,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     color: selectedColor,
                     quantity: 1
                 });
+                showNotification(`${productName} added to cart`);
             }
             
             saveCart();
             updateCartCount();
-            
-            // Show confirmation
-            const confirmation = document.createElement('div');
-            confirmation.className = 'fixed bottom-4 right-4 bg-primary text-white px-4 py-2 rounded shadow-lg z-50';
-            confirmation.textContent = 'Added to cart!';
-            document.body.appendChild(confirmation);
-            
-            setTimeout(() => {
-                confirmation.remove();
-            }, 2000);
         });
     });
     
