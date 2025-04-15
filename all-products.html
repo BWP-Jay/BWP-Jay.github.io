@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products - BackWater Pursuits</title>
+    <meta name="description" content="Shop BackWater Pursuits' collection of premium fishing apparel and accessories. Browse our selection of Dri-Fit shirts, cotton tees, and fishing gear.">
+    <meta name="keywords" content="fishing apparel, fishing gear, outdoor wear, BackWater Pursuits, fishing accessories, Dri-Fit shirts, fishing tees">
+    <meta name="author" content="BackWater Pursuits">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Shop - BackWater Pursuits">
+    <meta property="og:description" content="Browse our collection of premium fishing apparel and accessories.">
+    <meta property="og:image" content="images/products/logo.jpg">
+    <meta property="og:url" content="https://backwaterpursuits.com/all-products">
+    <title>Shop - BackWater Pursuits</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -22,122 +30,153 @@
 </head>
 <body class="bg-gray-100">
     <!-- Navigation -->
-    <header class="fixed w-full bg-primary text-accent shadow-md z-50">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2">
-                <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" />
+    <header class="fixed w-full bg-primary text-accent shadow-md z-50" role="banner">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
+            <a href="index.html" class="flex items-center gap-2" aria-label="BackWater Pursuits Home">
+                <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" width="40" height="40" />
                 <h1 class="text-2xl font-bold">BACKWATER PURSUITS</h1>
             </a>
-            <ul class="hidden md:flex gap-6 text-white font-medium">
-                <li><a href="index.html#home" class="hover:text-accent transition-colors duration-300">Home</a></li>
-                <li><a href="all-products.html" class="hover:text-accent transition-colors duration-300">Shop</a></li>
-                <li><a href="index.html#about" class="hover:text-accent transition-colors duration-300">About</a></li>
-                <li><a href="index.html#contact" class="hover:text-accent transition-colors duration-300">Contact</a></li>
-            </ul>
-            <div class="cart-icon text-white hover:text-accent transition-colors duration-300">
-                <i class="fas fa-shopping-cart text-xl"></i>
-                <span class="cart-count">0</span>
+            <div class="hidden md:flex items-center gap-6">
+                <ul class="flex gap-6 text-white font-medium" role="menubar">
+                    <li role="none"><a href="index.html#home" class="hover:text-accent transition-colors duration-300" role="menuitem">Home</a></li>
+                    <li role="none"><a href="all-products.html" class="hover:text-accent transition-colors duration-300" role="menuitem">Shop</a></li>
+                    <li role="none"><a href="index.html#about" class="hover:text-accent transition-colors duration-300" role="menuitem">About</a></li>
+                    <li role="none"><a href="index.html#contact" class="hover:text-accent transition-colors duration-300" role="menuitem">Contact</a></li>
+                </ul>
+                <div class="relative">
+                    <input type="search" id="search-input" class="w-64 px-4 py-2 rounded-lg bg-white text-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent" placeholder="Search products..." aria-label="Search products">
+                    <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary hover:text-accent" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
             </div>
+            <button class="cart-icon text-white hover:text-accent transition-colors duration-300" aria-label="Shopping cart">
+                <i class="fas fa-shopping-cart text-xl" aria-hidden="true"></i>
+                <span class="cart-count" aria-label="Cart items">0</span>
+            </button>
         </nav>
     </header>
 
     <!-- All Products Section -->
-    <div class="pt-20 pb-12">
+    <main class="pt-20 pb-12">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-primary text-center mb-8">All Products</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Search Results Section -->
+            <div id="search-results" class="hidden mb-8">
+                <h3 class="text-xl font-bold text-primary mb-4">Search Results</h3>
+                <div id="search-results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
+                    <!-- Search results will be dynamically inserted here -->
+                </div>
+                <div id="no-results" class="hidden text-center py-8">
+                    <p class="text-lg text-gray-600">No products found matching your search.</p>
+                </div>
+            </div>
+
+            <!-- All Products Grid -->
+            <div id="all-products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
                 <!-- Wishin' I was Fishin T-Shirt -->
-                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden" role="listitem">
                     <a href="products/wishin-fishin.html" class="block">
-                        <img src="images/products/wishin-fishin/wishin-fishin-front.jpg" alt="Wishin' I was Fishin Unisex 100% Cotton Tee" class="w-full h-64 object-cover">
+                        <img src="images/products/wishin-fishin/wishin-fishin-front.jpg" alt="Wishin' I was Fishin Unisex 100% Cotton Tee" class="w-full h-64 object-cover" width="400" height="256">
                     </a>
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-primary mb-2">Wishin' I was Fishin Unisex 100% Cotton Tee</h3>
                         <p class="text-accent font-bold mb-4">$29.88</p>
-                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart" aria-label="Add Wishin' I was Fishin T-Shirt to cart">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
                 <!-- Fishin' in the Dark T-Shirt -->
-                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden" role="listitem">
                     <a href="products/fishin-dark.html" class="block">
-                        <img src="images/products/fishin-dark/orange/fishin-dark-front.jpg" alt="Fishin' in the Dark Unisex Dri-Fit - Orange" class="w-full h-64 object-cover">
+                        <img src="images/products/fishin-dark/orange/fishin-dark-front.jpg" alt="Fishin' in the Dark Unisex Dri-Fit - Orange" class="w-full h-64 object-cover" width="400" height="256">
                     </a>
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-primary mb-2">Fishin' in the Dark Unisex Dri-Fit</h3>
                         <p class="text-accent font-bold mb-4">$26.00</p>
-                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart" aria-label="Add Fishin' in the Dark T-Shirt to cart">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
                 <!-- Down to Fish T-Shirt -->
-                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden" role="listitem">
                     <a href="products/down-to-fish.html" class="block">
-                        <img src="images/products/down-fish/down-fish-front.jpg" alt="Down to Fish? Unisex Light Grey Dri-Fit" class="w-full h-64 object-cover">
+                        <img src="images/products/down-fish/down-fish-front.jpg" alt="Down to Fish? Unisex Light Grey Dri-Fit" class="w-full h-64 object-cover" width="400" height="256">
                     </a>
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-primary mb-2">Down to Fish? Unisex Light Grey Dri-Fit</h3>
                         <p class="text-accent font-bold mb-4">$26.00</p>
-                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart" aria-label="Add Down to Fish T-Shirt to cart">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
                 <!-- DTF T-Shirt -->
-                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden" role="listitem">
                     <a href="products/dtf.html" class="block">
-                        <img src="images/products/dtf/dtf-front.jpg" alt="DTF Unisex Dri-Fit" class="w-full h-64 object-cover">
+                        <img src="images/products/dtf/dtf-front.jpg" alt="DTF Unisex Dri-Fit" class="w-full h-64 object-cover" width="400" height="256">
                     </a>
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-primary mb-2">DTF Unisex Dri-Fit</h3>
                         <p class="text-accent font-bold mb-4">$26.00</p>
-                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart" aria-label="Add DTF T-Shirt to cart">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
                 <!-- Master Baiters Sticker -->
-                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden" role="listitem">
                     <a href="products/master-baiters-sticker.html" class="block">
-                        <img src="images/products/mb-stick/master-baiters-sticker.jpg" alt="Master Baiters Sticker" class="w-full h-64 object-cover">
+                        <img src="images/products/mb-stick/master-baiters-sticker.jpg" alt="Master Baiters Sticker" class="w-full h-64 object-cover" width="400" height="256">
                     </a>
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-primary mb-2">Master Baiters Sticker</h3>
                         <p class="text-accent font-bold mb-4">$2.88</p>
-                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart" aria-label="Add Master Baiters Sticker to cart">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
                 <!-- BWP Sticker -->
-                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden" role="listitem">
                     <a href="products/bwp-sticker.html" class="block">
-                        <img src="images/products/bwp-stick/bwp-stick.jpg" alt="BWP Sticker" class="w-full h-64 object-cover">
+                        <img src="images/products/bwp-stick/bwp-stick.jpg" alt="BWP Sticker" class="w-full h-64 object-cover" width="400" height="256">
                     </a>
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-primary mb-2">BWP Sticker</h3>
                         <p class="text-accent font-bold mb-4">$2.88</p>
-                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart" aria-label="Add BWP Sticker to cart">
                             Add to Cart
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-primary text-accent text-center py-6">
-        &copy; 2024 BackWater Pursuits. All rights reserved.
+    <footer class="bg-primary text-accent text-center py-6" role="contentinfo">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 BackWater Pursuits. All rights reserved.</p>
+            <nav class="mt-4" aria-label="Footer navigation">
+                <ul class="flex justify-center gap-6">
+                    <li><a href="privacy-policy.html" class="hover:text-white transition-colors duration-300">Privacy Policy</a></li>
+                    <li><a href="terms.html" class="hover:text-white transition-colors duration-300">Terms of Service</a></li>
+                    <li><a href="shipping.html" class="hover:text-white transition-colors duration-300">Shipping Info</a></li>
+                </ul>
+            </nav>
+        </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="search.js"></script>
 </body>
 </html> 

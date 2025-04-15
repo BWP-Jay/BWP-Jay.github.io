@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BackWater Pursuits - Premium Fishing Apparel & Accessories. Shop our collection of high-quality fishing gear and outdoor wear.">
-    <meta name="keywords" content="fishing apparel, fishing gear, outdoor wear, BackWater Pursuits, fishing accessories">
-    <title>BackWater Pursuits</title>
+    <meta name="description" content="BackWater Pursuits - Premium Fishing Apparel & Accessories. Shop our collection of high-quality fishing gear, including Dri-Fit shirts, cotton tees, and outdoor accessories.">
+    <meta name="keywords" content="fishing apparel, fishing gear, outdoor wear, BackWater Pursuits, fishing accessories, Dri-Fit shirts, fishing tees">
+    <meta name="author" content="BackWater Pursuits">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="BackWater Pursuits - Premium Fishing Apparel">
+    <meta property="og:description" content="Shop high-quality fishing apparel and accessories. Dri-Fit shirts, cotton tees, and more.">
+    <meta property="og:image" content="images/products/logo.jpg">
+    <meta property="og:url" content="https://backwaterpursuits.com">
+    <title>BackWater Pursuits - Premium Fishing Apparel & Accessories</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -92,28 +98,36 @@
 </head>
 <body class="bg-primary text-white font-sans">
     <!-- Navigation -->
-    <header class="fixed w-full bg-primary text-accent shadow-md z-50 transition-all duration-300">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" />
+    <header class="fixed w-full bg-primary text-accent shadow-md z-50 transition-all duration-300" role="banner">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
+            <a href="index.html" class="flex items-center gap-2" aria-label="BackWater Pursuits Home">
+                <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" width="40" height="40" />
                 <h1 class="text-2xl font-bold">BACKWATER PURSUITS</h1>
+            </a>
+            <div class="hidden md:flex items-center gap-6">
+                <ul class="flex gap-6 text-white font-medium" role="menubar">
+                    <li role="none"><a href="#home" class="nav-link hover:text-accent transition-colors duration-300" role="menuitem">Home</a></li>
+                    <li role="none"><a href="all-products.html" class="nav-link hover:text-accent transition-colors duration-300" role="menuitem">Shop</a></li>
+                    <li role="none"><a href="#about" class="nav-link hover:text-accent transition-colors duration-300" role="menuitem">About</a></li>
+                    <li role="none"><a href="#contact" class="nav-link hover:text-accent transition-colors duration-300" role="menuitem">Contact</a></li>
+                </ul>
+                <div class="relative">
+                    <input type="search" id="search-input" class="w-64 px-4 py-2 rounded-lg bg-white text-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent" placeholder="Search products..." aria-label="Search products">
+                    <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary hover:text-accent" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
             </div>
-            <ul class="hidden md:flex gap-6 text-white font-medium">
-                <li><a href="#home" class="nav-link hover:text-accent transition-colors duration-300">Home</a></li>
-                <li><a href="all-products.html" class="nav-link hover:text-accent transition-colors duration-300">Shop</a></li>
-                <li><a href="#about" class="nav-link hover:text-accent transition-colors duration-300">About</a></li>
-                <li><a href="#contact" class="nav-link hover:text-accent transition-colors duration-300">Contact</a></li>
-            </ul>
-            <div class="cart-icon text-white hover:text-accent transition-colors duration-300">
-                <i class="fas fa-shopping-cart text-xl"></i>
-                <span class="cart-count">0</span>
-            </div>
+            <button class="cart-icon text-white hover:text-accent transition-colors duration-300" aria-label="Shopping cart">
+                <i class="fas fa-shopping-cart text-xl" aria-hidden="true"></i>
+                <span class="cart-count" aria-label="Cart items">0</span>
+            </button>
         </nav>
     </header>
 
     <!-- Shopping Cart Sidebar -->
-    <div class="cart-overlay"></div>
-    <div class="shopping-cart">
+    <div class="cart-overlay" role="dialog" aria-label="Shopping cart overlay"></div>
+    <div class="shopping-cart" role="dialog" aria-label="Shopping cart">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl font-bold text-primary">Shopping Cart</h2>
             <button class="close-cart text-gray-500 hover:text-primary">
@@ -132,22 +146,23 @@
         </div>
     </div>
 
-    <!-- Add padding-top to account for fixed header -->
-    <div class="pt-16">
+    <!-- Main Content -->
+    <main class="pt-16">
         <!-- Hero Section -->
-        <section id="home" class="hero-background flex flex-col items-center justify-center text-center py-24 bg-primary min-h-screen">
-            <img src="images/products/logo.jpg" alt="Logo" class="absolute" />
+        <section id="home" class="hero-background flex flex-col items-center justify-center text-center py-24 bg-primary min-h-screen" role="banner">
+            <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="absolute" width="800" height="600" />
             <div class="hero-content">
                 <h2 class="text-4xl font-bold mb-4 text-accent">Welcome to BackWater Pursuits</h2>
                 <p class="max-w-xl text-lg text-white">
                     Premium Fishing Apparel & Accessories
                 </p>
+                <a href="all-products.html" class="inline-block bg-accent text-primary font-bold py-3 px-6 rounded-lg mt-6 hover:bg-yellow-400 transition-colors duration-300" role="button" aria-label="Shop our products">Shop Now</a>
             </div>
         </section>
 
         <!-- Featured Products Section -->
-        <section class="featured-products bg-white text-primary py-20 px-4">
-            <h2 class="text-3xl font-bold text-accent text-center mb-8">Featured Products</h2>
+        <section class="featured-products bg-white text-primary py-20 px-4" aria-labelledby="featured-products-heading">
+            <h2 id="featured-products-heading" class="text-3xl font-bold text-accent text-center mb-8">Featured Products</h2>
             <div class="product-grid max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="product-card bg-white rounded-lg shadow-lg p-4">
                     <a href="products/wishin-fishin.html">
@@ -180,9 +195,9 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-20 px-4 bg-primary text-white">
+        <section id="about" class="py-20 px-4 bg-primary text-white" aria-labelledby="about-heading">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold text-accent mb-6">About BackWater Pursuits</h2>
+                <h2 id="about-heading" class="text-3xl font-bold text-accent mb-6">About BackWater Pursuits</h2>
                 <p class="text-lg">
                     Welcome to BackWater Pursuits, your premier destination for high-quality fishing apparel and accessories. We specialize in creating durable, comfortable, and stylish gear for anglers who appreciate both form and function. Our products are designed to withstand the elements while keeping you looking great on and off the water.
                 </p>
@@ -193,19 +208,23 @@
         </section>
 
         <!-- Newsletter Section -->
-        <section class="newsletter">
-            <h2>Stay Connected</h2>
-            <p>Subscribe to our newsletter for exclusive offers and new product announcements</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email here">
-                <button type="submit">Subscribe</button>
-            </form>
+        <section class="newsletter bg-accent text-primary py-16 px-4" aria-labelledby="newsletter-heading">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 id="newsletter-heading" class="text-3xl font-bold mb-6">Stay Connected</h2>
+                <p class="text-lg mb-8">Subscribe to our newsletter for exclusive offers and new product announcements</p>
+                <form class="newsletter-form max-w-md mx-auto" role="form" aria-label="Newsletter subscription">
+                    <div class="flex gap-4">
+                        <input type="email" placeholder="Enter your email here" class="flex-1 px-4 py-2 rounded-lg border border-primary focus:outline-none focus:ring-2 focus:ring-primary" required aria-label="Email address">
+                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors duration-300" aria-label="Subscribe to newsletter">Subscribe</button>
+                    </div>
+                </form>
+            </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="bg-white text-primary py-20 px-4">
+        <section id="contact" class="bg-white text-primary py-20 px-4" aria-labelledby="contact-heading">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl font-bold text-accent mb-6">Contact Us</h2>
+                <h2 id="contact-heading" class="text-3xl font-bold text-accent mb-6">Contact Us</h2>
                 <div class="space-y-4">
                     <p class="text-lg">Email: backwaterpursuits904@gmail.com</p>
                     <p class="text-lg">Phone: (904) 655-4273</p>
@@ -223,14 +242,24 @@
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-primary text-accent text-center py-6">
-        &copy; 2024 BackWater Pursuits. All rights reserved.
+    <footer class="bg-primary text-accent text-center py-6" role="contentinfo">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 BackWater Pursuits. All rights reserved.</p>
+            <nav class="mt-4" aria-label="Footer navigation">
+                <ul class="flex justify-center gap-6">
+                    <li><a href="privacy-policy.html" class="hover:text-white transition-colors duration-300">Privacy Policy</a></li>
+                    <li><a href="terms.html" class="hover:text-white transition-colors duration-300">Terms of Service</a></li>
+                    <li><a href="shipping.html" class="hover:text-white transition-colors duration-300">Shipping Info</a></li>
+                </ul>
+            </nav>
+        </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="search.js"></script>
     <script>
         // Active section highlighting
         const sections = document.querySelectorAll('section[id]');
