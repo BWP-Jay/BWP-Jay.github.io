@@ -19,7 +19,9 @@
           extend: {
             colors: {
               primary: "#1a472a",
+              'primary-dark': "#0d2315",
               accent: "#FFD700",
+              'accent-dark': "#B8860B",
             },
           },
         },
@@ -94,9 +96,52 @@
       .cart-overlay.active {
         display: block;
       }
+      /* Accessibility improvements */
+      :focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 2px;
+      }
+      
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #1a472a;
+        color: white;
+        padding: 8px;
+        z-index: 100;
+      }
+      
+      .skip-link:focus {
+        top: 0;
+      }
+      
+      /* Improved contrast for text */
+      .text-accent {
+        color: #B8860B;
+      }
+      
+      /* Focus styles for buttons */
+      button:focus, 
+      a:focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 2px;
+      }
+      
+      /* Focus styles for form elements */
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 2px;
+        border-color: #1a472a;
+      }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen overflow-y-auto overflow-x-hidden">
+    <!-- Skip Link for Keyboard Navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Navigation -->
     <header class="fixed w-full bg-primary text-accent shadow-md z-50 transition-all duration-300" role="banner">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
@@ -147,7 +192,7 @@
     </div>
 
     <!-- Main Content -->
-    <main class="pt-16">
+    <main id="main-content" tabindex="-1">
         <!-- Hero Section -->
         <section id="home" class="hero-background flex flex-col items-center justify-center text-center py-24 bg-primary min-h-screen" role="banner">
             <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="absolute" width="800" height="600" />

@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Down to Fish T-shirt - A comfortable and stylish fishing-themed t-shirt perfect for any angler.">
-    <meta name="keywords" content="fishing apparel, fishing shirts, fishing t-shirts, BackWater Pursuits">
-    <title>Down to Fish T-shirt - BackWater Pursuits</title>
+    <meta name="description" content="Down to Fish Unisex Dri-Fit - Premium fishing apparel for anglers who love the sport. Available in multiple colors.">
+    <title>Down to Fish Unisex Dri-Fit - BackWater Pursuits</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -13,7 +12,9 @@
           extend: {
             colors: {
               primary: "#1a472a",
+              'primary-dark': "#0d2315",
               accent: "#FFD700",
+              'accent-dark': "#B8860B",
             },
           },
         },
@@ -22,223 +23,216 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-      .product-image {
-        transition: opacity 0.3s ease-in-out;
+      /* Accessibility improvements */
+      :focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 2px;
       }
-      .product-image:hover {
-        opacity: 0.9;
-      }
-      .size-selector input[type="radio"] {
-        display: none;
-      }
-      .size-selector label {
-        cursor: pointer;
-        padding: 0.5rem 1rem;
-        border: 2px solid #1a472a;
-        border-radius: 0.25rem;
-      }
-      .size-selector input[type="radio"]:checked + label {
-        background-color: #1a472a;
-        color: white;
-      }
-      .shopping-cart {
-        position: fixed;
-        right: -400px;
-        top: 0;
-        width: 400px;
-        height: 100vh;
-        background: white;
-        transition: right 0.3s ease-in-out;
-        z-index: 1000;
-        padding: 20px;
-        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-      }
-      .shopping-cart.active {
-        right: 0;
-      }
-      .cart-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        display: none;
-        z-index: 999;
-      }
-      .cart-overlay.active {
-        display: block;
-      }
-      .cart-icon {
-        position: relative;
-        cursor: pointer;
-      }
-      .cart-count {
+      
+      .skip-link {
         position: absolute;
-        top: -8px;
-        right: -8px;
-        background-color: #FFD700;
-        color: #1a472a;
-        border-radius: 50%;
-        padding: 0.2rem 0.5rem;
-        font-size: 0.8rem;
-        font-weight: bold;
+        top: -40px;
+        left: 0;
+        background: #1a472a;
+        color: white;
+        padding: 8px;
+        z-index: 100;
+      }
+      
+      .skip-link:focus {
+        top: 0;
+      }
+      
+      /* Improved contrast for text */
+      .text-accent {
+        color: #B8860B;
+      }
+      
+      /* Focus styles for buttons */
+      button:focus, 
+      a:focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 2px;
+      }
+      
+      /* Focus styles for form elements */
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 2px;
+        border-color: #1a472a;
+      }
+      
+      /* Product image focus styles */
+      .product-image:focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 4px;
+      }
+      
+      /* Size selector focus styles */
+      .size-btn:focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 2px;
+        border-color: #1a472a;
+      }
+      
+      /* Color selector focus styles */
+      .color-btn:focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 2px;
+        border-color: #1a472a;
       }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen overflow-y-auto overflow-x-hidden">
+    <!-- Skip Link for Keyboard Navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Navigation -->
-    <header class="fixed w-full bg-primary text-accent shadow-md z-50">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="../index.html" class="flex items-center gap-2">
-                <img src="../images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" />
+    <header class="fixed w-full bg-primary text-accent shadow-md z-50" role="banner">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
+            <a href="../index.html" class="flex items-center gap-2" aria-label="BackWater Pursuits Home">
+                <img src="../images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" width="40" height="40" />
                 <h1 class="text-2xl font-bold">BACKWATER PURSUITS</h1>
             </a>
-            <ul class="hidden md:flex gap-6 text-white font-medium">
-                <li><a href="../index.html#home" class="hover:text-accent transition-colors duration-300">Home</a></li>
-                <li><a href="../shop.html" class="hover:text-accent transition-colors duration-300">Shop</a></li>
-                <li><a href="../index.html#about" class="hover:text-accent transition-colors duration-300">About</a></li>
-                <li><a href="../index.html#contact" class="hover:text-accent transition-colors duration-300">Contact</a></li>
+            <ul class="hidden md:flex gap-6 text-white font-medium" role="menubar">
+                <li role="none"><a href="../index.html#home" class="hover:text-accent transition-colors duration-300" role="menuitem">Home</a></li>
+                <li role="none"><a href="../shop.html" class="hover:text-accent transition-colors duration-300" role="menuitem">Shop</a></li>
+                <li role="none"><a href="../index.html#about" class="hover:text-accent transition-colors duration-300" role="menuitem">About</a></li>
+                <li role="none"><a href="../index.html#contact" class="hover:text-accent transition-colors duration-300" role="menuitem">Contact</a></li>
             </ul>
-            <div class="cart-icon text-white hover:text-accent transition-colors duration-300">
-                <i class="fas fa-shopping-cart text-xl"></i>
-                <span class="cart-count">0</span>
-            </div>
+            <button class="cart-icon text-white hover:text-accent transition-colors duration-300" aria-label="Shopping cart">
+                <i class="fas fa-shopping-cart text-xl" aria-hidden="true"></i>
+                <span class="cart-count" aria-label="Cart items">0</span>
+            </button>
         </nav>
     </header>
 
-    <!-- Product Details -->
-    <div class="pt-20 pb-12">
+    <!-- Main Content -->
+    <main id="main-content" tabindex="-1" class="pt-20 pb-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Product Images -->
-                <div class="space-y-4">
-                    <div class="product-images">
-                        <div class="main-image">
-                            <img src="../images/products/down-fish/down-fish-front.jpg" alt="Down to Fish T-shirt - Front" id="mainImage" class="w-full h-auto rounded-lg shadow-md">
-                        </div>
-                        <div class="thumbnail-images flex gap-4 mt-4">
-                            <img src="../images/products/down-fish/down-fish-front.jpg" alt="Down to Fish T-shirt - Front" onclick="changeImage(this.src)" class="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity">
-                            <img src="../images/products/down-fish/down-fish-back.jpg" alt="Down to Fish T-shirt - Back" onclick="changeImage(this.src)" class="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity">
-                        </div>
+                <div class="space-y-4" role="region" aria-label="Product images">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="../images/products/down-fish/down-fish-front.jpg" 
+                             alt="Down to Fish Unisex Dri-Fit - Front View" 
+                             class="w-full h-auto product-image"
+                             id="mainImage">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="changeImage('../images/products/down-fish/down-fish-front.jpg')" 
+                                class="bg-white rounded-lg shadow-md overflow-hidden focus:outline-none"
+                                aria-label="View front of shirt">
+                            <img src="../images/products/down-fish/down-fish-front.jpg" 
+                                 alt="Down to Fish Unisex Dri-Fit - Front View Thumbnail" 
+                                 class="w-full h-auto product-image">
+                        </button>
+                        <button onclick="changeImage('../images/products/down-fish/down-fish-back.jpg')"
+                                class="bg-white rounded-lg shadow-md overflow-hidden focus:outline-none"
+                                aria-label="View back of shirt">
+                            <img src="../images/products/down-fish/down-fish-back.jpg" 
+                                 alt="Down to Fish Unisex Dri-Fit - Back View Thumbnail" 
+                                 class="w-full h-auto product-image">
+                        </button>
                     </div>
                 </div>
 
                 <!-- Product Info -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h1 class="text-3xl font-bold text-primary mb-4">Down to Fish T-shirt</h1>
+                <div class="bg-white rounded-lg shadow-md p-6" role="region" aria-label="Product information">
+                    <h1 class="text-3xl font-bold text-primary mb-4">Down to Fish Unisex Dri-Fit</h1>
                     <p class="text-2xl text-accent font-bold mb-6">$26.00</p>
                     
                     <div class="mb-6">
                         <h2 class="text-lg font-bold text-primary mb-2">Description</h2>
-                        <p class="text-gray-600">The Down to Fish T-shirt is a comfortable and stylish addition to any angler's wardrobe. Featuring a playful fishing-themed design, this t-shirt is perfect for both casual wear and fishing trips.</p>
+                        <p class="text-gray-600">A stylish and comfortable Dri-Fit shirt perfect for fishing enthusiasts. Available in multiple colors.</p>
                     </div>
 
                     <div class="mb-6">
                         <h2 class="text-lg font-bold text-primary mb-2">Features</h2>
                         <ul class="list-disc list-inside text-gray-600 space-y-2">
-                            <li>100% premium cotton for ultimate comfort</li>
-                            <li>Durable, high-quality printing that won't fade</li>
-                            <li>Classic fit with a modern design</li>
-                            <li>Machine washable for easy care</li>
-                            <li>Available in multiple sizes</li>
+                            <li>100% Polyester Dri-Fit material</li>
+                            <li>Moisture-wicking technology</li>
+                            <li>UV protection</li>
+                            <li>Comfortable fit</li>
+                            <li>Available in multiple colors</li>
                         </ul>
-                    </div>
-
-                    <div class="mb-6">
-                        <h2 class="text-lg font-bold text-primary mb-2">Size Guide</h2>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full text-sm text-gray-600">
-                                <thead>
-                                    <tr class="bg-gray-100">
-                                        <th class="px-4 py-2">Size</th>
-                                        <th class="px-4 py-2">Chest (inches)</th>
-                                        <th class="px-4 py-2">Length (inches)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="px-4 py-2 border">S</td>
-                                        <td class="px-4 py-2 border">36-38</td>
-                                        <td class="px-4 py-2 border">28</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-4 py-2 border">M</td>
-                                        <td class="px-4 py-2 border">39-41</td>
-                                        <td class="px-4 py-2 border">29</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-4 py-2 border">L</td>
-                                        <td class="px-4 py-2 border">42-44</td>
-                                        <td class="px-4 py-2 border">30</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-4 py-2 border">XL</td>
-                                        <td class="px-4 py-2 border">45-47</td>
-                                        <td class="px-4 py-2 border">31</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
 
                     <div class="mb-6">
                         <h2 class="text-lg font-bold text-primary mb-2">Select Size</h2>
                         <div class="grid grid-cols-4 gap-2">
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">S</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">M</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">L</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">XL</button>
+                            <button onclick="selectSize('S')" 
+                                    class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary"
+                                    aria-label="Select size Small">S</button>
+                            <button onclick="selectSize('M')" 
+                                    class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary"
+                                    aria-label="Select size Medium">M</button>
+                            <button onclick="selectSize('L')" 
+                                    class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary"
+                                    aria-label="Select size Large">L</button>
+                            <button onclick="selectSize('XL')" 
+                                    class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary"
+                                    aria-label="Select size Extra Large">XL</button>
                         </div>
                     </div>
 
-                    <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-accent hover:text-primary transition-colors duration-300 add-to-cart" data-product-id="down-fish">
+                    <button onclick="addToCart()" 
+                            class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300 add-to-cart"
+                            aria-label="Add Down to Fish shirt to cart">
                         Add to Cart
                     </button>
                 </div>
             </div>
-
-            <!-- Related Products -->
-            <div class="mt-12">
-                <h2 class="text-2xl font-bold text-primary mb-6">You May Also Like</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Related product cards will be dynamically added here -->
-                </div>
-            </div>
         </div>
-    </div>
-
-    <!-- Shopping Cart Sidebar -->
-    <div class="cart-overlay"></div>
-    <div class="shopping-cart">
-        <div class="flex justify-between items-center mb-4">
-            <h2 class="text-xl font-bold text-primary">Shopping Cart</h2>
-            <button class="close-cart text-gray-500 hover:text-primary">
-                <i class="fas fa-times text-xl"></i>
-            </button>
-        </div>
-        <div class="cart-items space-y-4"></div>
-        <div class="cart-total mt-4 pt-4 border-t border-gray-200">
-            <div class="flex justify-between text-primary">
-                <span class="font-bold">Total:</span>
-                <span class="cart-total-amount">$0.00</span>
-            </div>
-            <button class="w-full bg-primary text-white py-2 px-4 rounded mt-4 hover:bg-accent hover:text-primary transition-colors duration-300">
-                Checkout
-            </button>
-        </div>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-primary text-accent text-center py-6">
-        &copy; 2024 BackWater Pursuits. All rights reserved.
+    <footer class="bg-primary text-accent text-center py-6" role="contentinfo">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 BackWater Pursuits. All rights reserved.</p>
+            <nav class="mt-4" aria-label="Footer navigation">
+                <ul class="flex justify-center gap-6">
+                    <li><a href="../privacy-policy.html" class="hover:text-white transition-colors duration-300">Privacy Policy</a></li>
+                    <li><a href="../terms.html" class="hover:text-white transition-colors duration-300">Terms of Service</a></li>
+                    <li><a href="../shipping.html" class="hover:text-white transition-colors duration-300">Shipping Info</a></li>
+                </ul>
+            </nav>
+        </div>
     </footer>
 
     <script src="../script.js"></script>
     <script>
+        let selectedSize = null;
+
         function changeImage(src) {
             const mainImage = document.getElementById('mainImage');
             mainImage.src = src;
+            mainImage.alt = `Down to Fish Unisex Dri-Fit - ${src.includes('front') ? 'Front' : 'Back'} View`;
+        }
+
+        function selectSize(size) {
+            selectedSize = size;
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.remove('border-2', 'border-primary');
+            });
+            event.target.classList.add('border-2', 'border-primary');
+        }
+
+        function addToCart() {
+            if (!selectedSize) {
+                alert('Please select a size');
+                return;
+            }
+            // Add to cart logic here
+            const product = {
+                name: "Down to Fish Unisex Dri-Fit",
+                size: selectedSize,
+                price: 26.00
+            };
+            // Call the addToCart function from script.js
+            window.addToCart(product);
         }
     </script>
 </body>
