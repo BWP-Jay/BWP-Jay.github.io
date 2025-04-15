@@ -115,11 +115,11 @@
                 <div class="space-y-4">
                     <div class="product-images">
                         <div class="main-image">
-                            <img src="../images/products/wishin-fishin/wishin-fishin-front.jpg" alt="Wishin' I was Fishin T-shirt - Front" id="mainImage">
+                            <img src="../images/products/wishin-fishin/wishin-fishin-front.jpg" alt="Wishin' I was Fishin T-shirt - Front" id="mainImage" class="w-full h-auto rounded-lg shadow-md">
                         </div>
-                        <div class="thumbnail-images">
-                            <img src="../images/products/wishin-fishin/wishin-fishin-front.jpg" alt="Wishin' I was Fishin T-shirt - Front" onclick="changeImage(this.src)">
-                            <img src="../images/products/wishin-fishin/wishin-fishin-back.jpg" alt="Wishin' I was Fishin T-shirt - Back" onclick="changeImage(this.src)">
+                        <div class="thumbnail-images flex gap-4 mt-4">
+                            <img src="../images/products/wishin-fishin/wishin-fishin-front.jpg" alt="Wishin' I was Fishin T-shirt - Front" onclick="changeImage(this.src)" class="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity">
+                            <img src="../images/products/wishin-fishin/wishin-fishin-back.jpg" alt="Wishin' I was Fishin T-shirt - Back" onclick="changeImage(this.src)" class="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity">
                         </div>
                     </div>
                 </div>
@@ -235,5 +235,11 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function changeImage(src) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = src;
+        }
+    </script>
 </body>
 </html> 

@@ -137,11 +137,11 @@
                 <div class="space-y-4">
                     <div class="product-images">
                         <div class="main-image">
-                            <img src="../images/products/fishin-dark/orange/fishin-dark-front.jpg" alt="Fishin' in the Dark T-shirt - Front" id="mainImage">
+                            <img src="../images/products/fishin-dark/orange/fishin-dark-front.jpg" alt="Fishin' in the Dark T-shirt - Front" id="mainImage" class="w-full h-auto rounded-lg shadow-md">
                         </div>
-                        <div class="thumbnail-images flex gap-4">
-                            <img src="../images/products/fishin-dark/orange/fishin-dark-front.jpg" alt="Fishin' in the Dark T-shirt - Front" onclick="changeImage(this.src)" class="cursor-pointer">
-                            <img src="../images/products/fishin-dark/orange/fishin-dark-back.jpg" alt="Fishin' in the Dark T-shirt - Back" onclick="changeImage(this.src)" class="cursor-pointer">
+                        <div class="thumbnail-images flex gap-4 mt-4">
+                            <img src="../images/products/fishin-dark/orange/fishin-dark-front.jpg" alt="Fishin' in the Dark T-shirt - Front" onclick="changeImage(this.src)" class="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity">
+                            <img src="../images/products/fishin-dark/orange/fishin-dark-back.jpg" alt="Fishin' in the Dark T-shirt - Back" onclick="changeImage(this.src)" class="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity">
                         </div>
                     </div>
                 </div>
@@ -279,29 +279,28 @@
     <script src="../script.js"></script>
     <script>
         function changeImage(src) {
-            document.getElementById('mainImage').src = src;
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = src;
         }
 
         function changeColor(color) {
             const mainImage = document.getElementById('mainImage');
-            const orangeImages = document.querySelectorAll('.orange-front, .orange-back');
-            const greenImages = document.querySelectorAll('.green-front, .green-back');
+            const thumbnails = document.querySelectorAll('.thumbnail-images img');
             
             if (color === 'orange') {
                 mainImage.src = '../images/products/fishin-dark/orange/fishin-dark-front.jpg';
-                orangeImages.forEach(img => img.style.display = 'inline-block');
-                greenImages.forEach(img => img.style.display = 'none');
+                thumbnails[0].src = '../images/products/fishin-dark/orange/fishin-dark-front.jpg';
+                thumbnails[1].src = '../images/products/fishin-dark/orange/fishin-dark-back.jpg';
             } else {
                 mainImage.src = '../images/products/fishin-dark/green/fishin-dark-front-.jpg';
-                orangeImages.forEach(img => img.style.display = 'none');
-                greenImages.forEach(img => img.style.display = 'inline-block');
+                thumbnails[0].src = '../images/products/fishin-dark/green/fishin-dark-front-.jpg';
+                thumbnails[1].src = '../images/products/fishin-dark/green/fishin-dark-back.jpg';
             }
         }
 
         // Initialize the page with orange color selected
         document.addEventListener('DOMContentLoaded', function() {
-            const greenImages = document.querySelectorAll('.green-front, .green-back');
-            greenImages.forEach(img => img.style.display = 'none');
+            changeColor('orange');
         });
     </script>
 </body>

@@ -115,11 +115,11 @@
                 <div class="space-y-4">
                     <div class="product-images">
                         <div class="main-image">
-                            <img src="../images/products/dtf/dtf-front.jpg" alt="DTF T-shirt - Front" id="mainImage">
+                            <img src="../images/products/dtf/dtf-front.jpg" alt="DTF T-shirt - Front" id="mainImage" class="w-full h-auto rounded-lg shadow-md">
                         </div>
-                        <div class="thumbnail-images flex gap-4">
-                            <img src="../images/products/dtf/dtf-front.jpg" alt="DTF T-shirt - Front" onclick="changeImage(this.src)" class="cursor-pointer">
-                            <img src="../images/products/dtf/dtf-back.jpg" alt="DTF T-shirt - Back" onclick="changeImage(this.src)" class="cursor-pointer">
+                        <div class="thumbnail-images flex gap-4 mt-4">
+                            <img src="../images/products/dtf/dtf-front.jpg" alt="DTF T-shirt - Front" onclick="changeImage(this.src)" class="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity">
+                            <img src="../images/products/dtf/dtf-back.jpg" alt="DTF T-shirt - Back" onclick="changeImage(this.src)" class="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity">
                         </div>
                     </div>
                 </div>
@@ -237,7 +237,8 @@
     <script src="../script.js"></script>
     <script>
         function changeImage(src) {
-            document.getElementById('mainImage').src = src;
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = src;
         }
     </script>
 </body>
