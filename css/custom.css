@@ -1,0 +1,30 @@
+/* Custom styles to override existing styles */
+header {
+    background-color: white !important;
+    color: #1a472a !important;
+}
+
+header nav ul li a {
+    color: #1a472a !important;
+}
+
+header .snipcart-checkout,
+header .mobile-menu-button {
+    color: #1a472a !important;
+}
+
+.hero-section {
+    background: #1a472a !important;
+}
+
+footer {
+    background-color: #1a472a !important;
+    color: white !important;
+    padding: 2rem 0 !important;
+}
+
+footer .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 1rem !important;
+} 
