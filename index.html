@@ -65,6 +65,64 @@
         --background-color: #ffffff;
       }
 
+      /* Header styles */
+      .header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      /* Navigation link styles */
+      .nav-link {
+        position: relative;
+        color: var(--primary-color);
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--accent-color);
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--accent-color);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* Hero section styles */
+      .hero-section {
+        position: relative;
+        background: linear-gradient(135deg, var(--primary-color) 0%, #2d5a3f 100%);
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
       /* Accessibility improvements */
       .skip-link {
         position: absolute;
@@ -290,7 +348,7 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Header -->
-    <header class="bg-white shadow-md py-4 fixed w-full top-0 z-[100]" role="banner">
+    <header class="header fixed w-full top-0 z-50 py-4" role="banner">
         <nav class="container mx-auto px-4" role="navigation" aria-label="Main navigation">
             <div class="flex justify-between items-center">
                 <a href="/" class="text-2xl font-bold" aria-label="Backwater Pursuits Home">
@@ -305,27 +363,27 @@
                         <input type="search" 
                                id="search"
                                placeholder="Search products..." 
-                               class="px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary"
+                               class="px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary bg-white/90 backdrop-blur-sm"
                                aria-label="Search products">
                     </div>
 
                     <!-- Navigation Links -->
                     <nav class="hidden md:flex space-x-6" aria-label="Primary navigation">
-                        <a href="/" class="nav-link text-primary hover:text-accent font-bold text-lg" aria-current="page">Home</a>
-                        <a href="/all-products.html" class="nav-link text-primary hover:text-accent font-bold text-lg">Shop</a>
-                        <a href="#about" class="nav-link text-primary hover:text-accent font-bold text-lg">About</a>
-                        <a href="#contact" class="nav-link text-primary hover:text-accent font-bold text-lg">Contact</a>
+                        <a href="/" class="nav-link text-lg" aria-current="page">Home</a>
+                        <a href="/all-products.html" class="nav-link text-lg">Shop</a>
+                        <a href="#about" class="nav-link text-lg">About</a>
+                        <a href="#contact" class="nav-link text-lg">Contact</a>
                     </nav>
 
                     <!-- Cart Button -->
                     <button class="cart-icon snipcart-checkout text-primary hover:text-accent" aria-label="Shopping cart">
-                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-shopping-cart text-xl"></i>
                         <span class="cart-count snipcart-items-count" aria-label="Items in cart">0</span>
                     </button>
 
                     <!-- Mobile Menu Button -->
                     <button class="md:hidden text-primary hover:text-accent" aria-label="Toggle menu" aria-expanded="false">
-                        <i class="fas fa-bars"></i>
+                        <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
@@ -335,8 +393,8 @@
     <!-- Main Content -->
     <main id="main-content" class="pt-20" role="main">
         <!-- Hero Section -->
-        <section id="home" class="bg-primary flex flex-col items-center justify-center text-center py-24 min-h-screen" role="banner">
-            <div class="container mx-auto px-4">
+        <section id="home" class="hero-section flex flex-col items-center justify-center text-center py-24 min-h-screen" role="banner">
+            <div class="hero-content container mx-auto px-4">
                 <h2 class="text-4xl font-bold mb-4 text-accent">Welcome to BackWater Pursuits</h2>
                 <p class="max-w-xl text-lg text-white mx-auto">
                     Premium Fishing Apparel & Accessories
