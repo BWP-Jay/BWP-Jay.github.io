@@ -290,7 +290,7 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Header -->
-    <header class="bg-primary text-white py-4 fixed w-full top-0 z-50" role="banner">
+    <header class="bg-primary text-white py-4 fixed w-full top-0 z-[100]" role="banner">
         <nav class="container mx-auto px-4" role="navigation" aria-label="Main navigation">
             <div class="flex justify-between items-center">
                 <a href="/" class="text-2xl font-bold" aria-label="Backwater Pursuits Home">
@@ -311,10 +311,10 @@
 
                     <!-- Navigation Links -->
                     <nav class="hidden md:flex space-x-6" aria-label="Primary navigation">
-                        <a href="/" class="nav-link" aria-current="page">Home</a>
-                        <a href="/all-products.html" class="nav-link">Shop</a>
-                        <a href="#about" class="nav-link">About</a>
-                        <a href="#contact" class="nav-link">Contact</a>
+                        <a href="/" class="nav-link text-white hover:text-accent" aria-current="page">Home</a>
+                        <a href="/all-products.html" class="nav-link text-white hover:text-accent">Shop</a>
+                        <a href="#about" class="nav-link text-white hover:text-accent">About</a>
+                        <a href="#contact" class="nav-link text-white hover:text-accent">Contact</a>
                     </nav>
 
                     <!-- Cart Button -->
@@ -335,9 +335,10 @@
     <!-- Main Content -->
     <main id="main-content" class="pt-20" role="main">
         <!-- Hero Section -->
-        <section id="home" class="hero-background flex flex-col items-center justify-center text-center py-24 bg-primary min-h-screen" role="banner">
+        <section id="home" class="hero-background flex flex-col items-center justify-center text-center py-24 bg-primary min-h-screen relative" role="banner">
+            <div class="absolute inset-0 bg-primary opacity-50"></div>
             <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="absolute" width="800" height="600" />
-            <div class="hero-content">
+            <div class="hero-content relative z-10">
                 <h2 class="text-4xl font-bold mb-4 text-accent">Welcome to BackWater Pursuits</h2>
                 <p class="max-w-xl text-lg text-white">
                     Premium Fishing Apparel & Accessories
