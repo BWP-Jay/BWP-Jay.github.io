@@ -290,7 +290,7 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Header -->
-    <header class="bg-primary/90 backdrop-blur-sm text-white py-4 fixed w-full top-0 z-[100]" role="banner">
+    <header class="bg-white shadow-md py-4 fixed w-full top-0 z-[100]" role="banner">
         <nav class="container mx-auto px-4" role="navigation" aria-label="Main navigation">
             <div class="flex justify-between items-center">
                 <a href="/" class="text-2xl font-bold" aria-label="Backwater Pursuits Home">
@@ -305,26 +305,26 @@
                         <input type="search" 
                                id="search"
                                placeholder="Search products..." 
-                               class="px-4 py-2 rounded-lg text-gray-900"
+                               class="px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary"
                                aria-label="Search products">
                     </div>
 
                     <!-- Navigation Links -->
                     <nav class="hidden md:flex space-x-6" aria-label="Primary navigation">
-                        <a href="/" class="nav-link text-white hover:text-accent font-bold text-lg" aria-current="page">Home</a>
-                        <a href="/all-products.html" class="nav-link text-white hover:text-accent font-bold text-lg">Shop</a>
-                        <a href="#about" class="nav-link text-white hover:text-accent font-bold text-lg">About</a>
-                        <a href="#contact" class="nav-link text-white hover:text-accent font-bold text-lg">Contact</a>
+                        <a href="/" class="nav-link text-primary hover:text-accent font-bold text-lg" aria-current="page">Home</a>
+                        <a href="/all-products.html" class="nav-link text-primary hover:text-accent font-bold text-lg">Shop</a>
+                        <a href="#about" class="nav-link text-primary hover:text-accent font-bold text-lg">About</a>
+                        <a href="#contact" class="nav-link text-primary hover:text-accent font-bold text-lg">Contact</a>
                     </nav>
 
                     <!-- Cart Button -->
-                    <button class="cart-icon snipcart-checkout" aria-label="Shopping cart">
+                    <button class="cart-icon snipcart-checkout text-primary hover:text-accent" aria-label="Shopping cart">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count snipcart-items-count" aria-label="Items in cart">0</span>
                     </button>
 
                     <!-- Mobile Menu Button -->
-                    <button class="md:hidden" aria-label="Toggle menu" aria-expanded="false">
+                    <button class="md:hidden text-primary hover:text-accent" aria-label="Toggle menu" aria-expanded="false">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
@@ -335,12 +335,10 @@
     <!-- Main Content -->
     <main id="main-content" class="pt-20" role="main">
         <!-- Hero Section -->
-        <section id="home" class="hero-background flex flex-col items-center justify-center text-center py-24 min-h-screen relative" role="banner">
-            <div class="absolute inset-0 bg-gradient-to-b from-primary/90 to-primary/70"></div>
-            <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="absolute w-full h-full object-cover opacity-30" width="800" height="600" />
-            <div class="hero-content relative z-10">
+        <section id="home" class="bg-primary flex flex-col items-center justify-center text-center py-24 min-h-screen" role="banner">
+            <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-bold mb-4 text-accent">Welcome to BackWater Pursuits</h2>
-                <p class="max-w-xl text-lg text-white">
+                <p class="max-w-xl text-lg text-white mx-auto">
                     Premium Fishing Apparel & Accessories
                 </p>
                 <a href="all-products.html" class="inline-block bg-accent text-primary font-bold py-3 px-6 rounded-lg mt-6 hover:bg-yellow-400 transition-colors duration-300" role="button" aria-label="Shop our products">Shop Now</a>
