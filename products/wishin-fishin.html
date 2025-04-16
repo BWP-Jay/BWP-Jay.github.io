@@ -85,6 +85,8 @@
         font-weight: bold;
       }
     </style>
+    <script async src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
+    <div hidden id="snipcart" data-api-key="OThmODU0MjItZWYzMy00ZmI3LTg0NzItOWE1MGFmODQwYWU3NjM4ODA0MDgyNjI3MzA0NDkx"></div>
 </head>
 <body class="bg-gray-100 min-h-screen overflow-y-auto overflow-x-hidden">
     <!-- Navigation -->
@@ -229,6 +231,34 @@
         </div>
     </div>
 
+    <!-- Newsletter Section -->
+    <section class="bg-accent text-primary py-16 px-4 mt-12" aria-labelledby="newsletter-heading">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 id="newsletter-heading" class="text-3xl font-bold mb-6">Stay Connected</h2>
+            <p class="text-lg mb-8">Subscribe to our newsletter for exclusive offers, new product announcements, and fishing tips!</p>
+            <form id="newsletter-form" class="newsletter-form max-w-md mx-auto" role="form" aria-label="Newsletter subscription">
+                <div class="flex flex-col gap-4">
+                    <div class="relative">
+                        <input type="email" 
+                               id="newsletter-email" 
+                               placeholder="Enter your email here" 
+                               class="w-full px-4 py-3 rounded-lg border-2 border-primary focus:outline-none focus:ring-2 focus:ring-primary text-gray-800" 
+                               required 
+                               aria-label="Email address"
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        <div id="email-error" class="absolute left-0 -bottom-6 text-red-600 text-sm hidden" role="alert"></div>
+                    </div>
+                    <button type="submit" 
+                            class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" 
+                            aria-label="Subscribe to newsletter">
+                        Subscribe
+                    </button>
+                </div>
+            </form>
+            <p id="success-message" class="mt-4 text-green-700 hidden">Thank you for subscribing! Check your email to confirm your subscription.</p>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-primary text-accent text-center py-6">
         &copy; 2024 BackWater Pursuits. All rights reserved.
@@ -240,6 +270,36 @@
             const mainImage = document.getElementById('mainImage');
             mainImage.src = src;
         }
+
+        // Newsletter Form Validation and Submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('newsletter-email');
+            const errorDiv = document.getElementById('email-error');
+            const successMessage = document.getElementById('success-message');
+            
+            // Basic email validation
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(emailInput.value)) {
+                errorDiv.textContent = 'Please enter a valid email address';
+                errorDiv.classList.remove('hidden');
+                emailInput.setAttribute('aria-invalid', 'true');
+                return;
+            }
+
+            // Clear any previous error
+            errorDiv.classList.add('hidden');
+            emailInput.setAttribute('aria-invalid', 'false');
+
+            // Simulate form submission (replace with actual API call)
+            successMessage.classList.remove('hidden');
+            emailInput.value = '';
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.add('hidden');
+            }, 5000);
+        });
     </script>
 </body>
 </html> 

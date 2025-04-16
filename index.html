@@ -50,8 +50,142 @@
     <link rel="preconnect" href="https://cdn.snipcart.com" />
     <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.css" />
     <script async src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
-    <div hidden id="snipcart" data-api-key="YOUR_PUBLIC_API_KEY"></div>
+    <div hidden id="snipcart" data-api-key="OThmODU0MjItZWYzMy00ZmI3LTg0NzItOWE1MGFmODQwYWU3NjM4ODA0MDgyNjI3MzA0NDkx"></div>
     <style>
+      /* Base styles */
+      :root {
+        --primary-color: #1a365d;
+        --accent-color: #f6ad55;
+        --text-color: #2d3748;
+        --background-color: #ffffff;
+      }
+
+      /* Accessibility improvements */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: var(--primary-color);
+        color: white;
+        padding: 8px;
+        z-index: 100;
+        transition: top 0.3s;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
+
+      /* Focus styles for better keyboard navigation */
+      a:focus,
+      button:focus,
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 3px solid var(--accent-color);
+        outline-offset: 2px;
+      }
+
+      /* High contrast mode support */
+      @media (prefers-contrast: high) {
+        :root {
+          --primary-color: #000080;
+          --accent-color: #ffd700;
+          --text-color: #000000;
+          --background-color: #ffffff;
+        }
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      /* Base styles with improved contrast */
+      body {
+        color: var(--text-color);
+        background-color: var(--background-color);
+        line-height: 1.6;
+      }
+
+      .text-primary {
+        color: var(--primary-color);
+      }
+
+      .bg-primary {
+        background-color: var(--primary-color);
+      }
+
+      .text-accent {
+        color: var(--accent-color);
+      }
+
+      .bg-accent {
+        background-color: var(--accent-color);
+      }
+
+      /* Improved button styles */
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.375rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: #2c5282;
+      }
+
+      /* Improved link styles */
+      a {
+        color: var(--primary-color);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      a:hover {
+        color: #2c5282;
+      }
+
+      /* Form elements with better contrast */
+      input,
+      select,
+      textarea {
+        border: 2px solid var(--primary-color);
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        background-color: white;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--accent-color);
+      }
+
+      /* Error states */
+      .error {
+        color: #c53030;
+        border-color: #c53030;
+      }
+
+      /* Success states */
+      .success {
+        color: #2f855a;
+        border-color: #2f855a;
+      }
+
       .hero-background {
         position: relative;
         overflow: hidden;
@@ -124,20 +258,6 @@
         outline-offset: 2px;
       }
       
-      .skip-link {
-        position: absolute;
-        top: -40px;
-        left: 0;
-        background: #1a472a;
-        color: white;
-        padding: 8px;
-        z-index: 100;
-      }
-      
-      .skip-link:focus {
-        top: 0;
-      }
-      
       /* Improved contrast for text */
       .text-accent {
         color: #B8860B;
@@ -160,42 +280,27 @@
       }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen overflow-y-auto overflow-x-hidden">
-    <!-- Skip Link for Keyboard Navigation -->
+<body class="min-h-screen overflow-y-auto overflow-x-hidden">
+    <!-- Skip Link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
-    <!-- Navigation -->
-    <header class="fixed w-full bg-primary text-accent shadow-md z-50 transition-all duration-300" role="banner">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
-            <a href="index.html" class="flex items-center gap-2" aria-label="BackWater Pursuits Home">
-                <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" width="40" height="40" />
-                <h1 class="text-2xl font-bold">BACKWATER PURSUITS</h1>
-            </a>
-            <div class="hidden md:flex items-center gap-6">
-                <ul class="flex gap-6 text-white font-medium" role="menubar">
-                    <li role="none"><a href="#home" class="nav-link hover:text-accent transition-colors duration-300" role="menuitem">Home</a></li>
-                    <li role="none"><a href="all-products.html" class="nav-link hover:text-accent transition-colors duration-300" role="menuitem">Shop</a></li>
-                    <li role="none"><a href="#about" class="nav-link hover:text-accent transition-colors duration-300" role="menuitem">About</a></li>
-                    <li role="none"><a href="#contact" class="nav-link hover:text-accent transition-colors duration-300" role="menuitem">Contact</a></li>
-                </ul>
-                <div class="relative">
-                    <input type="search" id="search-input" class="w-64 px-4 py-2 rounded-lg bg-white text-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent" placeholder="Search products..." aria-label="Search products">
-                    <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary hover:text-accent" aria-label="Search">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="flex items-center">
-                <button class="snipcart-checkout text-white hover:text-accent transition-colors duration-300 flex items-center">
-                    <i class="fas fa-shopping-cart text-xl mr-1"></i>
-                    <span class="snipcart-items-count">0</span>
-                </button>
-            </div>
-        </nav>
+
+    <!-- Header -->
+    <header class="bg-primary text-white py-4" role="banner">
+      <nav class="container mx-auto px-4" role="navigation" aria-label="Main navigation">
+        <div class="flex justify-between items-center">
+          <a href="/" class="text-2xl font-bold" aria-label="Backwater Pursuits Home">Backwater Pursuits</a>
+          <ul class="flex space-x-6" role="menubar">
+            <li role="none"><a href="/" class="hover:text-accent" role="menuitem" aria-current="page">Home</a></li>
+            <li role="none"><a href="/all-products.html" class="hover:text-accent" role="menuitem">Products</a></li>
+            <li role="none"><a href="#about" class="hover:text-accent" role="menuitem">About</a></li>
+            <li role="none"><a href="#contact" class="hover:text-accent" role="menuitem">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
     </header>
 
     <!-- Main Content -->
-    <main id="main-content" tabindex="-1">
+    <main id="main-content" role="main" tabindex="-1">
         <!-- Hero Section -->
         <section id="home" class="hero-background flex flex-col items-center justify-center text-center py-24 bg-primary min-h-screen" role="banner">
             <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="absolute" width="800" height="600" />
@@ -208,38 +313,170 @@
             </div>
         </section>
 
-        <!-- Featured Products Section -->
-        <section class="featured-products bg-white text-primary py-20 px-4" aria-labelledby="featured-products-heading">
-            <h2 id="featured-products-heading" class="text-3xl font-bold text-accent text-center mb-8">Featured Products</h2>
-            <div class="product-grid max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="product-card bg-white rounded-lg shadow-lg p-4">
-                    <a href="products/wishin-fishin.html">
-                        <img src="images/products/wishin-fishin/wishin-fishin-front.jpg" alt="Wishin' I was Fishin Unisex 100% Cotton Tee" class="w-full h-64 object-cover rounded-lg mb-4">
-                        <h3 class="text-xl font-bold mb-2">Wishin' I was Fishin Unisex 100% Cotton Tee</h3>
-                        <p class="text-accent font-bold mb-2">$29.88</p>
-                        <p class="text-gray-600 mb-4">Experience the perfect blend of comfort and style with our Wishin' I was Fishin 100% Cotton T-Shirt. Made from 100% cotton, this gravel-colored tee is crafted from heavy cotton, perfect for those chillier days on the water.</p>
-                    </a>
-                    <button class="add-to-cart bg-primary text-white px-6 py-2 rounded hover:bg-green-700 w-full">Add to Cart</button>
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center mb-12">
+                    <h2 class="text-3xl font-bold text-primary mb-4">About BackWater Pursuits</h2>
+                    <p class="text-lg text-gray-700">Our passion for fishing meets quality apparel</p>
                 </div>
-                <div class="product-card bg-white rounded-lg shadow-lg p-4">
-                    <a href="products/fishin-dark.html">
-                        <img src="images/products/fishin-dark/orange/fishin-dark-front.jpg" alt="Fishin' in the Dark Unisex Dri-Fit - Orange" class="w-full h-64 object-cover rounded-lg mb-4">
-                        <h3 class="text-xl font-bold mb-2">Fishin' in the Dark Unisex Dri-Fit</h3>
-                        <p class="text-accent font-bold mb-2">$26.00</p>
-                        <p class="text-gray-600 mb-4">A stylish and comfortable Dri-Fit shirt perfect for night fishing adventures. Available in two colorways: orange and green.</p>
-                    </a>
-                    <button class="add-to-cart bg-primary text-white px-6 py-2 rounded hover:bg-green-700 w-full">Add to Cart</button>
-                </div>
-                <div class="product-card bg-white rounded-lg shadow-lg p-4">
-                    <a href="products/down-to-fish.html">
-                        <img src="images/products/down-fish/down-fish-front.jpg" alt="Down to Fish? Unisex Light Grey Dri-Fit" class="w-full h-64 object-cover rounded-lg mb-4">
-                        <h3 class="text-xl font-bold mb-2">Down to Fish? Unisex Light Grey Dri-Fit</h3>
-                        <p class="text-accent font-bold mb-2">$26.00</p>
-                        <p class="text-gray-600 mb-4">A comfortable and stylish Dri-Fit shirt perfect for any fishing adventure.</p>
-                    </a>
-                    <button class="add-to-cart bg-primary text-white px-6 py-2 rounded hover:bg-green-700 w-full">Add to Cart</button>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1">
+                        <img src="images/about-fishing.jpg" alt="Fishing enthusiast enjoying the outdoors" class="rounded-lg shadow-lg w-full h-auto">
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <h3 class="text-2xl font-bold text-primary mb-4">Our Story</h3>
+                        <p class="text-gray-700 mb-4">BackWater Pursuits was born from a simple idea: create high-quality fishing apparel that anglers can be proud to wear. Founded by a group of passionate fishermen, we understand what it takes to make gear that performs in the elements while looking great.</p>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center mb-12">
+                    <h2 class="text-3xl font-bold text-primary mb-4">What Our Customers Say</h2>
+                    <p class="text-lg text-gray-700">Real reviews from real anglers</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="text-accent mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600">5.0</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">"The Fishin' in the Dark shirt is perfect for night fishing. The material is lightweight and dries quickly. I've worn it on multiple trips and it's held up great!"</p>
+                        <div class="flex items-center">
+                            <img src="images/testimonial-1.jpg" alt="Customer photo" class="w-10 h-10 rounded-full mr-3">
+                            <div>
+                                <p class="font-bold text-primary">Mike Johnson</p>
+                                <p class="text-sm text-gray-600">Bass Angler</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="text-accent mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600">5.0</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">"I love my Down to Fish shirt! The design is awesome and the quality is top-notch. It's become my go-to shirt for weekend fishing trips."</p>
+                        <div class="flex items-center">
+                            <img src="images/testimonial-2.jpg" alt="Customer photo" class="w-10 h-10 rounded-full mr-3">
+                            <div>
+                                <p class="font-bold text-primary">Sarah Williams</p>
+                                <p class="text-sm text-gray-600">Fly Fishing Enthusiast</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="text-accent mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600">4.5</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">"The Wishin' Fishin' shirt is so comfortable! The fabric is soft and the fit is perfect. I've already ordered two more in different colors."</p>
+                        <div class="flex items-center">
+                            <img src="images/testimonial-3.jpg" alt="Customer photo" class="w-10 h-10 rounded-full mr-3">
+                            <div>
+                                <p class="font-bold text-primary">David Thompson</p>
+                                <p class="text-sm text-gray-600">Kayak Angler</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-8">
+                    <a href="all-products.html" class="inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors duration-300">
+                        Shop All Products
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="py-16 bg-white" role="region" aria-labelledby="products-heading">
+          <div class="container mx-auto px-4">
+            <h2 id="products-heading" class="text-3xl font-bold text-center mb-12">Featured Products</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
+              <!-- Fishin' in the Dark -->
+              <article class="product-card" role="listitem">
+                <a href="products/fishin-dark.html" class="block group" aria-label="View Fishin' in the Dark t-shirt details">
+                  <div class="relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="images/products/fishin-dark/fishin-dark-front.jpg" 
+                         alt="Fishin' in the Dark t-shirt front view" 
+                         class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                         width="400"
+                         height="400">
+                    <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
+                  </div>
+                  <div class="mt-4">
+                    <h3 class="text-xl font-semibold text-primary">Fishin' in the Dark</h3>
+                    <p class="text-gray-600 mt-2">Premium fishing t-shirt with glow-in-the-dark design</p>
+                    <p class="text-accent font-bold mt-2">$24.99</p>
+                  </div>
+                </a>
+              </article>
+
+              <!-- Down to Fish -->
+              <article class="product-card" role="listitem">
+                <a href="products/down-to-fish.html" class="block group" aria-label="View Down to Fish t-shirt details">
+                  <div class="relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="images/products/down-fish/down-fish-front.jpg" 
+                         alt="Down to Fish t-shirt front view" 
+                         class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                         width="400"
+                         height="400">
+                    <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
+                  </div>
+                  <div class="mt-4">
+                    <h3 class="text-xl font-semibold text-primary">Down to Fish</h3>
+                    <p class="text-gray-600 mt-2">Classic fishing t-shirt with modern design</p>
+                    <p class="text-accent font-bold mt-2">$24.99</p>
+                  </div>
+                </a>
+              </article>
+
+              <!-- Wishin' I was Fishin' -->
+              <article class="product-card" role="listitem">
+                <a href="products/wishin-fishin.html" class="block group" aria-label="View Wishin' I was Fishin' t-shirt details">
+                  <div class="relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="images/products/wishin-fishin/wishin-fishin-front.jpg" 
+                         alt="Wishin' I was Fishin' t-shirt front view" 
+                         class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                         width="400"
+                         height="400">
+                    <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
+                  </div>
+                  <div class="mt-4">
+                    <h3 class="text-xl font-semibold text-primary">Wishin' I was Fishin'</h3>
+                    <p class="text-gray-600 mt-2">Fun fishing t-shirt for the fishing enthusiast</p>
+                    <p class="text-accent font-bold mt-2">$24.99</p>
+                  </div>
+                </a>
+              </article>
+            </div>
+          </div>
         </section>
 
         <!-- About Section -->
@@ -293,8 +530,64 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-primary text-accent text-center py-6">
-        &copy; 2024 BackWater Pursuits. All rights reserved.
+    <footer class="bg-primary text-white py-12" role="contentinfo">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Contact Information -->
+          <div class="footer-section" role="complementary">
+            <h3 class="text-xl font-bold mb-4" id="contact-heading">Contact Us</h3>
+            <address class="not-italic">
+              <p class="mb-2">
+                <span class="sr-only">Email:</span>
+                <a href="mailto:info@backwaterpursuits.com" class="hover:text-accent transition-colors" aria-label="Send us an email">info@backwaterpursuits.com</a>
+              </p>
+              <p class="mb-2">
+                <span class="sr-only">Phone:</span>
+                <a href="tel:+1234567890" class="hover:text-accent transition-colors" aria-label="Call us">(123) 456-7890</a>
+              </p>
+            </address>
+          </div>
+
+          <!-- Quick Links -->
+          <nav class="footer-section" role="navigation" aria-label="Footer navigation">
+            <h3 class="text-xl font-bold mb-4" id="quick-links-heading">Quick Links</h3>
+            <ul class="space-y-2" role="list">
+              <li><a href="/" class="hover:text-accent transition-colors" aria-current="page">Home</a></li>
+              <li><a href="/products" class="hover:text-accent transition-colors">Products</a></li>
+              <li><a href="/about" class="hover:text-accent transition-colors">About</a></li>
+              <li><a href="/contact" class="hover:text-accent transition-colors">Contact</a></li>
+            </ul>
+          </nav>
+
+          <!-- Social Media -->
+          <div class="footer-section" role="complementary">
+            <h3 class="text-xl font-bold mb-4" id="social-heading">Follow Us</h3>
+            <div class="flex space-x-4" role="list">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
+                 class="hover:text-accent transition-colors" 
+                 aria-label="Visit our Facebook page">
+                <span class="sr-only">Facebook</span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                </svg>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+                 class="hover:text-accent transition-colors" 
+                 aria-label="Visit our Instagram page">
+                <span class="sr-only">Instagram</span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+          <p>&copy; <span id="current-year">2024</span> Backwater Pursuits. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
@@ -340,6 +633,9 @@
 
         closeCart.addEventListener('click', closeCartSidebar);
         cartOverlay.addEventListener('click', closeCartSidebar);
+
+        // Update copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html> 
