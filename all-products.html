@@ -27,6 +27,12 @@
     </script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Snipcart Integration -->
+    <link rel="preconnect" href="https://app.snipcart.com" />
+    <link rel="preconnect" href="https://cdn.snipcart.com" />
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.css" />
+    <script async src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
+    <div hidden id="snipcart" data-api-key="YOUR_PUBLIC_API_KEY"></div>
 </head>
 <body class="bg-gray-100 min-h-screen overflow-y-auto overflow-x-hidden">
     <!-- Navigation -->
@@ -43,17 +49,19 @@
                     <li role="none"><a href="index.html#about" class="hover:text-accent transition-colors duration-300" role="menuitem">About</a></li>
                     <li role="none"><a href="index.html#contact" class="hover:text-accent transition-colors duration-300" role="menuitem">Contact</a></li>
                 </ul>
-                <div class="relative">
-                    <input type="search" id="search-input" class="w-64 px-4 py-2 rounded-lg bg-white text-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent" placeholder="Search products..." aria-label="Search products">
-                    <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary hover:text-accent" aria-label="Search">
-                        <i class="fas fa-search"></i>
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <input type="search" id="search-input" class="w-64 px-4 py-2 rounded-lg bg-white text-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent" placeholder="Search products..." aria-label="Search products">
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary hover:text-accent" aria-label="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <button class="snipcart-checkout text-white hover:text-accent transition-colors duration-300 flex items-center" aria-label="View cart">
+                        <i class="fas fa-shopping-cart text-xl mr-1"></i>
+                        <span class="snipcart-items-count">0</span>
                     </button>
                 </div>
             </div>
-            <button class="cart-icon text-white hover:text-accent transition-colors duration-300" aria-label="Shopping cart">
-                <i class="fas fa-shopping-cart text-xl" aria-hidden="true"></i>
-                <span class="cart-count" aria-label="Cart items">0</span>
-            </button>
         </nav>
     </header>
 
@@ -99,9 +107,15 @@
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-primary mb-2">Fishin' in the Dark Unisex Dri-Fit</h3>
                         <p class="text-accent font-bold mb-4">$26.00</p>
-                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart" 
-                                aria-label="Add Fishin' in the Dark T-Shirt to cart"
-                                data-product-id="fishin-dark">
+                        <button 
+                            class="snipcart-add-item w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300"
+                            data-item-id="fishin-dark"
+                            data-item-price="26.00"
+                            data-item-description="A comfortable and stylish Dri-Fit shirt for fishing enthusiasts."
+                            data-item-image="images/products/fishin-dark/orange/fishin-dark-front.jpg"
+                            data-item-name="Fishin' in the Dark Unisex Dri-Fit"
+                            data-item-url="/products/fishin-dark.html"
+                            aria-label="Add Fishin' in the Dark T-Shirt to cart">
                             Add to Cart
                         </button>
                     </div>
@@ -115,9 +129,15 @@
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-primary mb-2">Down to Fish? Unisex Light Grey Dri-Fit</h3>
                         <p class="text-accent font-bold mb-4">$26.00</p>
-                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart" 
-                                aria-label="Add Down to Fish T-Shirt to cart"
-                                data-product-id="down-fish">
+                        <button 
+                            class="snipcart-add-item w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300"
+                            data-item-id="down-fish"
+                            data-item-price="26.00"
+                            data-item-description="A comfortable and stylish Dri-Fit shirt for fishing enthusiasts."
+                            data-item-image="images/products/down-fish/down-fish-front.jpg"
+                            data-item-name="Down to Fish? Unisex Light Grey Dri-Fit"
+                            data-item-url="/products/down-to-fish.html"
+                            aria-label="Add Down to Fish T-Shirt to cart">
                             Add to Cart
                         </button>
                     </div>
@@ -131,9 +151,15 @@
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-primary mb-2">DTF Unisex Dri-Fit</h3>
                         <p class="text-accent font-bold mb-4">$26.00</p>
-                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart" 
-                                aria-label="Add DTF T-Shirt to cart"
-                                data-product-id="dtf">
+                        <button 
+                            class="snipcart-add-item w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300"
+                            data-item-id="dtf"
+                            data-item-price="26.00"
+                            data-item-description="A comfortable and stylish Dri-Fit shirt for fishing enthusiasts."
+                            data-item-image="images/products/dtf/dtf-front.jpg"
+                            data-item-name="DTF Unisex Dri-Fit"
+                            data-item-url="/products/dtf.html"
+                            aria-label="Add DTF T-Shirt to cart">
                             Add to Cart
                         </button>
                     </div>
@@ -147,9 +173,15 @@
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-primary mb-2">Master Baiters Sticker</h3>
                         <p class="text-accent font-bold mb-4">$2.88</p>
-                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart" 
-                                aria-label="Add Master Baiters Sticker to cart"
-                                data-product-id="master-baiters">
+                        <button 
+                            class="snipcart-add-item w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300"
+                            data-item-id="master-baiters-sticker"
+                            data-item-price="2.88"
+                            data-item-description="A fun and unique sticker for fishing enthusiasts. Perfect for personalizing your gear."
+                            data-item-image="images/products/mb-stick/master-baiters-sticker.jpg"
+                            data-item-name="Master Baiters Sticker"
+                            data-item-url="/products/master-baiters-sticker.html"
+                            aria-label="Add Master Baiters Sticker to cart">
                             Add to Cart
                         </button>
                     </div>
@@ -163,9 +195,15 @@
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-primary mb-2">BWP Sticker</h3>
                         <p class="text-accent font-bold mb-4">$2.88</p>
-                        <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart" 
-                                aria-label="Add BWP Sticker to cart"
-                                data-product-id="bwp-sticker">
+                        <button 
+                            class="snipcart-add-item w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300"
+                            data-item-id="bwp-sticker"
+                            data-item-price="2.88"
+                            data-item-description="A stylish sticker featuring the Back Water Pursuits logo. Perfect for adding a personal touch to your gear."
+                            data-item-image="images/products/bwp-stick/bwp-stick.jpg"
+                            data-item-name="BWP Sticker"
+                            data-item-url="/products/bwp-sticker.html"
+                            aria-label="Add BWP Sticker to cart">
                             Add to Cart
                         </button>
                     </div>
@@ -175,17 +213,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-primary text-accent text-center py-6" role="contentinfo">
-        <div class="container mx-auto px-4">
-            <p>&copy; 2024 BackWater Pursuits. All rights reserved.</p>
-            <nav class="mt-4" aria-label="Footer navigation">
-                <ul class="flex justify-center gap-6">
-                    <li><a href="privacy-policy.html" class="hover:text-white transition-colors duration-300">Privacy Policy</a></li>
-                    <li><a href="terms.html" class="hover:text-white transition-colors duration-300">Terms of Service</a></li>
-                    <li><a href="shipping.html" class="hover:text-white transition-colors duration-300">Shipping Info</a></li>
-                </ul>
-            </nav>
-        </div>
+    <footer class="bg-primary text-accent text-center py-6">
+        &copy; 2024 BackWater Pursuits. All rights reserved.
     </footer>
 
     <script src="script.js"></script>
