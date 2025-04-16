@@ -13,7 +13,9 @@
           extend: {
             colors: {
               primary: "#1a472a",
+              'primary-dark': "#0d2315",
               accent: "#FFD700",
+              'accent-dark': "#B8860B",
             },
           },
         },
@@ -28,9 +30,66 @@
       .product-image:hover {
         opacity: 0.9;
       }
+      
+      /* Accessibility improvements */
+      :focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 2px;
+      }
+      
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #1a472a;
+        color: white;
+        padding: 8px;
+        z-index: 100;
+      }
+      
+      .skip-link:focus {
+        top: 0;
+      }
+      
+      /* Improved contrast for text */
+      .text-accent {
+        color: #B8860B;
+      }
+      
+      /* Focus styles for buttons */
+      button:focus, 
+      a:focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 2px;
+      }
+      
+      /* Focus styles for form elements */
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 2px;
+        border-color: #1a472a;
+      }
+      
+      /* Product image focus styles */
+      .product-image:focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 4px;
+      }
+      
+      /* Size selector focus styles */
+      .size-btn:focus {
+        outline: 2px solid #1a472a;
+        outline-offset: 2px;
+        border-color: #1a472a;
+      }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 min-h-screen overflow-y-auto overflow-x-hidden">
+    <!-- Skip Link for Keyboard Navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Navigation -->
     <header class="fixed w-full bg-primary text-accent shadow-md z-50">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">

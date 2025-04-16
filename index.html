@@ -289,12 +289,51 @@
       <nav class="container mx-auto px-4" role="navigation" aria-label="Main navigation">
         <div class="flex justify-between items-center">
           <a href="/" class="text-2xl font-bold" aria-label="Backwater Pursuits Home">Backwater Pursuits</a>
-          <ul class="flex space-x-6" role="menubar">
-            <li role="none"><a href="/" class="hover:text-accent" role="menuitem" aria-current="page">Home</a></li>
-            <li role="none"><a href="/all-products.html" class="hover:text-accent" role="menuitem">Products</a></li>
-            <li role="none"><a href="#about" class="hover:text-accent" role="menuitem">About</a></li>
-            <li role="none"><a href="#contact" class="hover:text-accent" role="menuitem">Contact</a></li>
-          </ul>
+          <div class="flex items-center space-x-6">
+            <!-- Search Bar -->
+            <div class="relative">
+              <input type="search" 
+                     id="search-input" 
+                     class="w-64 px-4 py-2 rounded-lg bg-white text-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent" 
+                     placeholder="Search products..."
+                     aria-label="Search products">
+              <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-primary hover:text-accent" aria-label="Search">
+                <i class="fas fa-search"></i>
+              </button>
+              <!-- Search Results Dropdown -->
+              <div id="search-results" class="absolute top-full left-0 w-64 mt-2 bg-white rounded-lg shadow-lg hidden z-50">
+                <div class="p-4">
+                  <div id="search-results-list" class="max-h-48 overflow-y-auto"></div>
+                  <div id="search-no-results" class="hidden text-center text-gray-500 py-4">No products found</div>
+                </div>
+              </div>
+            </div>
+            <ul class="flex space-x-6" role="menubar">
+              <li role="none"><a href="/" class="hover:text-accent" role="menuitem" aria-current="page">Home</a></li>
+              <li role="none"><a href="/all-products.html" class="hover:text-accent" role="menuitem">Products</a></li>
+              <li role="none"><a href="#about" class="hover:text-accent" role="menuitem">About</a></li>
+              <li role="none"><a href="#contact" class="hover:text-accent" role="menuitem">Contact</a></li>
+            </ul>
+            <div class="relative">
+              <button class="cart-icon p-2 hover:text-accent transition-colors" aria-label="Shopping cart">
+                <i class="fas fa-shopping-cart text-xl"></i>
+                <span class="cart-count absolute -top-2 -right-2 bg-accent text-primary text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center" aria-label="Cart items count">0</span>
+              </button>
+              <!-- Mini Cart Preview -->
+              <div class="mini-cart hidden absolute right-0 top-full mt-2 w-64 bg-white rounded-lg shadow-lg p-4 z-50">
+                <div class="mini-cart-items max-h-48 overflow-y-auto"></div>
+                <div class="border-t border-gray-200 mt-4 pt-4">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold">Total:</span>
+                    <span class="cart-total">$0.00</span>
+                  </div>
+                  <button class="view-cart-btn w-full bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark transition-colors">
+                    View Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
     </header>

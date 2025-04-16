@@ -1,8 +1,40 @@
 // Snipcart event listeners
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize cart count
+    updateCartCount();
+    
+    // Mini cart functionality
+    const cartIcon = document.querySelector('.cart-icon');
+    const miniCart = document.querySelector('.mini-cart');
+    const viewCartBtn = document.querySelector('.view-cart-btn');
+    
+    if (cartIcon && miniCart) {
+        cartIcon.addEventListener('mouseenter', () => {
+            miniCart.classList.remove('hidden');
+        });
+        
+        cartIcon.addEventListener('mouseleave', (e) => {
+            if (!e.relatedTarget?.closest('.mini-cart')) {
+                miniCart.classList.add('hidden');
+            }
+        });
+        
+        miniCart.addEventListener('mouseleave', () => {
+            miniCart.classList.add('hidden');
+        });
+        
+        if (viewCartBtn) {
+            viewCartBtn.addEventListener('click', () => {
+                Snipcart.api.cart.open();
+            });
+        }
+    }
+    
     // Listen for Snipcart events
     document.addEventListener('snipcart.ready', function() {
         console.log('Snipcart is ready');
+        updateCartCount();
+        updateMiniCart();
     });
     
     document.addEventListener('snipcart.cart.open', function() {
@@ -15,24 +47,70 @@ document.addEventListener('DOMContentLoaded', function() {
     
     document.addEventListener('snipcart.cart.item.added', function(event) {
         const item = event.detail.item;
+        updateCartCount();
+        updateMiniCart();
         showNotification(`${item.name} added to cart`, 'success');
     });
     
     document.addEventListener('snipcart.cart.item.removed', function(event) {
         const item = event.detail.item;
+        updateCartCount();
+        updateMiniCart();
         showNotification(`${item.name} removed from cart`, 'info');
     });
     
     document.addEventListener('snipcart.cart.item.updated', function(event) {
         const item = event.detail.item;
+        updateCartCount();
+        updateMiniCart();
         showNotification(`${item.name} quantity updated`, 'info');
     });
     
     document.addEventListener('snipcart.checkout.completed', function(event) {
         const order = event.detail.order;
+        updateCartCount();
+        updateMiniCart();
         showNotification('Thank you for your order!', 'success');
     });
 });
+
+// Update cart count
+function updateCartCount() {
+    const cartCount = document.querySelector('.cart-count');
+    if (cartCount && Snipcart.api) {
+        const count = Snipcart.api.cart.items().length;
+        cartCount.textContent = count;
+        cartCount.setAttribute('aria-label', `${count} items in cart`);
+    }
+}
+
+// Update mini cart
+function updateMiniCart() {
+    const miniCartItems = document.querySelector('.mini-cart-items');
+    const cartTotal = document.querySelector('.cart-total');
+    
+    if (miniCartItems && cartTotal && Snipcart.api) {
+        const items = Snipcart.api.cart.items();
+        const total = Snipcart.api.cart.total();
+        
+        if (items.length === 0) {
+            miniCartItems.innerHTML = '<p class="text-gray-500 text-center">Your cart is empty</p>';
+        } else {
+            miniCartItems.innerHTML = items.map(item => `
+                <div class="flex items-center space-x-3 mb-3">
+                    <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded">
+                    <div class="flex-1">
+                        <h4 class="text-sm font-medium">${item.name}</h4>
+                        <p class="text-xs text-gray-500">Qty: ${item.quantity}</p>
+                        <p class="text-xs font-medium">$${(item.price * item.quantity).toFixed(2)}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        cartTotal.textContent = `$${total.toFixed(2)}`;
+    }
+}
 
 // Notification function
 function showNotification(message, type = 'success') {
@@ -91,32 +169,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Newsletter form submission
 const newsletterForm = document.querySelector('.newsletter-form');
-newsletterForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = newsletterForm.querySelector('input').value;
-    
-    // Show success message
-    const successMessage = document.createElement('div');
-    successMessage.textContent = 'Thank you for subscribing!';
-    successMessage.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #28a745;
-        color: white;
-        padding: 1rem;
-        border-radius: 4px;
-        z-index: 1000;
-    `;
-    document.body.appendChild(successMessage);
-    
-    // Clear form
-    newsletterForm.reset();
-    
-    setTimeout(() => {
-        successMessage.remove();
-    }, 2000);
-});
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = newsletterForm.querySelector('input').value;
+        
+        // Show success message
+        showNotification('Thank you for subscribing!', 'success');
+        
+        // Clear form
+        newsletterForm.reset();
+    });
+}
 
 // Active section highlighting for navigation
 const sections = document.querySelectorAll('section[id]');

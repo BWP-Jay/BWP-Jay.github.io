@@ -50,112 +50,97 @@ const products = [
     }
 ];
 
-// Search functionality
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Search script loaded');
-    
+// Product search functionality
+document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
     const searchResults = document.getElementById('search-results');
-    const searchResultsGrid = document.getElementById('search-results-grid');
-    const noResults = document.getElementById('no-results');
-    const allProductsGrid = document.getElementById('all-products-grid');
-
-    console.log('Search elements:', {
-        searchInput: searchInput,
-        searchResults: searchResults,
-        searchResultsGrid: searchResultsGrid,
-        noResults: noResults,
-        allProductsGrid: allProductsGrid
-    });
-
-    if (!searchInput) {
-        console.error('Search input not found');
-        return;
+    const searchResultsList = document.getElementById('search-results-list');
+    const noResults = document.getElementById('search-no-results');
+    
+    if (!searchInput || !searchResults || !searchResultsList || !noResults) return;
+    
+    let searchTimeout;
+    
+    // Debounced search function
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
     }
-
-    // Function to create a product card
-    function createProductCard(product) {
-        return `
-            <div class="product-card bg-white rounded-lg shadow-md overflow-hidden" role="listitem">
-                <a href="products/${product.id}.html" class="block">
-                    <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover" width="400" height="256">
-                </a>
-                <div class="p-4">
-                    <h3 class="text-lg font-bold text-primary mb-2">${product.name}</h3>
-                    <p class="text-accent font-bold mb-4">$${product.price.toFixed(2)}</p>
-                    <button class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300 add-to-cart" 
-                            aria-label="Add ${product.name} to cart"
-                            data-product-id="${product.id}">
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-        `;
-    }
-
-    // Function to perform search
-    function performSearch(query) {
-        console.log('Performing search with query:', query);
-        
+    
+    // Search function
+    function searchProducts(query) {
         query = query.toLowerCase().trim();
         
-        if (!query) {
-            console.log('Empty query, showing all products');
+        if (query.length < 2) {
             searchResults.classList.add('hidden');
-            allProductsGrid.classList.remove('hidden');
             return;
         }
-
-        const results = products.filter(product => {
-            const searchableText = [
-                product.name,
-                product.description,
-                ...product.keywords
-            ].join(' ').toLowerCase();
-
-            return searchableText.includes(query);
-        });
-
-        console.log('Search results:', results);
-
-        // Update UI
-        searchResults.classList.remove('hidden');
-        allProductsGrid.classList.add('hidden');
-        searchResultsGrid.innerHTML = '';
-
-        if (results.length === 0) {
-            console.log('No results found');
-            noResults.classList.remove('hidden');
-        } else {
-            console.log('Showing results');
-            noResults.classList.add('hidden');
-            results.forEach(product => {
-                searchResultsGrid.innerHTML += createProductCard(product);
-            });
-        }
+        
+        const results = products.filter(product => 
+            product.name.toLowerCase().includes(query) ||
+            product.id.toLowerCase().includes(query)
+        );
+        
+        displayResults(results);
     }
-
+    
+    // Display search results
+    function displayResults(results) {
+        if (results.length === 0) {
+            searchResultsList.innerHTML = '';
+            noResults.classList.remove('hidden');
+            searchResults.classList.remove('hidden');
+            return;
+        }
+        
+        noResults.classList.add('hidden');
+        searchResultsList.innerHTML = results.map(product => `
+            <a href="products/${product.id}.html" class="flex items-center space-x-3 p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                <img src="${product.image}" alt="${product.name}" class="w-12 h-12 object-cover rounded">
+                <div>
+                    <h4 class="text-sm font-medium text-primary">${product.name}</h4>
+                    <p class="text-xs text-accent">$${product.price.toFixed(2)}</p>
+                </div>
+            </a>
+        `).join('');
+        
+        searchResults.classList.remove('hidden');
+    }
+    
     // Event listeners
+    const debouncedSearch = debounce(searchProducts, 300);
+    
     searchInput.addEventListener('input', (e) => {
-        console.log('Search input event:', e.target.value);
-        performSearch(e.target.value);
+        debouncedSearch(e.target.value);
     });
-
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            console.log('Search enter event');
-            performSearch(e.target.value);
+    
+    // Close search results when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('#search-input') && !e.target.closest('#search-results')) {
+            searchResults.classList.add('hidden');
         }
     });
-
-    // Initialize add to cart functionality for search results
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('add-to-cart')) {
-            const productId = e.target.dataset.productId;
-            const product = products.find(p => p.id === productId);
-            if (product) {
-                console.log(`Added ${product.name} to cart`);
-            }
+    
+    // Handle keyboard navigation
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            searchResults.classList.add('hidden');
+            searchInput.blur();
+        }
+    });
+    
+    // Focus search on keyboard shortcut
+    document.addEventListener('keydown', (e) => {
+        if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) {
+            e.preventDefault();
+            searchInput.focus();
         }
     });
 }); 
