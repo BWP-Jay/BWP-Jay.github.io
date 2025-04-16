@@ -348,45 +348,40 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Header -->
-    <header class="header fixed w-full top-0 z-50 py-4" role="banner">
-        <nav class="container mx-auto px-4" role="navigation" aria-label="Main navigation">
-            <div class="flex justify-between items-center">
-                <a href="/" class="text-2xl font-bold" aria-label="Backwater Pursuits Home">
-                    <img src="/images/products/logo.jpg" alt="Backwater Pursuits Logo" class="h-12 w-auto">
-                    <span class="sr-only">Backwater Pursuits</span>
-                </a>
-                
-                <div class="flex items-center space-x-6">
-                    <!-- Search Bar -->
-                    <div class="relative" role="search">
-                        <label for="search" class="sr-only">Search products</label>
+    <header class="fixed w-full bg-primary text-accent shadow-md z-50" role="banner">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
+            <a href="/" class="flex items-center gap-2" aria-label="BackWater Pursuits Home">
+                <img src="/images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" width="40" height="40" />
+                <h1 class="text-2xl font-bold">BACKWATER PURSUITS</h1>
+            </a>
+            <div class="hidden md:flex items-center gap-6">
+                <ul class="flex gap-6 text-white font-medium" role="menubar">
+                    <li role="none"><a href="/" class="hover:text-accent transition-colors duration-300" role="menuitem">Home</a></li>
+                    <li role="none"><a href="/all-products.html" class="hover:text-accent transition-colors duration-300" role="menuitem">Shop</a></li>
+                    <li role="none"><a href="#about" class="hover:text-accent transition-colors duration-300" role="menuitem">About</a></li>
+                    <li role="none"><a href="#contact" class="hover:text-accent transition-colors duration-300" role="menuitem">Contact</a></li>
+                </ul>
+                <div class="flex items-center gap-4">
+                    <div class="relative">
                         <input type="search" 
                                id="search"
                                placeholder="Search products..." 
-                               class="px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary bg-white/90 backdrop-blur-sm"
+                               class="w-64 px-4 py-2 rounded-lg bg-white text-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent"
                                aria-label="Search products">
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary hover:text-accent" aria-label="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
-
-                    <!-- Navigation Links -->
-                    <nav class="hidden md:flex space-x-6" aria-label="Primary navigation">
-                        <a href="/" class="nav-link text-lg" aria-current="page">Home</a>
-                        <a href="/all-products.html" class="nav-link text-lg">Shop</a>
-                        <a href="#about" class="nav-link text-lg">About</a>
-                        <a href="#contact" class="nav-link text-lg">Contact</a>
-                    </nav>
-
-                    <!-- Cart Button -->
-                    <button class="cart-icon snipcart-checkout text-primary hover:text-accent" aria-label="Shopping cart">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                        <span class="cart-count snipcart-items-count" aria-label="Items in cart">0</span>
-                    </button>
-
-                    <!-- Mobile Menu Button -->
-                    <button class="md:hidden text-primary hover:text-accent" aria-label="Toggle menu" aria-expanded="false">
-                        <i class="fas fa-bars text-xl"></i>
+                    <button class="snipcart-checkout text-white hover:text-accent transition-colors duration-300 flex items-center" aria-label="View cart">
+                        <i class="fas fa-shopping-cart text-xl mr-1"></i>
+                        <span class="snipcart-items-count">0</span>
                     </button>
                 </div>
             </div>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white hover:text-accent transition-colors duration-300" aria-label="Toggle menu" aria-expanded="false">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
         </nav>
     </header>
 
