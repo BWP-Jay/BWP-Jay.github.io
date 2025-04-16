@@ -135,17 +135,17 @@ function showNotification(message, type = 'success') {
     }, 3000);
 }
 
-// Mobile menu toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
-});
+// Mobile menu functionality
+const mobileMenuButton = document.querySelector('[aria-label="Toggle menu"]');
+const mobileNav = document.querySelector('.mobile-nav');
+
+if (mobileMenuButton && mobileNav) {
+    mobileMenuButton.addEventListener('click', () => {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+        mobileNav.classList.toggle('active');
+    });
+}
 
 // Smooth scrolling for anchor links
 document.addEventListener('DOMContentLoaded', function() {
@@ -204,4 +204,47 @@ if (sections.length > 0 && navLinks.length > 0) {
             }
         });
     });
-} 
+}
+
+// Product Grid Keyboard Navigation
+document.addEventListener('DOMContentLoaded', () => {
+    const productGrid = document.querySelector('.product-grid');
+    if (!productGrid) return;
+
+    const products = Array.from(productGrid.querySelectorAll('.product-card'));
+    let currentIndex = 0;
+
+    productGrid.addEventListener('keydown', (e) => {
+        switch(e.key) {
+            case 'ArrowRight':
+                e.preventDefault();
+                currentIndex = (currentIndex + 1) % products.length;
+                products[currentIndex].focus();
+                break;
+            case 'ArrowLeft':
+                e.preventDefault();
+                currentIndex = (currentIndex - 1 + products.length) % products.length;
+                products[currentIndex].focus();
+                break;
+            case 'ArrowUp':
+                e.preventDefault();
+                currentIndex = (currentIndex - 4 + products.length) % products.length;
+                products[currentIndex].focus();
+                break;
+            case 'ArrowDown':
+                e.preventDefault();
+                currentIndex = (currentIndex + 4) % products.length;
+                products[currentIndex].focus();
+                break;
+        }
+    });
+
+    // Make product cards focusable
+    products.forEach(card => {
+        card.setAttribute('tabindex', '0');
+        card.addEventListener('click', () => {
+            const link = card.querySelector('a');
+            if (link) link.click();
+        });
+    });
+}); 

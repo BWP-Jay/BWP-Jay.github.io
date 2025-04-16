@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" version="1.1" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="400" fill="#f3f4f6"/>
+    <g fill="#9ca3af">
+        <path d="m185 140h30v120h-30z"/>
+        <path d="m140 185h120v30h-120z"/>
+    </g>
+    <text x="200" y="320" text-anchor="middle" fill="#6b7280" font-family="system-ui" font-size="14">Image not available</text>
+</svg> 

@@ -1,0 +1,39 @@
+<!-- Shared Navigation Component -->
+<header class="fixed w-full bg-primary text-accent shadow-md z-50" role="banner">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
+        <a href="/index.html" class="flex items-center gap-2" aria-label="BackWater Pursuits Home">
+            <img src="/images/products/logo.jpg" 
+                 alt="BackWater Pursuits Logo" 
+                 class="h-10 w-auto" 
+                 width="40" 
+                 height="40"
+                 loading="eager" />
+            <h1 class="text-2xl font-bold">BACKWATER PURSUITS</h1>
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+            <ul class="flex gap-6 text-white font-medium" role="menubar">
+                <li role="none"><a href="/index.html#home" class="hover:text-accent transition-colors duration-300" role="menuitem">Home</a></li>
+                <li role="none"><a href="/all-products.html" class="hover:text-accent transition-colors duration-300" role="menuitem">Shop</a></li>
+                <li role="none"><a href="/index.html#about" class="hover:text-accent transition-colors duration-300" role="menuitem">About</a></li>
+                <li role="none"><a href="/index.html#contact" class="hover:text-accent transition-colors duration-300" role="menuitem">Contact</a></li>
+            </ul>
+            <button class="snipcart-checkout text-white hover:text-accent transition-colors duration-300 flex items-center" aria-label="View shopping cart">
+                <i class="fas fa-shopping-cart text-xl mr-1" aria-hidden="true"></i>
+                <span class="snipcart-items-count" aria-label="Number of items in cart">0</span>
+            </button>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-white hover:text-accent transition-colors duration-300" aria-label="Toggle mobile menu" aria-expanded="false">
+            <i class="fas fa-bars text-xl" aria-hidden="true"></i>
+        </button>
+    </nav>
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden bg-primary">
+        <ul class="py-4 px-4 space-y-4 text-white font-medium" role="menu">
+            <li role="none"><a href="/index.html#home" class="block hover:text-accent transition-colors duration-300" role="menuitem">Home</a></li>
+            <li role="none"><a href="/all-products.html" class="block hover:text-accent transition-colors duration-300" role="menuitem">Shop</a></li>
+            <li role="none"><a href="/index.html#about" class="block hover:text-accent transition-colors duration-300" role="menuitem">About</a></li>
+            <li role="none"><a href="/index.html#contact" class="block hover:text-accent transition-colors duration-300" role="menuitem">Contact</a></li>
+        </ul>
+    </div>
+</header> 
