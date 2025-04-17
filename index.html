@@ -243,34 +243,64 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Navigation -->
-    <header class="fixed w-full bg-white text-primary shadow-md z-50" role="banner">
+    <header class="fixed w-full bg-white shadow-md z-50" role="banner">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
-            <a href="index.html" class="flex items-center gap-2" aria-label="BackWater Pursuits Home">
-                <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" width="40" height="40" />
-                <h1 class="text-2xl font-bold text-primary">BACKWATER PURSUITS</h1>
+            <!-- Logo and Brand Name -->
+            <a href="index.html" class="flex items-center gap-3" aria-label="BackWater Pursuits Home">
+                <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-12 w-auto" width="48" height="48" />
+                <span class="text-2xl font-bold text-primary">BACKWATER PURSUITS</span>
             </a>
-            <div class="hidden md:flex items-center gap-6">
-                <ul class="flex gap-6 text-primary font-bold" role="menubar">
-                    <li role="none"><a href="index.html#home" class="nav-link hover:text-accent transition-colors duration-300" role="menuitem">Home</a></li>
-                    <li role="none"><a href="all-products.html" class="nav-link hover:text-accent transition-colors duration-300" role="menuitem">Shop</a></li>
-                    <li role="none"><a href="index.html#about" class="nav-link hover:text-accent transition-colors duration-300" role="menuitem">About</a></li>
-                    <li role="none"><a href="index.html#contact" class="nav-link hover:text-accent transition-colors duration-300" role="menuitem">Contact</a></li>
+
+            <!-- Navigation Links -->
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="flex gap-8" role="menubar">
+                    <li role="none">
+                        <a href="index.html#home" 
+                           class="text-lg font-bold text-primary hover:text-accent transition-colors duration-300" 
+                           role="menuitem">Home</a>
+                    </li>
+                    <li role="none">
+                        <a href="all-products.html" 
+                           class="text-lg font-bold text-primary hover:text-accent transition-colors duration-300" 
+                           role="menuitem">Shop</a>
+                    </li>
+                    <li role="none">
+                        <a href="index.html#about" 
+                           class="text-lg font-bold text-primary hover:text-accent transition-colors duration-300" 
+                           role="menuitem">About</a>
+                    </li>
+                    <li role="none">
+                        <a href="index.html#contact" 
+                           class="text-lg font-bold text-primary hover:text-accent transition-colors duration-300" 
+                           role="menuitem">Contact</a>
+                    </li>
                 </ul>
+
+                <!-- Search and Cart -->
                 <div class="flex items-center gap-4">
                     <div class="relative">
-                        <input type="search" id="search-input" class="w-64 px-4 py-2 rounded-lg bg-white text-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent" placeholder="Search products..." aria-label="Search products">
-                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary hover:text-accent" aria-label="Search">
+                        <input type="search" 
+                               id="search-input" 
+                               class="w-64 px-4 py-2 rounded-lg border-2 border-primary text-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent" 
+                               placeholder="Search products..." 
+                               aria-label="Search products">
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary hover:text-accent" 
+                                aria-label="Search">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
-                    <button class="snipcart-checkout text-primary hover:text-accent transition-colors duration-300 flex items-center" aria-label="View cart">
+                    <button class="snipcart-checkout text-primary hover:text-accent transition-colors duration-300 flex items-center" 
+                            aria-label="View cart">
                         <i class="fas fa-shopping-cart text-xl mr-1"></i>
                         <span class="snipcart-items-count">0</span>
                     </button>
                 </div>
             </div>
+
             <!-- Mobile Menu Button -->
-            <button class="md:hidden text-primary hover:text-accent transition-colors duration-300" aria-label="Toggle menu" aria-expanded="false">
+            <button class="md:hidden text-primary hover:text-accent transition-colors duration-300" 
+                    aria-label="Toggle menu" 
+                    aria-expanded="false">
                 <i class="fas fa-bars text-xl"></i>
             </button>
         </nav>
