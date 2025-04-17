@@ -29,7 +29,6 @@
     </script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="css/custom.css">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#1a472a">
     <link rel="apple-touch-icon" href="/images/products/logo.jpg">
@@ -68,9 +67,7 @@
 
       /* Header styles */
       .header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
+        background: white;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       }
 
@@ -104,19 +101,8 @@
       /* Hero section styles */
       .hero-section {
         position: relative;
-        background: linear-gradient(135deg, var(--primary-color) 0%, #2d5a3f 100%);
+        background: var(--primary-color);
         overflow: hidden;
-      }
-
-      .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
-        z-index: 1;
       }
 
       .hero-content {
@@ -248,99 +234,6 @@
       .success {
         color: #2f855a;
         border-color: #2f855a;
-      }
-
-      .hero-background {
-        position: relative;
-        overflow: hidden;
-      }
-      .hero-background img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.3;
-        z-index: 0;
-      }
-      .hero-content {
-        position: relative;
-        z-index: 1;
-      }
-      .nav-link.active {
-        color: #FFD700;
-        border-bottom: 2px solid #FFD700;
-      }
-      .cart-icon {
-        position: relative;
-        cursor: pointer;
-      }
-      .cart-count {
-        position: absolute;
-        top: -8px;
-        right: -8px;
-        background-color: #FFD700;
-        color: #1a472a;
-        border-radius: 50%;
-        padding: 0.2rem 0.5rem;
-        font-size: 0.8rem;
-        font-weight: bold;
-      }
-      .shopping-cart {
-        position: fixed;
-        right: -400px;
-        top: 0;
-        width: 400px;
-        height: 100vh;
-        background: white;
-        transition: right 0.3s ease-in-out;
-        z-index: 1000;
-        padding: 20px;
-        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-      }
-      .shopping-cart.active {
-        right: 0;
-      }
-      .cart-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        display: none;
-        z-index: 999;
-      }
-      .cart-overlay.active {
-        display: block;
-      }
-      /* Accessibility improvements */
-      :focus {
-        outline: 2px solid #1a472a;
-        outline-offset: 2px;
-      }
-      
-      /* Improved contrast for text */
-      .text-accent {
-        color: #FFD700;
-      }
-      
-      /* Focus styles for buttons */
-      button:focus, 
-      a:focus {
-        outline: 2px solid #1a472a;
-        outline-offset: 2px;
-      }
-      
-      /* Focus styles for form elements */
-      input:focus,
-      select:focus,
-      textarea:focus {
-        outline: 2px solid #1a472a;
-        outline-offset: 2px;
-        border-color: #1a472a;
       }
     </style>
 </head>
@@ -652,25 +545,6 @@
                 }
             });
         });
-
-        // Shopping cart functionality
-        const cartIcon = document.querySelector('.cart-icon');
-        const cartSidebar = document.querySelector('.shopping-cart');
-        const cartOverlay = document.querySelector('.cart-overlay');
-        const closeCart = document.querySelector('.close-cart');
-
-        cartIcon.addEventListener('click', () => {
-            cartSidebar.classList.add('active');
-            cartOverlay.classList.add('active');
-        });
-
-        function closeCartSidebar() {
-            cartSidebar.classList.remove('active');
-            cartOverlay.classList.remove('active');
-        }
-
-        closeCart.addEventListener('click', closeCartSidebar);
-        cartOverlay.addEventListener('click', closeCartSidebar);
 
         // Update copyright year
         document.getElementById('current-year').textContent = new Date().getFullYear();
