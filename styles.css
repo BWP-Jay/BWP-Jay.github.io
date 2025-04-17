@@ -21,6 +21,33 @@ body {
     background-color: var(--background-color);
 }
 
+/* Header styles */
+header {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+}
+
+header h1 {
+    color: var(--accent-color);
+}
+
+header nav ul li a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    color: white;
+}
+
+.snipcart-checkout {
+    color: var(--accent-color);
+}
+
+.snipcart-checkout:hover {
+    color: white;
+}
+
 /* Accessibility improvements */
 .skip-link {
     position: absolute;
