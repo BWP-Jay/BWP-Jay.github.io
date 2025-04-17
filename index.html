@@ -68,35 +68,29 @@
       /* Header styles */
       .header {
         background: white;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 2px solid var(--primary-color);
+        padding: 1rem 0;
       }
 
       /* Navigation link styles */
       .nav-link {
-        position: relative;
         color: var(--primary-color);
-        font-weight: 700;
-        font-size: 1.1rem;
-        transition: color 0.3s ease;
+        font-weight: 800;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
 
       .nav-link:hover {
         color: var(--accent-color);
       }
 
-      .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--accent-color);
-        transition: width 0.3s ease;
-      }
-
-      .nav-link:hover::after {
-        width: 100%;
+      .brand-name {
+        color: var(--primary-color);
+        font-weight: 900;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
       }
 
       /* Hero section styles */
@@ -243,56 +237,48 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Navigation -->
-    <header class="fixed w-full bg-white shadow-md z-50" role="banner">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
+    <header class="fixed w-full bg-white shadow-lg z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Logo and Brand Name -->
-            <a href="index.html" class="flex items-center gap-3" aria-label="BackWater Pursuits Home">
-                <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-12 w-auto" width="48" height="48" />
-                <span class="text-2xl font-bold text-primary">BACKWATER PURSUITS</span>
+            <a href="index.html" class="flex items-center gap-4">
+                <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-16 w-auto" width="64" height="64" />
+                <span class="brand-name">BACKWATER PURSUITS</span>
             </a>
 
             <!-- Navigation Links -->
-            <div class="hidden md:flex items-center gap-8">
-                <ul class="flex gap-8" role="menubar">
-                    <li role="none">
-                        <a href="index.html#home" 
-                           class="text-lg font-bold text-primary hover:text-accent transition-colors duration-300" 
-                           role="menuitem">Home</a>
+            <div class="hidden md:flex items-center gap-10">
+                <ul class="flex gap-10">
+                    <li>
+                        <a href="index.html#home" class="nav-link">Home</a>
                     </li>
-                    <li role="none">
-                        <a href="all-products.html" 
-                           class="text-lg font-bold text-primary hover:text-accent transition-colors duration-300" 
-                           role="menuitem">Shop</a>
+                    <li>
+                        <a href="all-products.html" class="nav-link">Shop</a>
                     </li>
-                    <li role="none">
-                        <a href="index.html#about" 
-                           class="text-lg font-bold text-primary hover:text-accent transition-colors duration-300" 
-                           role="menuitem">About</a>
+                    <li>
+                        <a href="index.html#about" class="nav-link">About</a>
                     </li>
-                    <li role="none">
-                        <a href="index.html#contact" 
-                           class="text-lg font-bold text-primary hover:text-accent transition-colors duration-300" 
-                           role="menuitem">Contact</a>
+                    <li>
+                        <a href="index.html#contact" class="nav-link">Contact</a>
                     </li>
                 </ul>
 
                 <!-- Search and Cart -->
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-6">
                     <div class="relative">
                         <input type="search" 
                                id="search-input" 
-                               class="w-64 px-4 py-2 rounded-lg border-2 border-primary text-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent" 
+                               class="w-72 px-4 py-2 rounded-lg border-2 border-primary text-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent" 
                                placeholder="Search products..." 
                                aria-label="Search products">
                         <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary hover:text-accent" 
                                 aria-label="Search">
-                            <i class="fas fa-search"></i>
+                            <i class="fas fa-search text-xl"></i>
                         </button>
                     </div>
                     <button class="snipcart-checkout text-primary hover:text-accent transition-colors duration-300 flex items-center" 
                             aria-label="View cart">
-                        <i class="fas fa-shopping-cart text-xl mr-1"></i>
-                        <span class="snipcart-items-count">0</span>
+                        <i class="fas fa-shopping-cart text-2xl mr-2"></i>
+                        <span class="snipcart-items-count text-lg font-bold">0</span>
                     </button>
                 </div>
             </div>
@@ -301,7 +287,7 @@
             <button class="md:hidden text-primary hover:text-accent transition-colors duration-300" 
                     aria-label="Toggle menu" 
                     aria-expanded="false">
-                <i class="fas fa-bars text-xl"></i>
+                <i class="fas fa-bars text-2xl"></i>
             </button>
         </nav>
     </header>
