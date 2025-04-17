@@ -120,11 +120,29 @@
                 <!-- Fishin' in the Dark T-Shirt -->
                 <div class="product-card bg-white rounded-lg shadow-md overflow-hidden" role="listitem">
                     <a href="products/fishin-dark.html" class="block">
-                        <img src="images/products/fishin-dark/orange/fishin-dark-front.jpg" alt="Fishin' in the Dark Unisex Dri-Fit - Orange" class="w-full h-64 object-cover" width="400" height="256">
+                        <img src="images/products/fishin-dark/orange/fishin-dark-front.jpg" alt="Fishin' in the Dark Unisex Dri-Fit" class="w-full h-64 object-cover" width="400" height="256" id="fishin-dark-image">
                     </a>
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-primary mb-2">Fishin' in the Dark Unisex Dri-Fit</h3>
-                        <p class="text-accent font-bold mb-4">$26.00</p>
+                        <p class="text-accent font-bold mb-2">$26.00</p>
+                        
+                        <!-- Color Selection -->
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 mb-2">Select Color:</p>
+                            <div class="flex gap-2">
+                                <button onclick="changeFishinDarkColor('orange')" 
+                                        class="color-btn border-2 border-orange-500 px-3 py-1 rounded text-sm hover:border-primary hover:text-primary"
+                                        aria-label="Select orange color">
+                                    Orange
+                                </button>
+                                <button onclick="changeFishinDarkColor('green')" 
+                                        class="color-btn border-2 border-green-500 px-3 py-1 rounded text-sm hover:border-primary hover:text-primary"
+                                        aria-label="Select green color">
+                                    Green
+                                </button>
+                            </div>
+                        </div>
+                        
                         <button 
                             class="snipcart-add-item w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300"
                             data-item-id="fishin-dark"
@@ -134,28 +152,6 @@
                             data-item-name="Fishin' in the Dark Unisex Dri-Fit"
                             data-item-url="/products/fishin-dark.html"
                             aria-label="Add Fishin' in the Dark T-Shirt to cart">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Fishin' in the Dark Green -->
-                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden" role="listitem">
-                    <a href="products/fishin-dark.html" class="block">
-                        <img src="images/products/fishin-dark/green/fishin-dark-front-.jpg" alt="Fishin' in the Dark Unisex Dri-Fit - Green" class="w-full h-64 object-cover" width="400" height="256">
-                    </a>
-                    <div class="p-4">
-                        <h3 class="text-lg font-bold text-primary mb-2">Fishin' in the Dark Unisex Dri-Fit - Green</h3>
-                        <p class="text-accent font-bold mb-4">$26.00</p>
-                        <button 
-                            class="snipcart-add-item w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300"
-                            data-item-id="fishin-dark-green"
-                            data-item-price="26.00"
-                            data-item-description="A comfortable and stylish Dri-Fit shirt for fishing enthusiasts."
-                            data-item-image="images/products/fishin-dark/green/fishin-dark-front-.jpg"
-                            data-item-name="Fishin' in the Dark Unisex Dri-Fit - Green"
-                            data-item-url="/products/fishin-dark.html"
-                            aria-label="Add Fishin' in the Dark Green T-Shirt to cart">
                             Add to Cart
                         </button>
                     </div>
@@ -264,5 +260,30 @@
 
     <script src="script.js"></script>
     <script src="search.js"></script>
+    <script>
+        // Function to change Fishin' in the Dark product image based on color selection
+        function changeFishinDarkColor(color) {
+            const image = document.getElementById('fishin-dark-image');
+            const addToCartButton = document.querySelector('.product-card button.snipcart-add-item');
+            
+            if (color === 'orange') {
+                image.src = 'images/products/fishin-dark/orange/fishin-dark-front.jpg';
+                image.alt = "Fishin' in the Dark Unisex Dri-Fit - Orange";
+                addToCartButton.setAttribute('data-item-image', 'images/products/fishin-dark/orange/fishin-dark-front.jpg');
+                addToCartButton.setAttribute('data-item-name', "Fishin' in the Dark Unisex Dri-Fit - Orange");
+            } else if (color === 'green') {
+                image.src = 'images/products/fishin-dark/green/fishin-dark-front-.jpg';
+                image.alt = "Fishin' in the Dark Unisex Dri-Fit - Green";
+                addToCartButton.setAttribute('data-item-image', 'images/products/fishin-dark/green/fishin-dark-front-.jpg');
+                addToCartButton.setAttribute('data-item-name', "Fishin' in the Dark Unisex Dri-Fit - Green");
+            }
+            
+            // Update button styles
+            document.querySelectorAll('.color-btn').forEach(btn => {
+                btn.classList.remove('border-primary', 'text-primary');
+            });
+            event.target.classList.add('border-primary', 'text-primary');
+        }
+    </script>
 </body>
 </html> 
