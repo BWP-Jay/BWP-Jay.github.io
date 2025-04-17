@@ -1,13 +1,9 @@
-const CACHE_NAME = 'backwater-pursuits-v1';
-const STATIC_ASSETS = [
+const CACHE_NAME = 'bwp-cache-v1';
+const urlsToCache = [
     '/',
     '/index.html',
     '/styles.css',
-    '/script.js',
-    '/js/cart.js',
-    '/js/image-gallery.js',
-    '/js/mobile.js',
-    '/js/performance.js',
+    '/manifest.json',
     '/images/products/logo.jpg'
 ];
 
@@ -15,9 +11,7 @@ const STATIC_ASSETS = [
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => {
-                return cache.addAll(STATIC_ASSETS);
-            })
+            .then(cache => cache.addAll(urlsToCache))
     );
 });
 
@@ -39,34 +33,25 @@ self.addEventListener('activate', event => {
 // Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event.request)
+        fetch(event.request)
             .then(response => {
-                // Return cached response if found
-                if (response) {
+                // Check if we received a valid response
+                if (!response || response.status !== 200 || response.type !== 'basic') {
                     return response;
                 }
 
-                // Clone the request
-                const fetchRequest = event.request.clone();
+                // Clone the response
+                const responseToCache = response.clone();
 
-                // Make network request
-                return fetch(fetchRequest).then(response => {
-                    // Check if valid response
-                    if (!response || response.status !== 200 || response.type !== 'basic') {
-                        return response;
-                    }
+                caches.open(CACHE_NAME)
+                    .then(cache => {
+                        cache.put(event.request, responseToCache);
+                    });
 
-                    // Clone the response
-                    const responseToCache = response.clone();
-
-                    // Cache the fetched response
-                    caches.open(CACHE_NAME)
-                        .then(cache => {
-                            cache.put(event.request, responseToCache);
-                        });
-
-                    return response;
-                });
+                return response;
+            })
+            .catch(() => {
+                return caches.match(event.request);
             })
     );
 }); 
