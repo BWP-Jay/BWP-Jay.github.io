@@ -152,8 +152,11 @@
     <!-- Main Content -->
     <main id="main-content" class="pt-20" role="main">
         <!-- Hero Section -->
-        <section id="home" class="hero-section flex flex-col items-center justify-center text-center py-24 min-h-screen" role="banner">
-            <div class="hero-content container mx-auto px-4">
+        <section id="home" class="hero-section flex flex-col items-center justify-center text-center py-24 min-h-screen relative" role="banner">
+            <div class="absolute inset-0 z-0">
+                <img src="images/products/logo.jpg" alt="BackWater Pursuits Logo Background" class="w-full h-full object-cover opacity-10">
+            </div>
+            <div class="hero-content container mx-auto px-4 relative z-10">
                 <h2 class="text-4xl font-bold mb-4 text-accent">Welcome to BackWater Pursuits</h2>
                 <p class="max-w-xl text-lg text-white mx-auto">
                     Premium Fishing Apparel & Accessories
