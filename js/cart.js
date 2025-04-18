@@ -22,6 +22,14 @@ class ShoppingCart {
             if (cartIcon) {
                 cartIcon.addEventListener('click', () => this.toggleCart());
             }
+            
+            // Add event listener for checkout button
+            setTimeout(() => {
+                const checkoutBtn = document.querySelector('.checkout-btn');
+                if (checkoutBtn) {
+                    checkoutBtn.addEventListener('click', () => this.checkout());
+                }
+            }, 500);
         });
     }
 
@@ -205,6 +213,30 @@ class ShoppingCart {
             notification.classList.add('translate-y-full', 'opacity-0');
             setTimeout(() => notification.remove(), 300);
         }, 3000);
+    }
+    
+    checkout() {
+        if (this.items.length === 0) {
+            this.showNotification('Your cart is empty');
+            return;
+        }
+        
+        // In a real implementation, this would redirect to a payment processor
+        // For testing purposes, we'll simulate a successful checkout
+        console.log('Processing checkout with items:', this.items);
+        console.log('Total amount:', this.total);
+        
+        // Simulate a successful checkout
+        this.showNotification('Order placed successfully!');
+        
+        // Clear the cart
+        this.items = [];
+        this.saveCart();
+        this.updateCartCount();
+        this.renderCart();
+        
+        // Close the cart sidebar
+        this.closeCart();
     }
 }
 
