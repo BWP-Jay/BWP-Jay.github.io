@@ -1,0 +1,17 @@
+{
+  "name": "backwater-pursuits-server",
+  "version": "1.0.0",
+  "description": "Server for BackWater Pursuits e-commerce",
+  "main": "stripe-server.js",
+  "scripts": {
+    "start": "node stripe-server.js",
+    "dev": "nodemon stripe-server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "stripe": "^12.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+} 

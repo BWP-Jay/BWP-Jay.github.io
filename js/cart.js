@@ -221,22 +221,26 @@ class ShoppingCart {
             return;
         }
         
-        // In a real implementation, this would redirect to a payment processor
-        // For testing purposes, we'll simulate a successful checkout
-        console.log('Processing checkout with items:', this.items);
-        console.log('Total amount:', this.total);
-        
-        // Simulate a successful checkout
-        this.showNotification('Order placed successfully!');
-        
-        // Clear the cart
-        this.items = [];
-        this.saveCart();
-        this.updateCartCount();
-        this.renderCart();
-        
-        // Close the cart sidebar
-        this.closeCart();
+        // Use Stripe for checkout if available
+        if (window.stripePayment) {
+            window.stripePayment.createCheckoutSession(this.items);
+        } else {
+            // Fallback to simulated checkout if Stripe is not available
+            console.log('Processing checkout with items:', this.items);
+            console.log('Total amount:', this.total);
+            
+            // Simulate a successful checkout
+            this.showNotification('Order placed successfully!');
+            
+            // Clear the cart
+            this.items = [];
+            this.saveCart();
+            this.updateCartCount();
+            this.renderCart();
+            
+            // Close the cart sidebar
+            this.closeCart();
+        }
     }
 }
 
