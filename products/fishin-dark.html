@@ -154,7 +154,7 @@
                                  alt="Fishin' in the Dark Unisex Dri-Fit - Front View Thumbnail" 
                                  class="w-full h-auto thumbnail-image">
                         </button>
-                        <button onclick="changeImage('../images/products/fishin-dark/orange/fishin-dark-back.jpg')"
+                        <button onclick="changeImage('back')"
                                 class="bg-white rounded-lg shadow-md overflow-hidden focus:outline-none"
                                 aria-label="View back of shirt">
                             <img src="../images/products/fishin-dark/orange/fishin-dark-back.jpg" 
@@ -272,7 +272,7 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="../js/cart.js"></script>
+    <script src="../js/cart.js?v=1.0.1"></script>
     <script src="../js/image-gallery.js"></script>
     <script>
         let selectedColor = 'orange';
@@ -280,8 +280,13 @@
 
         function changeImage(src) {
             const mainImage = document.getElementById('mainImage');
-            mainImage.src = src;
-            mainImage.alt = `Fishin' in the Dark Unisex Dri-Fit - ${src.includes('front') ? 'Front' : 'Back'} View`;
+            if (src.includes('back')) {
+                mainImage.src = `../images/products/fishin-dark/${selectedColor}/fishin-dark-back.jpg`;
+                mainImage.alt = `Fishin' in the Dark Unisex Dri-Fit - Back View`;
+            } else {
+                mainImage.src = src;
+                mainImage.alt = `Fishin' in the Dark Unisex Dri-Fit - Front View`;
+            }
         }
 
         function changeColor(color) {
@@ -299,6 +304,11 @@
                 btn.classList.remove('border-2', 'border-primary');
             });
             event.target.classList.add('border-2', 'border-primary');
+            
+            // If the back image is currently displayed, update it to match the new color
+            if (mainImage.src.includes('back')) {
+                mainImage.src = `../images/products/fishin-dark/${color}/fishin-dark-back.jpg`;
+            }
         }
 
         function selectSize(size) {
