@@ -2,7 +2,7 @@
 class StripePayment {
     constructor() {
         // Replace with your Stripe publishable key
-        this.stripePublicKey = 'pk_test_your_stripe_public_key';
+        this.stripePublicKey = 'pk_live_your_publishable_key';
         this.stripe = null;
         this.init();
     }
@@ -21,21 +21,46 @@ class StripePayment {
 
     async createCheckoutSession(items) {
         try {
-            // In a real implementation, this would call your server to create a Stripe Checkout Session
-            // For this example, we'll simulate the server response
-            
-            // Log the items being purchased
-            console.log('Creating checkout session for items:', items);
-            
-            // Simulate a successful checkout session creation
-            const sessionId = 'cs_test_' + Math.random().toString(36).substring(2, 15);
-            
+            // Show loading state
+            const checkoutBtn = document.querySelector('.checkout-btn');
+            if (checkoutBtn) {
+                checkoutBtn.disabled = true;
+                checkoutBtn.textContent = 'Processing...';
+            }
+
+            // Call your server to create a checkout session
+            const response = await fetch('/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ items }),
+            });
+
+            const session = await response.json();
+
+            if (session.error) {
+                throw new Error(session.error);
+            }
+
             // Redirect to Stripe Checkout
-            this.redirectToCheckout(sessionId);
-            
-            return { success: true, sessionId };
+            const result = await this.stripe.redirectToCheckout({
+                sessionId: session.id
+            });
+
+            if (result.error) {
+                throw new Error(result.error.message);
+            }
+
+            return { success: true, sessionId: session.id };
         } catch (error) {
             console.error('Error creating checkout session:', error);
+            // Reset checkout button
+            const checkoutBtn = document.querySelector('.checkout-btn');
+            if (checkoutBtn) {
+                checkoutBtn.disabled = false;
+                checkoutBtn.textContent = 'Checkout';
+            }
             return { success: false, error };
         }
     }
