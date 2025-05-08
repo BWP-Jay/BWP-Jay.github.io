@@ -1,8 +1,8 @@
 // Common functionality for all pages
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
-    const mobileMenuButton = document.querySelector('[aria-label="Toggle mobile menu"]');
-    const mobileMenu = document.querySelector('.md\\:hidden.hidden');
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
     
     if (mobileMenuButton && mobileMenu) {
         mobileMenuButton.addEventListener('click', () => {
@@ -47,14 +47,59 @@ document.addEventListener('DOMContentLoaded', function() {
         yearElement.textContent = new Date().getFullYear();
     }
 
-    // Initialize Snipcart
-    if (typeof Snipcart !== 'undefined') {
-        Snipcart.api.cart.on('item.added', function(item) {
-            // Update cart count
-            const cartCount = document.querySelector('.snipcart-items-count');
-            if (cartCount) {
-                cartCount.textContent = Snipcart.api.cart.items().length;
+    // Back to Top Button functionality
+    const backToTopButton = document.getElementById('back-to-top');
+    if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0');
+            } else {
+                backToTopButton.classList.add('opacity-0');
             }
         });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     }
-}); 
+
+    // Newsletter form submission
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input').value;
+            
+            // Show success message
+            showNotification('Thank you for subscribing!', 'success');
+            
+            // Clear form
+            newsletterForm.reset();
+        });
+    }
+});
+
+// Utility function for showing notifications
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg transform translate-y-full opacity-0 transition-all duration-300 ${
+        type === 'success' ? 'bg-green-500' : 'bg-red-500'
+    } text-white`;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Trigger animation
+    setTimeout(() => {
+        notification.classList.remove('translate-y-full', 'opacity-0');
+    }, 100);
+    
+    // Remove notification after 5 seconds
+    setTimeout(() => {
+        notification.classList.add('translate-y-full', 'opacity-0');
+        setTimeout(() => notification.remove(), 300);
+    }, 5000);
+} 
