@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../css/snipcart-custom.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script async src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
+    <div hidden id="snipcart" data-api-key="OThmODU0MjItZWYzMy00ZmI3LTg0NzItOWE1MGFmODQwYWU3NjM4ODA0MDgyNjI3MzA0NDkx"></div>
+    <script type="module" src="../js/config.js"></script>
+    <script type="module" src="../js/product.js"></script>
     <style>
       .product-image {
         transition: opacity 0.3s ease-in-out;
@@ -187,14 +191,32 @@
                     <div class="mb-6">
                         <h2 class="text-lg font-bold text-primary mb-2">Select Size</h2>
                         <div class="grid grid-cols-4 gap-2">
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">S</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">M</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">L</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">XL</button>
+                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary" 
+                                    data-size="S" 
+                                    aria-label="Select size Small">S</button>
+                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary" 
+                                    data-size="M" 
+                                    aria-label="Select size Medium">M</button>
+                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary" 
+                                    data-size="L" 
+                                    aria-label="Select size Large">L</button>
+                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary" 
+                                    data-size="XL" 
+                                    aria-label="Select size Extra Large">XL</button>
                         </div>
                     </div>
 
-                    <button class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                    <button class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300 add-to-cart"
+                            data-item-id="PRODUCT_ID"
+                            data-item-price="PRODUCT_PRICE"
+                            data-item-url="PRODUCT_URL"
+                            data-item-description="PRODUCT_DESCRIPTION"
+                            data-item-image="PRODUCT_IMAGE"
+                            data-item-name="PRODUCT_NAME"
+                            data-item-custom1-name="Size"
+                            data-item-custom1-options="S|M|L|XL"
+                            data-item-custom2-name="Color"
+                            data-item-custom2-options="Orange|Green">
                         Add to Cart
                     </button>
                 </div>
