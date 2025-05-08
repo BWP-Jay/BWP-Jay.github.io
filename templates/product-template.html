@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PRODUCT_DESCRIPTION">
-    <meta name="keywords" content="fishing apparel, fishing shirts, fishing accessories, BackWater Pursuits">
-    <title>PRODUCT_NAME - BackWater Pursuits</title>
+    <meta name="description" content="{{product_description}}">
+    <meta name="keywords" content="fishing apparel, fishing gear, outdoor wear, BackWater Pursuits">
+    <title>{{product_name}} - BackWater Pursuits</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -13,9 +13,7 @@
           extend: {
             colors: {
               primary: "#1a472a",
-              'primary-dark': "#0d2315",
               accent: "#FFD700",
-              'accent-dark': "#B8860B",
             },
           },
         },
@@ -23,6 +21,12 @@
     </script>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Snipcart Integration -->
+    <link rel="preconnect" href="https://app.snipcart.com" />
+    <link rel="preconnect" href="https://cdn.snipcart.com" />
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.css" />
+    <script async src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
+    <div hidden id="snipcart" data-api-key="{{snipcart_api_key}}"></div>
     <style>
       .product-image {
         transition: opacity 0.3s ease-in-out;
@@ -90,151 +94,71 @@
     <!-- Skip Link for Keyboard Navigation -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
-    <!-- Navigation -->
-    <header class="fixed w-full bg-primary text-accent shadow-md z-50">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="../index.html" class="flex items-center gap-2">
-                <img src="../images/products/logo.jpg" alt="BackWater Pursuits Logo" class="h-10 w-auto" />
-                <h1 class="text-2xl font-bold">BACKWATER PURSUITS</h1>
-            </a>
-            <ul class="hidden md:flex gap-6 text-white font-medium">
-                <li><a href="../index.html#home" class="hover:text-accent transition-colors duration-300">Home</a></li>
-                <li><a href="../shop.html" class="hover:text-accent transition-colors duration-300">Shop</a></li>
-                <li><a href="../index.html#about" class="hover:text-accent transition-colors duration-300">About</a></li>
-                <li><a href="../index.html#contact" class="hover:text-accent transition-colors duration-300">Contact</a></li>
-            </ul>
-            <div class="cart-icon text-white hover:text-accent transition-colors duration-300">
-                <i class="fas fa-shopping-cart text-xl"></i>
-                <span class="cart-count">0</span>
-            </div>
-        </nav>
-    </header>
+    <!-- Include Navigation -->
+    <?php include '../components/navigation.html'; ?>
 
-    <!-- Product Details -->
-    <div class="pt-20 pb-12">
-        <div class="container mx-auto px-4">
+    <!-- Main Content -->
+    <main id="main-content" class="pt-20" role="main">
+        <div class="container mx-auto px-4 py-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Product Images -->
-                <div class="space-y-4">
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src="../images/products/PRODUCT_FOLDER/PRODUCT_FRONT" alt="PRODUCT_NAME" class="w-full h-auto product-image">
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                            <img src="../images/products/PRODUCT_FOLDER/PRODUCT_BACK" alt="PRODUCT_NAME Back" class="w-full h-auto product-image">
-                        </div>
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                            <img src="../images/products/PRODUCT_FOLDER/PRODUCT_DETAIL" alt="PRODUCT_NAME Detail" class="w-full h-auto product-image">
-                        </div>
+                <div class="product-images">
+                    <img id="mainImage" 
+                         src="{{main_image}}" 
+                         alt="{{product_name}}" 
+                         class="w-full h-auto rounded-lg shadow-lg"
+                         loading="eager">
+                    <div class="grid grid-cols-4 gap-4 mt-4">
+                        {{thumbnail_images}}
                     </div>
                 </div>
 
-                <!-- Product Info -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h1 class="text-3xl font-bold text-primary mb-4">PRODUCT_NAME</h1>
-                    <p class="text-2xl text-accent font-bold mb-6">$PRODUCT_PRICE</p>
-                    
-                    <div class="mb-6">
-                        <h2 class="text-lg font-bold text-primary mb-2">Description</h2>
-                        <p class="text-gray-600">PRODUCT_DESCRIPTION</p>
+                <!-- Product Details -->
+                <div class="product-details">
+                    <h1 class="text-3xl font-bold text-primary mb-4">{{product_name}}</h1>
+                    <p class="text-2xl font-bold text-accent mb-4">${{price}}</p>
+                    <div class="prose mb-6">
+                        {{product_description}}
                     </div>
 
-                    <div class="mb-6">
-                        <h2 class="text-lg font-bold text-primary mb-2">Features</h2>
-                        <ul class="list-disc list-inside text-gray-600 space-y-2">
-                            PRODUCT_FEATURES
-                        </ul>
-                    </div>
+                    <!-- Size Selection (if applicable) -->
+                    {{size_selection}}
 
-                    <div class="mb-6">
-                        <h2 class="text-lg font-bold text-primary mb-2">Size Guide</h2>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full text-sm text-gray-600">
-                                <thead>
-                                    <tr class="bg-gray-100">
-                                        <th class="px-4 py-2">Size</th>
-                                        <th class="px-4 py-2">Chest (inches)</th>
-                                        <th class="px-4 py-2">Length (inches)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="px-4 py-2 border">S</td>
-                                        <td class="px-4 py-2 border">36-38</td>
-                                        <td class="px-4 py-2 border">28</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-4 py-2 border">M</td>
-                                        <td class="px-4 py-2 border">39-41</td>
-                                        <td class="px-4 py-2 border">29</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-4 py-2 border">L</td>
-                                        <td class="px-4 py-2 border">42-44</td>
-                                        <td class="px-4 py-2 border">30</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-4 py-2 border">XL</td>
-                                        <td class="px-4 py-2 border">45-47</td>
-                                        <td class="px-4 py-2 border">31</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="mb-6">
-                        <h2 class="text-lg font-bold text-primary mb-2">Select Size</h2>
-                        <div class="grid grid-cols-4 gap-2">
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">S</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">M</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">L</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">XL</button>
-                        </div>
-                    </div>
-
-                    <button class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                    <!-- Add to Cart Button -->
+                    <button 
+                        class="snipcart-add-item w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-primary-dark transition-colors duration-300"
+                        data-item-id="{{product_id}}"
+                        data-item-price="{{price}}"
+                        data-item-description="{{product_description}}"
+                        data-item-image="{{main_image}}"
+                        data-item-name="{{product_name}}"
+                        data-item-url="{{current_url}}"
+                        aria-label="Add {{product_name}} to cart">
                         Add to Cart
                     </button>
                 </div>
             </div>
-
-            <!-- Related Products -->
-            <div class="mt-12">
-                <h2 class="text-2xl font-bold text-primary mb-6">You May Also Like</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    RELATED_PRODUCTS
-                </div>
-            </div>
         </div>
-    </div>
-
-    <!-- Shopping Cart Sidebar -->
-    <div class="cart-overlay"></div>
-    <div class="shopping-cart">
-        <div class="flex justify-between items-center mb-4">
-            <h2 class="text-xl font-bold text-primary">Shopping Cart</h2>
-            <button class="close-cart text-gray-500 hover:text-primary">
-                <i class="fas fa-times text-xl"></i>
-            </button>
-        </div>
-        <div class="cart-items space-y-4"></div>
-        <div class="cart-total mt-4 pt-4 border-t border-gray-200">
-            <div class="flex justify-between text-primary">
-                <span class="font-bold">Total:</span>
-                <span class="cart-total-amount">$0.00</span>
-            </div>
-            <button class="w-full bg-primary text-white py-2 px-4 rounded mt-4 hover:bg-accent hover:text-primary transition-colors duration-300">
-                Checkout
-            </button>
-        </div>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-primary text-accent text-center py-6">
-        &copy; 2024 BackWater Pursuits. All rights reserved.
+    <footer class="bg-primary text-white py-8 mt-12" role="contentinfo">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <p>&copy; <span id="current-year">2024</span> Backwater Pursuits. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
-    <script src="../script.js"></script>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" 
+            class="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg opacity-0 transition-opacity duration-300 hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-accent"
+            aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="../js/common.js"></script>
+    <script src="../js/image-gallery.js"></script>
 </body>
 </html> 

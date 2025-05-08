@@ -1,116 +1,77 @@
-// Snipcart event listeners
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize Snipcart and handle cart-related events
+document.addEventListener('DOMContentLoaded', () => {
     // Initialize cart count
-    updateCartCount();
-    
-    // Mini cart functionality
+    if (typeof Snipcart !== 'undefined') {
+        updateCartCount();
+    }
+
+    // Handle mini cart hover
     const cartIcon = document.querySelector('.cart-icon');
-    const miniCart = document.querySelector('.mini-cart');
-    const viewCartBtn = document.querySelector('.view-cart-btn');
-    
-    if (cartIcon && miniCart) {
+    if (cartIcon) {
         cartIcon.addEventListener('mouseenter', () => {
-            miniCart.classList.remove('hidden');
+            const miniCart = document.querySelector('.mini-cart');
+            if (miniCart) {
+                miniCart.classList.remove('hidden');
+            }
         });
-        
-        cartIcon.addEventListener('mouseleave', (e) => {
-            if (!e.relatedTarget?.closest('.mini-cart')) {
+
+        cartIcon.addEventListener('mouseleave', () => {
+            const miniCart = document.querySelector('.mini-cart');
+            if (miniCart) {
                 miniCart.classList.add('hidden');
             }
         });
-        
-        miniCart.addEventListener('mouseleave', () => {
-            miniCart.classList.add('hidden');
-        });
-        
-        if (viewCartBtn) {
-            viewCartBtn.addEventListener('click', () => {
-                Snipcart.api.cart.open();
-            });
-        }
     }
-    
-    // Listen for Snipcart events
-    document.addEventListener('snipcart.ready', function() {
-        console.log('Snipcart is ready');
-        updateCartCount();
-        updateMiniCart();
-    });
-    
-    document.addEventListener('snipcart.cart.open', function() {
-        console.log('Cart opened');
-    });
-    
-    document.addEventListener('snipcart.cart.close', function() {
-        console.log('Cart closed');
-    });
-    
-    document.addEventListener('snipcart.cart.item.added', function(event) {
-        const item = event.detail.item;
-        updateCartCount();
-        updateMiniCart();
-        showNotification(`${item.name} added to cart`, 'success');
-    });
-    
-    document.addEventListener('snipcart.cart.item.removed', function(event) {
-        const item = event.detail.item;
-        updateCartCount();
-        updateMiniCart();
-        showNotification(`${item.name} removed from cart`, 'info');
-    });
-    
-    document.addEventListener('snipcart.cart.item.updated', function(event) {
-        const item = event.detail.item;
-        updateCartCount();
-        updateMiniCart();
-        showNotification(`${item.name} quantity updated`, 'info');
-    });
-    
-    document.addEventListener('snipcart.checkout.completed', function(event) {
-        const order = event.detail.order;
-        updateCartCount();
-        updateMiniCart();
-        showNotification('Thank you for your order!', 'success');
-    });
 });
 
 // Update cart count
 function updateCartCount() {
-    const cartCount = document.querySelector('.cart-count');
-    if (cartCount && Snipcart.api) {
-        const count = Snipcart.api.cart.items().length;
-        cartCount.textContent = count;
-        cartCount.setAttribute('aria-label', `${count} items in cart`);
+    const cartCount = document.querySelector('.snipcart-items-count');
+    if (cartCount && typeof Snipcart !== 'undefined') {
+        cartCount.textContent = Snipcart.api.cart.items().length;
     }
 }
 
-// Update mini cart
-function updateMiniCart() {
-    const miniCartItems = document.querySelector('.mini-cart-items');
-    const cartTotal = document.querySelector('.cart-total');
-    
-    if (miniCartItems && cartTotal && Snipcart.api) {
-        const items = Snipcart.api.cart.items();
-        const total = Snipcart.api.cart.total();
-        
-        if (items.length === 0) {
-            miniCartItems.innerHTML = '<p class="text-gray-500 text-center">Your cart is empty</p>';
-        } else {
-            miniCartItems.innerHTML = items.map(item => `
-                <div class="flex items-center space-x-3 mb-3">
-                    <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded">
-                    <div class="flex-1">
-                        <h4 class="text-sm font-medium">${item.name}</h4>
-                        <p class="text-xs text-gray-500">Qty: ${item.quantity}</p>
-                        <p class="text-xs font-medium">$${(item.price * item.quantity).toFixed(2)}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-        
-        cartTotal.textContent = `$${total.toFixed(2)}`;
-    }
+// Listen for Snipcart events
+document.addEventListener('snipcart.ready', () => {
+    updateCartCount();
+});
+
+document.addEventListener('snipcart.cart.item.added', () => {
+    updateCartCount();
+});
+
+document.addEventListener('snipcart.cart.item.removed', () => {
+    updateCartCount();
+});
+
+// Mini cart functionality
+const viewCartBtn = document.querySelector('.view-cart-btn');
+if (viewCartBtn) {
+    viewCartBtn.addEventListener('click', () => {
+        Snipcart.api.cart.open();
+    });
 }
+
+document.addEventListener('snipcart.cart.open', function() {
+    console.log('Cart opened');
+});
+
+document.addEventListener('snipcart.cart.close', function() {
+    console.log('Cart closed');
+});
+
+document.addEventListener('snipcart.cart.item.updated', function(event) {
+    const item = event.detail.item;
+    updateCartCount();
+    showNotification(`${item.name} quantity updated`, 'info');
+});
+
+document.addEventListener('snipcart.checkout.completed', function(event) {
+    const order = event.detail.order;
+    updateCartCount();
+    showNotification('Thank you for your order!', 'success');
+});
 
 // Notification function
 function showNotification(message, type = 'success') {
@@ -247,4 +208,106 @@ document.addEventListener('DOMContentLoaded', () => {
             if (link) link.click();
         });
     });
+});
+
+// Cart functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const cartIcon = document.querySelector('.cart-icon');
+    const miniCart = document.querySelector('.mini-cart');
+    const closeCartBtn = document.querySelector('.close-cart');
+    
+    // Toggle mini cart
+    cartIcon.addEventListener('click', function(e) {
+        e.preventDefault();
+        miniCart.classList.toggle('show');
+    });
+    
+    // Close mini cart when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!miniCart.contains(e.target) && !cartIcon.contains(e.target)) {
+            miniCart.classList.remove('show');
+        }
+    });
+    
+    // Close mini cart with close button
+    closeCartBtn.addEventListener('click', function() {
+        miniCart.classList.remove('show');
+    });
+    
+    // Handle Snipcart events
+    document.addEventListener('snipcart.ready', function() {
+        // Update cart count when items are added/removed
+        Snipcart.subscribe('cart.ready', function() {
+            updateCartCount();
+        });
+        
+        Snipcart.subscribe('item.added', function() {
+            updateCartCount();
+            miniCart.classList.add('show');
+        });
+        
+        Snipcart.subscribe('item.removed', function() {
+            updateCartCount();
+        });
+    });
+});
+
+// Update cart count
+function updateCartCount() {
+    const count = Snipcart.api.items.count();
+    const countElement = document.querySelector('.snipcart-items-count');
+    countElement.textContent = count;
+    
+    if (count > 0) {
+        countElement.style.display = 'flex';
+    } else {
+        countElement.style.display = 'none';
+    }
+}
+
+// Product template
+function createProductCard(product) {
+    const template = document.querySelector('#product-template');
+    const clone = template.content.cloneNode(true);
+    
+    // Set product details
+    clone.querySelector('.product-image').src = product.image;
+    clone.querySelector('.product-title').textContent = product.title;
+    clone.querySelector('.product-price').textContent = `$${product.price.toFixed(2)}`;
+    
+    // Set Snipcart data attributes
+    const addToCartBtn = clone.querySelector('.snipcart-add-item');
+    addToCartBtn.setAttribute('data-item-id', product.id);
+    addToCartBtn.setAttribute('data-item-price', product.price);
+    addToCartBtn.setAttribute('data-item-description', product.description);
+    addToCartBtn.setAttribute('data-item-image', product.image);
+    
+    return clone;
+}
+
+// Example products data
+const products = [
+    {
+        id: 'product-1',
+        title: 'Product 1',
+        price: 29.99,
+        description: 'This is product 1 description',
+        image: 'path/to/image1.jpg'
+    },
+    // Add more products as needed
+];
+
+// Render products
+function renderProducts() {
+    const productsContainer = document.querySelector('.products-grid');
+    products.forEach(product => {
+        const productCard = createProductCard(product);
+        productsContainer.appendChild(productCard);
+    });
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    renderProducts();
+    updateCartCount();
 }); 

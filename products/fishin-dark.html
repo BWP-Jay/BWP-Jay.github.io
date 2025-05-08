@@ -220,8 +220,19 @@
                     </div>
 
                     <button onclick="addToCart()" 
-                            class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300 add-to-cart"
-                            aria-label="Add Fishin' in the Dark shirt to cart">
+                            class="snipcart-add-item w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300"
+                            data-item-id="fishin-dark-${selectedColor}-${selectedSize}"
+                            data-item-price="26.00"
+                            data-item-name="Fishin' in the Dark Unisex Dri-Fit"
+                            data-item-description="Premium Dri-Fit shirt for night fishing adventures"
+                            data-item-image="../images/products/fishin-dark/${selectedColor}/fishin-dark-front.jpg"
+                            data-item-url="/products/fishin-dark.html"
+                            data-item-custom1-name="Color"
+                            data-item-custom1-value="${selectedColor}"
+                            data-item-custom2-name="Size"
+                            data-item-custom2-value="${selectedSize}"
+                            data-item-shippable="true"
+                            data-item-weight="0.5">
                         Add to Cart
                     </button>
                 </div>
@@ -273,7 +284,7 @@
 
     <script src="../script.js"></script>
     <script src="../js/cart.js?v=1.0.1"></script>
-    <script src="../js/stripe-integration.js"></script>
+    <script src="../js/snipcart-config.js"></script>
     <script src="../js/image-gallery.js"></script>
     <script>
         let selectedColor = 'orange';
@@ -310,6 +321,9 @@
             if (mainImage.src.includes('back')) {
                 mainImage.src = `../images/products/fishin-dark/${color}/fishin-dark-back.jpg`;
             }
+
+            // Update Snipcart button data
+            updateSnipcartButton();
         }
 
         function selectSize(size) {
@@ -318,6 +332,19 @@
                 btn.classList.remove('border-2', 'border-primary');
             });
             event.target.classList.add('border-2', 'border-primary');
+
+            // Update Snipcart button data
+            updateSnipcartButton();
+        }
+
+        function updateSnipcartButton() {
+            const button = document.querySelector('.snipcart-add-item');
+            if (button && selectedSize) {
+                button.setAttribute('data-item-id', `fishin-dark-${selectedColor}-${selectedSize}`);
+                button.setAttribute('data-item-custom1-value', selectedColor);
+                button.setAttribute('data-item-custom2-value', selectedSize);
+                button.setAttribute('data-item-image', `../images/products/fishin-dark/${selectedColor}/fishin-dark-front.jpg`);
+            }
         }
 
         function addToCart() {

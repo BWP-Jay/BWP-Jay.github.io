@@ -54,11 +54,9 @@
     <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.css">
     <link rel="stylesheet" href="/css/snipcart-custom.css">
     <script async src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
-    <div hidden id="snipcart" 
-         data-api-key="OThmODU0MjItZWYzMy00ZmI3LTg0NzItOWE1MGFmODQwYWU3NjM4ODA0MDgyNjI3MzA0NDkx"
-         data-config-modal-style="side"
-         data-templates-url="/snipcart-templates.html">
-    </div>
+    <div hidden id="snipcart"></div>
+    <!-- Load configuration before other scripts -->
+    <script src="js/snipcart-config.js"></script>
     <style>
       /* Base styles */
       :root {
@@ -140,10 +138,38 @@
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
-                    <button class="snipcart-checkout text-accent hover:text-white transition-colors duration-300 flex items-center" aria-label="View cart">
-                        <i class="fas fa-shopping-cart text-xl mr-1"></i>
-                        <span class="snipcart-items-count">0</span>
-                    </button>
+                    <div class="flex items-center">
+                        <button class="cart-icon snipcart-checkout flex items-center space-x-2 text-gray-700 hover:text-gray-900">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                            <span class="snipcart-items-count">0</span>
+                        </button>
+                        
+                        <!-- Mini Cart -->
+                        <div class="mini-cart hidden absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg p-4 z-50">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-lg font-semibold">Cart</h3>
+                                <button class="close-cart text-gray-500 hover:text-gray-700" aria-label="Close cart">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="mini-cart-items max-h-48 overflow-y-auto">
+                                <!-- Items will be populated by Snipcart -->
+                            </div>
+                            <div class="border-t mt-4 pt-4">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="font-medium">Total:</span>
+                                    <span class="snipcart-total-price">$0.00</span>
+                                </div>
+                                <button class="view-cart-btn w-full bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark transition-colors">
+                                    View Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -170,6 +196,34 @@
           <div class="container mx-auto px-4">
             <h2 id="products-heading" class="text-3xl font-bold text-center mb-12">Featured Products</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
+              <!-- Test Product -->
+              <article class="product-card group" role="listitem">
+                <div class="relative overflow-hidden rounded-lg shadow-lg">
+                  <img src="https://via.placeholder.com/400x300" 
+                       alt="Test Product" 
+                       class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                       width="400"
+                       height="400">
+                  <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
+                </div>
+                <div class="mt-4">
+                  <h3 class="text-xl font-semibold text-primary">Test Product</h3>
+                  <p class="text-gray-600 mt-2">This is a test product to verify payment processing.</p>
+                  <p class="text-accent font-bold mt-2">$9.99</p>
+                  <button 
+                      class="snipcart-add-item w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300"
+                      data-item-id="test-product-1"
+                      data-item-price="9.99"
+                      data-item-description="Test product for payment processing verification"
+                      data-item-image="https://via.placeholder.com/400x300"
+                      data-item-name="Test Product"
+                      data-item-url="/test-product"
+                      data-item-shippable="true"
+                      data-item-weight="1">
+                      Add to Cart
+                  </button>
+                </div>
+              </article>
               <!-- Fishin' in the Dark -->
               <article class="product-card" role="listitem">
                 <a href="products/fishin-dark.html" class="block group" aria-label="View Fishin' in the Dark t-shirt details">
@@ -378,6 +432,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="js/cart.js"></script>
     <script src="search.js"></script>
     <script>
         // Active section highlighting
@@ -432,5 +487,22 @@
             });
         }
     </script>
+
+    <!-- Product Template -->
+    <template id="product-template">
+        <div class="product-card">
+            <img class="product-image" src="" alt="">
+            <h3 class="product-title"></h3>
+            <p class="product-price"></p>
+            <button class="snipcart-add-item"
+                data-item-id=""
+                data-item-name=""
+                data-item-price=""
+                data-item-image=""
+                data-item-description="">
+                Add to Cart
+            </button>
+        </div>
+    </template>
 </body>
 </html> 
