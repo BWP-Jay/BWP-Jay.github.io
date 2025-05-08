@@ -310,6 +310,9 @@
             if (mainImage.src.includes('back')) {
                 mainImage.src = `../images/products/fishin-dark/${color}/fishin-dark-back.jpg`;
             }
+
+            // Update Snipcart button data
+            updateSnipcartButton();
         }
 
         function selectSize(size) {
@@ -318,6 +321,19 @@
                 btn.classList.remove('border-2', 'border-primary');
             });
             event.target.classList.add('border-2', 'border-primary');
+
+            // Update Snipcart button data
+            updateSnipcartButton();
+        }
+
+        function updateSnipcartButton() {
+            const button = document.querySelector('.snipcart-add-item');
+            if (button && selectedSize) {
+                button.setAttribute('data-item-id', `fishin-dark-${selectedColor}-${selectedSize}`);
+                button.setAttribute('data-item-custom1-value', selectedColor);
+                button.setAttribute('data-item-custom2-value', selectedSize);
+                button.setAttribute('data-item-image', `../images/products/fishin-dark/${selectedColor}/fishin-dark-front.jpg`);
+            }
         }
 
         function addToCart() {

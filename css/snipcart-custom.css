@@ -1,9 +1,137 @@
-/* Snipcart Custom Styles */
-.snipcart-modal__container {
-    background-color: #ffffff;
-    color: #1a365d;
+/* Snipcart Custom Theme */
+.snipcart {
+    --color-primary: #1a472a;
+    --color-primary-dark: #0d2315;
+    --color-accent: #FFD700;
+    --color-accent-dark: #B8860B;
+    --color-text: #333333;
+    --color-text-light: #666666;
+    --color-background: #ffffff;
+    --color-border: #e2e8f0;
+    --color-success: #48bb78;
+    --color-error: #f56565;
+    --color-warning: #ed8936;
+    --color-info: #4299e1;
 }
 
+/* Customize Snipcart Modal */
+.snipcart-modal__container {
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Customize Buttons */
+.snipcart-button-primary {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+}
+
+.snipcart-button-primary:hover {
+    background-color: var(--color-primary-dark) !important;
+    border-color: var(--color-primary-dark) !important;
+}
+
+.snipcart-button-secondary {
+    background-color: var(--color-accent) !important;
+    border-color: var(--color-accent) !important;
+    color: var(--color-primary) !important;
+}
+
+.snipcart-button-secondary:hover {
+    background-color: var(--color-accent-dark) !important;
+    border-color: var(--color-accent-dark) !important;
+}
+
+/* Customize Form Elements */
+.snipcart-input {
+    border-color: var(--color-border) !important;
+    border-radius: 0.375rem !important;
+}
+
+.snipcart-input:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.1) !important;
+}
+
+/* Customize Cart Items */
+.snipcart-item-line {
+    border-color: var(--color-border) !important;
+}
+
+.snipcart-item-line__title {
+    color: var(--color-primary) !important;
+}
+
+/* Customize Price Display */
+.snipcart-summary-fees__amount {
+    color: var(--color-primary) !important;
+}
+
+.snipcart-summary-fees__total {
+    color: var(--color-primary) !important;
+    font-weight: bold !important;
+}
+
+/* Customize Icons */
+.snipcart-icon {
+    color: var(--color-primary) !important;
+}
+
+/* Customize Links */
+.snipcart-link {
+    color: var(--color-primary) !important;
+}
+
+.snipcart-link:hover {
+    color: var(--color-primary-dark) !important;
+}
+
+/* Customize Error Messages */
+.snipcart-error {
+    color: var(--color-error) !important;
+}
+
+/* Customize Success Messages */
+.snipcart-success {
+    color: var(--color-success) !important;
+}
+
+/* Customize Loading States */
+.snipcart-loading {
+    border-color: var(--color-primary) !important;
+}
+
+/* Customize Checkout Steps */
+.snipcart-checkout-step {
+    border-color: var(--color-border) !important;
+}
+
+.snipcart-checkout-step--active {
+    border-color: var(--color-primary) !important;
+}
+
+/* Customize Payment Methods */
+.snipcart-payment-method {
+    border-color: var(--color-border) !important;
+}
+
+.snipcart-payment-method--selected {
+    border-color: var(--color-primary) !important;
+}
+
+/* Customize Order Summary */
+.snipcart-order__invoice {
+    background-color: var(--color-background) !important;
+    border-color: var(--color-border) !important;
+}
+
+/* Customize Footer */
+.snipcart-footer {
+    background-color: var(--color-background) !important;
+    border-color: var(--color-border) !important;
+}
+
+/* Snipcart Custom Styles */
 .snipcart-cart-header {
     background-color: #1a365d;
     color: #ffffff;
@@ -29,42 +157,6 @@
     font-weight: 600;
 }
 
-.snipcart-button-primary {
-    background-color: #1a365d !important;
-    color: #ffffff !important;
-}
-
-.snipcart-button-primary:hover {
-    background-color: #2d4a7c !important;
-}
-
-.snipcart-cart-button--highlight {
-    background-color: #22c55e !important;
-    color: #ffffff !important;
-}
-
-.snipcart-cart-button--highlight:hover {
-    background-color: #16a34a !important;
-}
-
-.snipcart-form__field {
-    border-color: #e5e7eb;
-}
-
-.snipcart-form__label {
-    color: #4b5563;
-}
-
-.snipcart-form__select {
-    border-color: #e5e7eb;
-    background-color: #ffffff;
-}
-
-.snipcart-form__error-message {
-    color: #ef4444;
-}
-
-/* Accessibility Improvements */
 .snipcart-button-primary:focus,
 .snipcart-cart-button--highlight:focus,
 .snipcart-form__field:focus,

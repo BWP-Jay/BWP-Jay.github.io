@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // Update cart count
 function updateCartCount() {
     const cartCount = document.querySelector('.cart-count');
-    if (cartCount && Snipcart.api) {
-        const count = Snipcart.api.cart.items().length;
+    if (cartCount && window.Snipcart) {
+        const count = window.Snipcart.store.getState().cart.items.length;
         cartCount.textContent = count;
         cartCount.setAttribute('aria-label', `${count} items in cart`);
     }
@@ -89,9 +89,9 @@ function updateMiniCart() {
     const miniCartItems = document.querySelector('.mini-cart-items');
     const cartTotal = document.querySelector('.cart-total');
     
-    if (miniCartItems && cartTotal && Snipcart.api) {
-        const items = Snipcart.api.cart.items();
-        const total = Snipcart.api.cart.total();
+    if (miniCartItems && cartTotal && window.Snipcart) {
+        const items = window.Snipcart.store.getState().cart.items;
+        const total = window.Snipcart.store.getState().cart.total;
         
         if (items.length === 0) {
             miniCartItems.innerHTML = '<p class="text-gray-500 text-center">Your cart is empty</p>';
@@ -114,23 +114,26 @@ function updateMiniCart() {
 
 // Notification function
 function showNotification(message, type = 'success') {
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `fixed bottom-4 right-4 p-4 rounded-lg shadow-lg z-50 ${
         type === 'success' ? 'bg-green-500' : 
         type === 'error' ? 'bg-red-500' : 
         'bg-blue-500'
-    } text-white`;
+    } text-white transform translate-y-full transition-transform duration-300`;
     notification.textContent = message;
     
-    // Add to DOM
     document.body.appendChild(notification);
+    
+    // Show notification
+    setTimeout(() => {
+        notification.classList.remove('translate-y-full');
+    }, 100);
     
     // Remove after 3 seconds
     setTimeout(() => {
-        notification.classList.add('opacity-0');
+        notification.classList.add('translate-y-full');
         setTimeout(() => {
-            document.body.removeChild(notification);
+            notification.remove();
         }, 300);
     }, 3000);
 }
@@ -148,22 +151,20 @@ if (mobileMenuButton && mobileNav) {
 }
 
 // Smooth scrolling for anchor links
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
 });
 
