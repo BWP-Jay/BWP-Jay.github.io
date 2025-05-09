@@ -5,7 +5,7 @@
 }
 
 .prose h2 {
-    color: #1a202c;
+    color: #166534; /* Green-800 to match our theme */
     font-weight: 600;
     margin-top: 2em;
     margin-bottom: 1em;
@@ -14,6 +14,7 @@
 .prose p {
     margin-bottom: 1.5em;
     line-height: 1.7;
+    color: #374151; /* Gray-700 for better readability */
 }
 
 .prose ul {
@@ -22,6 +23,28 @@
 
 .prose li {
     margin-bottom: 0.5em;
+    color: #374151; /* Gray-700 for better readability */
+}
+
+/* Link styling */
+.prose a {
+    color: #166534; /* Green-800 */
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.prose a:hover {
+    color: #15803d; /* Green-700 */
+}
+
+/* Section styling */
+.prose section {
+    border-bottom: 1px solid #e5e7eb; /* Light gray border */
+    padding-bottom: 2em;
+}
+
+.prose section:last-child {
+    border-bottom: none;
 }
 
 /* Responsive adjustments */
