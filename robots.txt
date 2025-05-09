@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bwp-jay.github.io/sitemap.xml 
