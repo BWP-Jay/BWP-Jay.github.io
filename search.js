@@ -54,10 +54,10 @@ const products = [
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
     const searchResults = document.getElementById('search-results');
-    const searchResultsList = document.getElementById('search-results-list');
+    const searchResultsGrid = document.getElementById('search-results-grid');
     const noResults = document.getElementById('search-no-results');
     
-    if (!searchInput || !searchResults || !searchResultsList || !noResults) return;
+    if (!searchInput || !searchResults || !searchResultsGrid || !noResults) return;
     
     let searchTimeout;
     
@@ -85,7 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const results = products.filter(product => 
             product.name.toLowerCase().includes(query) ||
-            product.id.toLowerCase().includes(query)
+            product.description.toLowerCase().includes(query) ||
+            product.keywords.some(keyword => keyword.toLowerCase().includes(query))
         );
         
         displayResults(results);
@@ -94,21 +95,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Display search results
     function displayResults(results) {
         if (results.length === 0) {
-            searchResultsList.innerHTML = '';
+            searchResultsGrid.innerHTML = '';
             noResults.classList.remove('hidden');
             searchResults.classList.remove('hidden');
             return;
         }
         
         noResults.classList.add('hidden');
-        searchResultsList.innerHTML = results.map(product => `
-            <a href="products/${product.id}.html" class="flex items-center space-x-3 p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                <img src="${product.image}" alt="${product.name}" class="w-12 h-12 object-cover rounded">
-                <div>
-                    <h4 class="text-sm font-medium text-primary">${product.name}</h4>
-                    <p class="text-xs text-accent">$${product.price.toFixed(2)}</p>
-                </div>
-            </a>
+        searchResultsGrid.innerHTML = results.map(product => `
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <a href="products/${product.id}.html" class="block">
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-primary mb-2">${product.name}</h3>
+                        <p class="text-accent font-bold">$${product.price.toFixed(2)}</p>
+                        <p class="text-gray-600 text-sm mt-2">${product.description}</p>
+                    </div>
+                </a>
+            </div>
         `).join('');
         
         searchResults.classList.remove('hidden');

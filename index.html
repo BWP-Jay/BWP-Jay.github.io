@@ -6,6 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+    <link rel="canonical" href="https://backwaterpursuits.com/" />
     <meta name="description" content="BackWater Pursuits - Your premier destination for fishing apparel and accessories. Shop our collection of high-quality fishing shirts, hats, and more.">
     <meta name="keywords" content="fishing apparel, fishing shirts, fishing accessories, fishing gear, fishing clothing">
     <meta name="author" content="BackWater Pursuits">
@@ -13,7 +14,7 @@
     <meta property="og:title" content="BackWater Pursuits - Fishing Apparel & Accessories">
     <meta property="og:description" content="Your premier destination for fishing apparel and accessories. Shop our collection of high-quality fishing shirts, hats, and more.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bwp-jay.github.io/">
+    <meta property="og:url" content="https://backwaterpursuits.com">
     <title>BackWater Pursuits - Fishing Apparel & Accessories</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -35,6 +36,90 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#1a472a">
     <link rel="apple-touch-icon" href="/images/products/logo.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "BackWater Pursuits",
+      "url": "https://backwaterpursuits.com",
+      "logo": "https://backwaterpursuits.com/images/products/logo.jpg",
+      "description": "Your premier destination for fishing apparel and accessories",
+      "sameAs": [
+        "https://www.facebook.com/backwaterpursuits",
+        "https://www.instagram.com/backwaterpursuits"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Product",
+            "name": "Fishin' in the Dark T-Shirt",
+            "image": "https://backwaterpursuits.com/images/products/fishin-dark/orange/fishin-dark-front.jpg",
+            "description": "Premium fishing t-shirt with glow-in-the-dark design",
+            "brand": {
+              "@type": "Brand",
+              "name": "BackWater Pursuits"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "26.00",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Product",
+            "name": "Down to Fish T-Shirt",
+            "image": "https://backwaterpursuits.com/images/products/down-fish/down-fish-front.jpg",
+            "description": "Classic fishing t-shirt with modern design",
+            "brand": {
+              "@type": "Brand",
+              "name": "BackWater Pursuits"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "26.00",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Product",
+            "name": "Wishin' I was Fishin' T-Shirt",
+            "image": "https://backwaterpursuits.com/images/products/wishin-fishin/wishin-fishin-front.jpg",
+            "description": "Fun fishing t-shirt for the fishing enthusiast",
+            "brand": {
+              "@type": "Brand",
+              "name": "BackWater Pursuits"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "29.88",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            }
+          }
+        }
+      ]
+    }
+    </script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -171,58 +256,73 @@
             <h2 id="products-heading" class="text-3xl font-bold text-center mb-12">Featured Products</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
               <!-- Fishin' in the Dark -->
-              <article class="product-card" role="listitem">
+              <article class="product-card" role="listitem" itemscope itemtype="https://schema.org/Product">
                 <a href="products/fishin-dark.html" class="block group" aria-label="View Fishin' in the Dark t-shirt details">
                   <div class="relative overflow-hidden rounded-lg shadow-lg">
                     <img src="images/products/fishin-dark/orange/fishin-dark-front.jpg" 
-                         alt="Fishin' in the Dark t-shirt front view" 
+                         alt="Fishin' in the Dark t-shirt - Premium fishing apparel with glow-in-the-dark design" 
                          class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                          width="400"
-                         height="400">
+                         height="400"
+                         itemprop="image"
+                         loading="lazy">
                     <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
                   </div>
                   <div class="mt-4">
-                    <h3 class="text-xl font-semibold text-primary">Fishin' in the Dark</h3>
-                    <p class="text-gray-600 mt-2">Premium fishing t-shirt with glow-in-the-dark design</p>
-                    <p class="text-accent font-bold mt-2">$26.00</p>
+                    <h3 class="text-xl font-semibold text-primary" itemprop="name">Fishin' in the Dark</h3>
+                    <p class="text-gray-600 mt-2" itemprop="description">Premium fishing t-shirt with glow-in-the-dark design</p>
+                    <p class="text-accent font-bold mt-2" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                      <span itemprop="price" content="26.00">$26.00</span>
+                      <meta itemprop="priceCurrency" content="USD">
+                    </p>
                   </div>
                 </a>
               </article>
 
               <!-- Down to Fish -->
-              <article class="product-card" role="listitem">
+              <article class="product-card" role="listitem" itemscope itemtype="https://schema.org/Product">
                 <a href="products/down-to-fish.html" class="block group" aria-label="View Down to Fish t-shirt details">
                   <div class="relative overflow-hidden rounded-lg shadow-lg">
                     <img src="images/products/down-fish/down-fish-front.jpg" 
-                         alt="Down to Fish t-shirt front view" 
+                         alt="Down to Fish t-shirt - Classic fishing apparel with modern design" 
                          class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                          width="400"
-                         height="400">
+                         height="400"
+                         itemprop="image"
+                         loading="lazy">
                     <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
                   </div>
                   <div class="mt-4">
-                    <h3 class="text-xl font-semibold text-primary">Down to Fish</h3>
-                    <p class="text-gray-600 mt-2">Classic fishing t-shirt with modern design</p>
-                    <p class="text-accent font-bold mt-2">$26.00</p>
+                    <h3 class="text-xl font-semibold text-primary" itemprop="name">Down to Fish</h3>
+                    <p class="text-gray-600 mt-2" itemprop="description">Classic fishing t-shirt with modern design</p>
+                    <p class="text-accent font-bold mt-2" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                      <span itemprop="price" content="26.00">$26.00</span>
+                      <meta itemprop="priceCurrency" content="USD">
+                    </p>
                   </div>
                 </a>
               </article>
 
               <!-- Wishin' I was Fishin' -->
-              <article class="product-card" role="listitem">
+              <article class="product-card" role="listitem" itemscope itemtype="https://schema.org/Product">
                 <a href="products/wishin-fishin.html" class="block group" aria-label="View Wishin' I was Fishin' t-shirt details">
                   <div class="relative overflow-hidden rounded-lg shadow-lg">
                     <img src="images/products/wishin-fishin/wishin-fishin-front.jpg" 
-                         alt="Wishin' I was Fishin' t-shirt front view" 
+                         alt="Wishin' I was Fishin' t-shirt - Fun fishing apparel for enthusiasts" 
                          class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                          width="400"
-                         height="400">
+                         height="400"
+                         itemprop="image"
+                         loading="lazy">
                     <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
                   </div>
                   <div class="mt-4">
-                    <h3 class="text-xl font-semibold text-primary">Wishin' I was Fishin'</h3>
-                    <p class="text-gray-600 mt-2">Fun fishing t-shirt for the fishing enthusiast</p>
-                    <p class="text-accent font-bold mt-2">$29.88</p>
+                    <h3 class="text-xl font-semibold text-primary" itemprop="name">Wishin' I was Fishin'</h3>
+                    <p class="text-gray-600 mt-2" itemprop="description">Fun fishing t-shirt for the fishing enthusiast</p>
+                    <p class="text-accent font-bold mt-2" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                      <span itemprop="price" content="29.88">$29.88</span>
+                      <meta itemprop="priceCurrency" content="USD">
+                    </p>
                   </div>
                 </a>
               </article>
