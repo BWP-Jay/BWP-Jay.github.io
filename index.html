@@ -224,6 +224,15 @@
                         <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary hover:text-accent" aria-label="Search">
                             <i class="fas fa-search"></i>
                         </button>
+                        <!-- Search Results -->
+                        <div id="search-results" class="hidden absolute left-0 right-0 mt-2 bg-white rounded-lg shadow-lg z-50">
+                            <div id="search-results-grid" class="grid grid-cols-1 gap-2 p-4 max-h-96 overflow-y-auto">
+                                <!-- Search results will be dynamically inserted here -->
+                            </div>
+                            <div id="search-no-results" class="hidden p-4 text-center text-gray-600">
+                                <p>No products found matching your search.</p>
+                            </div>
+                        </div>
                     </div>
                     <button class="snipcart-checkout text-accent hover:text-white transition-colors duration-300 flex items-center" aria-label="View cart">
                         <i class="fas fa-shopping-cart text-xl mr-1"></i>
