@@ -35,17 +35,43 @@
             </div>
         </div>
         <!-- Mobile Menu Button -->
-        <button class="md:hidden text-white hover:text-accent transition-colors duration-300" aria-label="Toggle mobile menu" aria-expanded="false">
+        <button id="mobile-menu-button" class="md:hidden text-white hover:text-accent transition-colors duration-300" aria-label="Toggle mobile menu" aria-expanded="false">
             <i class="fas fa-bars text-xl" aria-hidden="true"></i>
         </button>
     </nav>
     <!-- Mobile Menu -->
-    <div class="md:hidden hidden bg-primary">
+    <div id="mobile-menu" class="md:hidden hidden bg-primary">
         <ul class="py-4 px-4 space-y-4 text-white font-medium" role="menu">
-            <li role="none"><a href="/index.html#home" class="block hover:text-accent transition-colors duration-300" role="menuitem">Home</a></li>
-            <li role="none"><a href="/all-products.html" class="block hover:text-accent transition-colors duration-300" role="menuitem">Shop</a></li>
-            <li role="none"><a href="/index.html#about" class="block hover:text-accent transition-colors duration-300" role="menuitem">About</a></li>
-            <li role="none"><a href="/index.html#contact" class="block hover:text-accent transition-colors duration-300" role="menuitem">Contact</a></li>
+            <li role="none"><a href="index.html#home" class="block hover:text-accent transition-colors duration-300" role="menuitem">Home</a></li>
+            <li role="none"><a href="all-products.html" class="block hover:text-accent transition-colors duration-300" role="menuitem">Shop</a></li>
+            <li role="none"><a href="index.html#about" class="block hover:text-accent transition-colors duration-300" role="menuitem">About</a></li>
+            <li role="none"><a href="index.html#contact" class="block hover:text-accent transition-colors duration-300" role="menuitem">Contact</a></li>
         </ul>
     </div>
-</header> 
+</header>
+
+<script>
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function() {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                
+                // Toggle between hamburger and close icons
+                const icon = mobileMenuButton.querySelector('i');
+                if (isExpanded) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+        }
+    });
+</script> 
