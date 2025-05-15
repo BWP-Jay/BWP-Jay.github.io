@@ -1,7 +1,7 @@
 {
-  "name": "backwater-pursuits-server",
+  "name": "back-water-pursuits-server",
   "version": "1.0.0",
-  "description": "Server for BackWater Pursuits e-commerce",
+  "description": "Server for Back Water Pursuits e-commerce",
   "main": "stripe-server.js",
   "scripts": {
     "start": "node stripe-server.js",
