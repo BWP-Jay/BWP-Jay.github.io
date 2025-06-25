@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Information - Back Water Pursuits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a472a",
+              'primary-dark': "#0d2315",
+              accent: "#FFD700",
+              'accent-dark': "#B8860B",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-primary text-accent shadow-md z-50" role="banner">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
+            <a href="index.html" class="flex items-center gap-2" aria-label="Back Water Pursuits Home">
+                <img src="images/products/logo.jpg" alt="Back Water Pursuits Logo" class="h-10 w-auto" width="40" height="40" />
+                <h1 class="text-2xl font-bold">BACK WATER PURSUITS</h1>
+            </a>
+            <ul class="hidden md:flex gap-6 text-white font-medium" role="menubar">
+                <li role="none"><a href="index.html" class="hover:text-accent transition-colors duration-300" role="menuitem">Home</a></li>
+                <li role="none"><a href="all-products.html" class="hover:text-accent transition-colors duration-300" role="menuitem">Shop</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20 pb-12">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <h1 class="text-3xl font-bold text-primary mb-8">Shipping Information</h1>
+                
+                <div class="space-y-8 text-gray-700">
+                    <section>
+                        <h2 class="text-xl font-semibold text-primary mb-4">Shipping Options</h2>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="border border-gray-200 rounded-lg p-6">
+                                <h3 class="text-lg font-semibold text-primary mb-2">Standard Shipping</h3>
+                                <p class="text-2xl font-bold text-accent mb-2">$5.00</p>
+                                <p class="text-gray-600">3-5 business days</p>
+                                <ul class="mt-3 text-sm text-gray-600">
+                                    <li>• Free on orders over $50</li>
+                                    <li>• Tracking included</li>
+                                    <li>• USPS Priority Mail</li>
+                                </ul>
+                            </div>
+                            <div class="border border-gray-200 rounded-lg p-6">
+                                <h3 class="text-lg font-semibold text-primary mb-2">Express Shipping</h3>
+                                <p class="text-2xl font-bold text-accent mb-2">$10.00</p>
+                                <p class="text-gray-600">1-2 business days</p>
+                                <ul class="mt-3 text-sm text-gray-600">
+                                    <li>• Overnight delivery available</li>
+                                    <li>• Priority tracking</li>
+                                    <li>• FedEx Express</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-semibold text-primary mb-4">Processing Time</h2>
+                        <p>Orders are typically processed and shipped within 1-2 business days. During peak seasons or sales, processing may take 2-3 business days.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-semibold text-primary mb-4">Shipping Destinations</h2>
+                        <p>We currently ship to all 50 US states. International shipping is not available at this time.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-semibold text-primary mb-4">Order Tracking</h2>
+                        <p>Once your order ships, you will receive a confirmation email with tracking information. You can also track your order through your account dashboard.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-semibold text-primary mb-4">Returns & Exchanges</h2>
+                        <p>We accept returns within 30 days of purchase. Items must be unworn, unwashed, and in original packaging. Return shipping is the responsibility of the customer unless the item is defective.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-semibold text-primary mb-4">Contact Us</h2>
+                        <p>If you have any questions about shipping, please contact us at:</p>
+                        <div class="mt-4 space-y-2">
+                            <p><strong>Email:</strong> info@backwaterpursuits.com</p>
+                            <p><strong>Phone:</strong> (555) 123-4567</p>
+                            <p><strong>Hours:</strong> Monday - Friday, 9 AM - 5 PM EST</p>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <a href="index.html" class="inline-block bg-primary text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors duration-300">
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-accent text-center py-6" role="contentinfo">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 Back Water Pursuits. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 
