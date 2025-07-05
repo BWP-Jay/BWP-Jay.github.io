@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Add error handling
         img.addEventListener('error', function() {
-            this.src = '/images/placeholder.jpg';
+            this.src = '/images/placeholder.svg';
             this.alt = 'Image failed to load';
         });
     });

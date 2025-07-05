@@ -28,93 +28,50 @@
       .product-image:hover {
         opacity: 0.9;
       }
-      .size-selector input[type="radio"] {
-        display: none;
-      }
-      .size-selector label {
-        cursor: pointer;
-        padding: 0.5rem 1rem;
-        border: 2px solid #1a472a;
-        border-radius: 0.25rem;
-      }
-      .size-selector input[type="radio"]:checked + label {
-        background-color: #1a472a;
-        color: white;
-      }
-      .shopping-cart {
-        position: fixed;
-        right: -400px;
-        top: 0;
-        width: 400px;
-        height: 100vh;
-        background: white;
-        transition: right 0.3s ease-in-out;
-        z-index: 1000;
-        padding: 20px;
-        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-      }
-      .shopping-cart.active {
-        right: 0;
-      }
-      .cart-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        display: none;
-        z-index: 999;
-      }
-      .cart-overlay.active {
-        display: block;
-      }
-      .cart-icon {
-        position: relative;
-        cursor: pointer;
-      }
-      .cart-count {
-        position: absolute;
-        top: -8px;
-        right: -8px;
-        background-color: #FFD700;
-        color: #1a472a;
-        border-radius: 50%;
-        padding: 0.2rem 0.5rem;
-        font-size: 0.8rem;
-        font-weight: bold;
+      /* Mobile-specific styles */
+      @media (max-width: 768px) {
+        .product-image {
+          max-height: 70vh;
+          object-fit: contain;
+        }
+        
+        .thumbnail-image {
+          height: 100px;
+          object-fit: cover;
+        }
       }
     </style>
+    <!-- Snipcart Integration -->
     <script async src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
     <div hidden id="snipcart" data-api-key="OThmODU0MjItZWYzMy00ZmI3LTg0NzItOWE1MGFmODQwYWU3NjM4ODA0MDgyNjI3MzA0NDkx"></div>
 </head>
 <body class="bg-gray-100 min-h-screen overflow-y-auto overflow-x-hidden">
     <!-- Navigation -->
-    <header class="fixed w-full bg-primary text-accent shadow-md z-50">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="../index.html" class="flex items-center gap-2">
-                <img src="../images/products/logo.jpg" alt="Back Water Pursuits Logo" class="h-10 w-auto" />
+    <header class="fixed w-full bg-primary text-accent shadow-md z-50" role="banner">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
+            <a href="../index.html" class="flex items-center gap-2" aria-label="Back Water Pursuits Home">
+                <img src="../images/products/logo.jpg" alt="Back Water Pursuits Logo" class="h-10 w-auto" width="40" height="40" />
                 <h1 class="text-2xl font-bold">BACK WATER PURSUITS</h1>
             </a>
-            <ul class="hidden md:flex gap-6 text-white font-medium">
-                <li><a href="../index.html#home" class="hover:text-accent transition-colors duration-300">Home</a></li>
-                <li><a href="../all-products.html" class="hover:text-accent transition-colors duration-300">Shop</a></li>
-                <li><a href="../index.html#about" class="hover:text-accent transition-colors duration-300">About</a></li>
-                <li><a href="../index.html#contact" class="hover:text-accent transition-colors duration-300">Contact</a></li>
+            <ul class="hidden md:flex gap-6 text-white font-medium" role="menubar">
+                <li role="none"><a href="../index.html#home" class="hover:text-accent transition-colors duration-300" role="menuitem">Home</a></li>
+                <li role="none"><a href="../all-products.html" class="hover:text-accent transition-colors duration-300" role="menuitem">Shop</a></li>
+                <li role="none"><a href="../index.html#about" class="hover:text-accent transition-colors duration-300" role="menuitem">About</a></li>
+                <li role="none"><a href="../index.html#contact" class="hover:text-accent transition-colors duration-300" role="menuitem">Contact</a></li>
             </ul>
-            <div class="cart-icon text-white hover:text-accent transition-colors duration-300">
-                <i class="fas fa-shopping-cart text-xl"></i>
-                <span class="cart-count">0</span>
-            </div>
+            <button class="snipcart-checkout text-white hover:text-accent transition-colors duration-300 flex items-center" aria-label="View cart">
+                <i class="fas fa-shopping-cart text-xl mr-1"></i>
+                <span class="snipcart-items-count">0</span>
+            </button>
         </nav>
     </header>
 
     <!-- Product Details -->
-    <div class="pt-20 pb-12">
+    <main class="pt-20 pb-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Product Images -->
-                <div class="space-y-4">
+                <div class="space-y-4" role="region" aria-label="Product images">
                     <div class="product-images">
                         <div class="main-image">
                             <img src="../images/products/wishin-fishin/wishin-fishin-front.jpg" alt="Wishin' I was Fishin T-shirt - Front" id="mainImage" class="w-full h-auto rounded-lg shadow-md">
@@ -127,7 +84,7 @@
                 </div>
 
                 <!-- Product Info -->
-                <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="bg-white rounded-lg shadow-md p-6" role="region" aria-label="Product information">
                     <h1 class="text-3xl font-bold text-primary mb-4">Wishin' Fishin' T-shirt</h1>
                     <p class="text-2xl text-accent font-bold mb-6">$29.88</p>
                     
@@ -146,18 +103,43 @@
                         </ul>
                     </div>
 
-
                     <div class="mb-6">
                         <h2 class="text-lg font-bold text-primary mb-2">Select Size</h2>
                         <div class="grid grid-cols-4 gap-2">
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">S</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">M</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">L</button>
-                            <button class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary">XL</button>
+                            <button onclick="selectSize('S')" 
+                                    class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary"
+                                    aria-label="Select small size">
+                                S
+                            </button>
+                            <button onclick="selectSize('M')" 
+                                    class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary"
+                                    aria-label="Select medium size">
+                                M
+                            </button>
+                            <button onclick="selectSize('L')" 
+                                    class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary"
+                                    aria-label="Select large size">
+                                L
+                            </button>
+                            <button onclick="selectSize('XL')" 
+                                    class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary"
+                                    aria-label="Select extra large size">
+                                XL
+                            </button>
                         </div>
                     </div>
 
-                    <button class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300 add-to-cart">
+                    <button class="snipcart-add-item w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300"
+                            data-item-id="wishin-fishin"
+                            data-item-price="29.88"
+                            data-item-url="/products/wishin-fishin.html"
+                            data-item-description="A comfortable and stylish cotton t-shirt for fishing enthusiasts"
+                            data-item-image="../images/products/wishin-fishin/wishin-fishin-front.jpg"
+                            data-item-name="Wishin' I was Fishin Unisex 100% Cotton Tee"
+                            data-item-custom1-name="Size"
+                            data-item-custom1-options="S|M|L|XL"
+                            data-item-custom1-value="M"
+                            aria-label="Add Wishin' I was Fishin T-Shirt to cart">
                         Add to Cart
                     </button>
                 </div>
@@ -171,28 +153,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Shopping Cart Sidebar -->
-    <div class="cart-overlay"></div>
-    <div class="shopping-cart">
-        <div class="flex justify-between items-center mb-4">
-            <h2 class="text-xl font-bold text-primary">Shopping Cart</h2>
-            <button class="close-cart text-gray-500 hover:text-primary">
-                <i class="fas fa-times text-xl"></i>
-            </button>
-        </div>
-        <div class="cart-items space-y-4"></div>
-        <div class="cart-total mt-4 pt-4 border-t border-gray-200">
-            <div class="flex justify-between text-primary">
-                <span class="font-bold">Total:</span>
-                <span class="cart-total-amount">$0.00</span>
-            </div>
-            <button class="w-full bg-primary text-white py-2 px-4 rounded mt-4 hover:bg-accent hover:text-primary transition-colors duration-300">
-                Checkout
-            </button>
-        </div>
-    </div>
+    </main>
 
     <!-- Newsletter Section -->
     <section class="bg-accent text-primary py-16 px-4 mt-12" aria-labelledby="newsletter-heading">
@@ -223,15 +184,46 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-primary text-accent text-center py-6">
-        &copy; 2024 Back Water Pursuits. All rights reserved.
+    <footer class="bg-primary text-accent text-center py-6" role="contentinfo">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 Back Water Pursuits. All rights reserved.</p>
+            <nav class="mt-4" aria-label="Footer navigation">
+                <ul class="flex justify-center gap-6">
+                    <li><a href="../privacy-policy.html" class="hover:text-white transition-colors duration-300">Privacy Policy</a></li>
+                    <li><a href="../terms.html" class="hover:text-white transition-colors duration-300">Terms of Service</a></li>
+                    <li><a href="../shipping.html" class="hover:text-white transition-colors duration-300">Shipping Info</a></li>
+                </ul>
+            </nav>
+        </div>
     </footer>
 
     <script src="../script.js"></script>
     <script>
+        let selectedSize = 'M';
+
         function changeImage(src) {
             const mainImage = document.getElementById('mainImage');
             mainImage.src = src;
+            mainImage.alt = `Wishin' I was Fishin T-shirt - ${src.includes('front') ? 'Front' : 'Back'}`;
+        }
+
+        function selectSize(size) {
+            selectedSize = size;
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.remove('border-2', 'border-primary');
+            });
+            event.target.classList.add('border-2', 'border-primary');
+
+            // Update Snipcart button data
+            updateSnipcartButton();
+        }
+
+        function updateSnipcartButton() {
+            const button = document.querySelector('.snipcart-add-item');
+            if (button) {
+                button.setAttribute('data-item-id', `wishin-fishin-${selectedSize}`);
+                button.setAttribute('data-item-custom1-value', selectedSize);
+            }
         }
 
         // Newsletter Form Validation and Submission

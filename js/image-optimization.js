@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
             img.addEventListener('error', () => {
                 img.classList.remove('loading');
                 img.classList.add('error');
-                img.src = '/images/placeholder.jpg';
+                img.src = '/images/placeholder.svg';
             });
         }
     });

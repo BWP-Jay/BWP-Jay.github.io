@@ -127,9 +127,9 @@
                 <li role="none"><a href="../index.html#about" class="hover:text-accent transition-colors duration-300" role="menuitem">About</a></li>
                 <li role="none"><a href="../index.html#contact" class="hover:text-accent transition-colors duration-300" role="menuitem">Contact</a></li>
             </ul>
-            <button class="cart-icon text-white hover:text-accent transition-colors duration-300" aria-label="Shopping cart">
-                <i class="fas fa-shopping-cart text-xl" aria-hidden="true"></i>
-                <span class="cart-count" aria-label="Cart items">0</span>
+            <button class="snipcart-checkout text-white hover:text-accent transition-colors duration-300 flex items-center" aria-label="View cart">
+                <i class="fas fa-shopping-cart text-xl mr-1" aria-hidden="true"></i>
+                <span class="snipcart-items-count" aria-label="Cart items">0</span>
             </button>
         </nav>
     </header>
@@ -202,9 +202,17 @@
                         </div>
                     </div>
 
-                    <button onclick="addToCart()" 
-                            class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300 add-to-cart"
-                            aria-label="Add Down to Fish shirt to cart">
+                    <button class="snipcart-add-item w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300"
+                            data-item-id="down-fish"
+                            data-item-price="26.00"
+                            data-item-url="/products/down-to-fish.html"
+                            data-item-description="A comfortable and stylish Dri-Fit shirt for fishing enthusiasts"
+                            data-item-image="../images/products/down-fish/down-fish-front.jpg"
+                            data-item-name="Down to Fish? Unisex Light Grey Dri-Fit"
+                            data-item-custom1-name="Size"
+                            data-item-custom1-options="S|M|L|XL"
+                            data-item-custom1-value="M"
+                            aria-label="Add Down to Fish T-Shirt to cart">
                         Add to Cart
                     </button>
                 </div>
@@ -255,11 +263,9 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="../js/cart.js"></script>
     <script src="../js/image-gallery.js"></script>
-    <script src="../js/mobile.js"></script>
     <script>
-        let selectedSize = null;
+        let selectedSize = 'M';
 
         function changeImage(src) {
             const mainImage = document.getElementById('mainImage');
@@ -273,19 +279,17 @@
                 btn.classList.remove('border-2', 'border-primary');
             });
             event.target.classList.add('border-2', 'border-primary');
+
+            // Update Snipcart button data
+            updateSnipcartButton();
         }
 
-        function addToCart() {
-            if (!selectedSize) {
-                alert('Please select a size');
-                return;
+        function updateSnipcartButton() {
+            const button = document.querySelector('.snipcart-add-item');
+            if (button) {
+                button.setAttribute('data-item-id', `down-fish-${selectedSize}`);
+                button.setAttribute('data-item-custom1-value', selectedSize);
             }
-            const product = {
-                name: "Down to Fish Unisex Dri-Fit",
-                size: selectedSize,
-                price: 26.00
-            };
-            cart.addItem(product);
         }
 
         // Newsletter Form Validation and Submission
