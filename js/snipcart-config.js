@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     snipcartDiv.id = 'snipcart';
     snipcartDiv.setAttribute('data-api-key', SNIPCART_CONFIG.apiKey);
     snipcartDiv.setAttribute('data-currency', SNIPCART_CONFIG.currency);
+    snipcartDiv.setAttribute('data-config-sandbox', 'true');
     document.body.appendChild(snipcartDiv);
 
     // Add Snipcart scripts
