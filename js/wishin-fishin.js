@@ -44,6 +44,11 @@ function changeImage(imagePath) {
             mainImage.src = imagePath;
             mainImage.alt = 'Wishin\' I was Fishin T-shirt - Front View';
         }
+        
+        // Re-initialize image gallery listeners after image change
+        if (window.imageGallery) {
+            window.imageGallery.setupImageListeners();
+        }
     }
 }
 
