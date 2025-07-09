@@ -186,7 +186,7 @@
 
                     <div class="mb-6">
                         <h2 class="text-lg font-bold text-primary mb-2">Select Size</h2>
-                        <div class="grid grid-cols-4 gap-2">
+                        <div class="grid grid-cols-5 gap-2">
                             <button onclick="selectSize('S')" 
                                     class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary"
                                     aria-label="Select size Small">S</button>
@@ -199,6 +199,9 @@
                             <button onclick="selectSize('XL')" 
                                     class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary"
                                     aria-label="Select size Extra Large">XL</button>
+                            <button onclick="selectSize('2XL')" 
+                                    class="size-btn border border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary"
+                                    aria-label="Select size 2XL">2XL</button>
                         </div>
                     </div>
 
@@ -210,7 +213,7 @@
                             data-item-image="../images/products/down-fish/down-fish-front.jpg"
                             data-item-name="Down to Fish? Unisex Light Grey Dri-Fit"
                             data-item-custom1-name="Size"
-                            data-item-custom1-options="S|M|L|XL"
+                            data-item-custom1-options="S|M|L|XL|2XL"
                             data-item-custom1-value="M"
                             aria-label="Add Down to Fish T-Shirt to cart">
                         Add to Cart
@@ -291,6 +294,18 @@
                 button.setAttribute('data-item-custom1-value', selectedSize);
             }
         }
+
+        // Initialize the page with default selections
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default size button as selected
+            const defaultSizeBtn = document.querySelector('.size-btn[onclick*="M"]');
+            if (defaultSizeBtn) {
+                defaultSizeBtn.classList.add('border-2', 'border-primary');
+            }
+            
+            // Initialize Snipcart button
+            updateSnipcartButton();
+        });
 
         // Newsletter Form Validation and Submission
         document.getElementById('newsletter-form').addEventListener('submit', function(e) {

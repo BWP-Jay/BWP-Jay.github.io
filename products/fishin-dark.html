@@ -204,7 +204,7 @@
 
                     <div class="mb-6">
                         <h2 class="text-lg font-bold text-primary mb-2">Select Size</h2>
-                        <div class="grid grid-cols-4 gap-2">
+                        <div class="grid grid-cols-5 gap-2">
                             <button onclick="selectSize('S')" 
                                     class="size-btn border-2 border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary"
                                     aria-label="Select small size">
@@ -225,6 +225,11 @@
                                     aria-label="Select extra large size">
                                 XL
                             </button>
+                            <button onclick="selectSize('2XL')" 
+                                    class="size-btn border-2 border-gray-300 px-4 py-2 rounded hover:border-primary hover:text-primary"
+                                    aria-label="Select 2XL size">
+                                2XL
+                            </button>
                         </div>
                     </div>
 
@@ -236,7 +241,7 @@
                             data-item-image="../images/products/fishin-dark/orange/fishin-dark-front.jpg"
                             data-item-name="Fishin' in the Dark Unisex Dri-Fit"
                             data-item-custom1-name="Size"
-                            data-item-custom1-options="S|M|L|XL"
+                            data-item-custom1-options="S|M|L|XL|2XL"
                             data-item-custom1-value="M"
                             data-item-custom2-name="Color"
                             data-item-custom2-options="Orange|Green"
@@ -294,7 +299,7 @@
     <script src="../js/image-gallery.js"></script>
     <script>
         let selectedColor = 'orange';
-        let selectedSize = null;
+        let selectedSize = 'M'; // Set default size
 
         function changeImage(src) {
             const mainImage = document.getElementById('mainImage');
@@ -345,27 +350,31 @@
 
         function updateSnipcartButton() {
             const button = document.querySelector('.snipcart-add-item');
-            if (button && selectedSize) {
+            if (button) {
                 button.setAttribute('data-item-id', `fishin-dark-${selectedColor}-${selectedSize}`);
-                button.setAttribute('data-item-custom1-value', selectedColor);
-                button.setAttribute('data-item-custom2-value', selectedSize);
+                button.setAttribute('data-item-custom1-value', selectedSize); // Size first
+                button.setAttribute('data-item-custom2-value', selectedColor); // Color second
                 button.setAttribute('data-item-image', `../images/products/fishin-dark/${selectedColor}/fishin-dark-front.jpg`);
             }
         }
 
-        function addToCart() {
-            if (!selectedSize) {
-                alert('Please select a size');
-                return;
+        // Initialize the page with default selections
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default size button as selected
+            const defaultSizeBtn = document.querySelector('.size-btn[onclick*="M"]');
+            if (defaultSizeBtn) {
+                defaultSizeBtn.classList.add('border-2', 'border-primary');
             }
-            const product = {
-                name: "Fishin' in the Dark Unisex Dri-Fit",
-                color: selectedColor,
-                size: selectedSize,
-                price: 26.00
-            };
-            cart.addItem(product);
-        }
+            
+            // Set default color button as selected
+            const defaultColorBtn = document.querySelector('.color-btn[onclick*="orange"]');
+            if (defaultColorBtn) {
+                defaultColorBtn.classList.add('border-2', 'border-primary');
+            }
+            
+            // Initialize Snipcart button
+            updateSnipcartButton();
+        });
 
         // Newsletter Form Validation and Submission
         document.getElementById('newsletter-form').addEventListener('submit', function(e) {
