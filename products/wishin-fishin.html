@@ -44,6 +44,7 @@
     <!-- Snipcart Integration -->
     <script async src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
     <div hidden id="snipcart" data-api-key="OThmODU0MjItZWYzMy00ZmI3LTg0NzItOWE1MGFmODQwYWU3NjM4ODA0MDgyNjI3MzA0NDkx" data-config-sandbox="true"></div>
+    <script src="../js/wishin-fishin.js"></script>
 </head>
 <body class="bg-gray-100 min-h-screen overflow-y-auto overflow-x-hidden">
     <!-- Navigation -->
@@ -72,14 +73,27 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Product Images -->
                 <div class="space-y-4" role="region" aria-label="Product images">
-                    <div class="product-images">
-                        <div class="main-image">
-                            <img src="../images/products/wishin-fishin/wishin-fishin-front.jpg" alt="Wishin' I was Fishin T-shirt - Front" id="mainImage" class="w-full h-auto rounded-lg shadow-md">
-                        </div>
-                        <div class="thumbnail-images flex gap-4 mt-4">
-                            <img src="../images/products/wishin-fishin/wishin-fishin-front.jpg" alt="Wishin' I was Fishin T-shirt - Front" onclick="changeImage(this.src)" class="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity">
-                            <img src="../images/products/wishin-fishin/wishin-fishin-back.jpg" alt="Wishin' I was Fishin T-shirt - Back" onclick="changeImage(this.src)" class="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity">
-                        </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="../images/products/wishin-fishin/wishin-fishin-front.jpg" 
+                             alt="Wishin' I was Fishin T-shirt - Front View" 
+                             class="w-full h-auto product-image cursor-zoom-in"
+                             id="mainImage">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="changeImage('../images/products/wishin-fishin/wishin-fishin-front.jpg')" 
+                                class="bg-white rounded-lg shadow-md overflow-hidden focus:outline-none"
+                                aria-label="View front of shirt">
+                            <img src="../images/products/wishin-fishin/wishin-fishin-front.jpg" 
+                                 alt="Wishin' I was Fishin T-shirt - Front View Thumbnail" 
+                                 class="w-full h-auto thumbnail-image">
+                        </button>
+                        <button onclick="changeImage('back')"
+                                class="bg-white rounded-lg shadow-md overflow-hidden focus:outline-none"
+                                aria-label="View back of shirt">
+                            <img src="../images/products/wishin-fishin/wishin-fishin-back.jpg" 
+                                 alt="Wishin' I was Fishin T-shirt - Back View Thumbnail" 
+                                 class="w-full h-auto thumbnail-image">
+                        </button>
                     </div>
                 </div>
 
