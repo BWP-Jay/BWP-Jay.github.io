@@ -32,17 +32,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Listen for Snipcart events
     document.addEventListener('snipcart.ready', function() {
-        console.log('Snipcart is ready');
+        // Snipcart is ready
         updateCartCount();
         updateMiniCart();
     });
     
     document.addEventListener('snipcart.cart.open', function() {
-        console.log('Cart opened');
+        // Cart opened
     });
     
     document.addEventListener('snipcart.cart.close', function() {
-        console.log('Cart closed');
+        // Cart closed
     });
     
     document.addEventListener('snipcart.cart.item.added', function(event) {

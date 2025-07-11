@@ -32,10 +32,10 @@ class PerformanceOptimizer {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js')
                     .then(registration => {
-                        console.log('ServiceWorker registration successful');
+                        // ServiceWorker registration successful
                     })
                     .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
+                        // ServiceWorker registration failed
                     });
             });
         }
@@ -50,7 +50,6 @@ class PerformanceOptimizer {
                     '/script.js',
                     '/js/cart.js',
                     '/js/image-gallery.js',
-                    '/js/mobile.js',
                     '/images/products/logo.jpg'
                 ]);
             });
