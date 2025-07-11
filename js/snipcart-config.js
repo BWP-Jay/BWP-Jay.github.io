@@ -1,6 +1,6 @@
 // Snipcart Configuration
 const SNIPCART_CONFIG = {
-    apiKey: 'OThmODU0MjItZWYzMy00ZmI3LTg0NzItOWE1MGFmODQwYWU3NjM4ODA0MDgyNjI3MzA0NDkx',
+    apiKey: 'NDZjZjYxOTItYTkwZS00MmEyLWE4NzEtMjQyYTIyMTA1ZWE1NjM4ODA0MDgyNjI3MzA0NDkx',
     currency: 'usd',
     taxRate: 0.07, // 7% tax rate
     shippingRates: [
@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
     snipcartDiv.id = 'snipcart';
     snipcartDiv.setAttribute('data-api-key', SNIPCART_CONFIG.apiKey);
     snipcartDiv.setAttribute('data-currency', SNIPCART_CONFIG.currency);
-    snipcartDiv.setAttribute('data-config-sandbox', 'true');
     document.body.appendChild(snipcartDiv);
 
     // Add Snipcart scripts
