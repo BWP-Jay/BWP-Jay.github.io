@@ -54,12 +54,16 @@
       <strong>Note:</strong> A handling fee will be added at checkout
     </div>
     
-    <!-- Back to Shop Button -->
-    <div class="snipcart__cart-actions" style="margin: 16px 0; text-align: center;">
+    <!-- Continue Shopping and Checkout Buttons -->
+    <div class="snipcart__cart-actions" style="margin: 16px 0; text-align: center; display: flex; gap: 10px; justify-content: center;">
       <a href="/all-products.html" class="snipcart__btn snipcart__btn--secondary" style="display: inline-block; background-color: #6b7280; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: 500; transition: background-color 0.2s;">
         <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
-        Back to Shop
+        Continue Shopping
       </a>
+      <button class="snipcart__btn snipcart__btn--primary" style="display: inline-block; background-color: #1a472a; color: white; padding: 10px 20px; border: none; border-radius: 6px; font-weight: 500; cursor: pointer; transition: background-color 0.2s;" onclick="Snipcart.api.modal.close(); Snipcart.api.cart.open();">
+        <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+        View Cart
+      </button>
     </div>
     
     <!-- Original cart summary content -->
@@ -75,5 +79,32 @@
       </div>
     </div>
     {{/cart.items}}
+  </div>
+</script>
+
+<!-- Add to Cart Success Template -->
+<script type="text/html" id="snipcart-add-item-success">
+  <div class="snipcart__add-item-success" style="text-align: center; padding: 20px;">
+    <div class="snipcart__success-icon" style="font-size: 48px; color: #10b981; margin-bottom: 16px;">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <h3 class="snipcart__success-title" style="font-size: 24px; font-weight: bold; color: #1a472a; margin-bottom: 8px;">
+      Item Added to Cart!
+    </h3>
+    <p class="snipcart__success-message" style="color: #6b7280; margin-bottom: 24px;">
+      {{item.name}} has been added to your cart.
+    </p>
+    
+    <!-- Action Buttons -->
+    <div class="snipcart__success-actions" style="display: flex; gap: 12px; justify-content: center;">
+      <a href="/all-products.html" class="snipcart__btn snipcart__btn--secondary" style="display: inline-block; background-color: #6b7280; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 500; transition: background-color 0.2s;">
+        <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+        Continue Shopping
+      </a>
+      <button class="snipcart__btn snipcart__btn--primary" style="display: inline-block; background-color: #1a472a; color: white; padding: 12px 24px; border: none; border-radius: 6px; font-weight: 500; cursor: pointer; transition: background-color 0.2s;" onclick="Snipcart.api.modal.close(); Snipcart.api.cart.open();">
+        <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+        View Cart ({{cart.items.length}})
+      </button>
+    </div>
   </div>
 </script> 
