@@ -35,7 +35,7 @@ const products = [
     {
         id: 'master-baiters',
         name: "Master Baiters Sticker",
-        price: 2.88,
+        price: 3.88,
         image: "images/products/mb-stick/master-baiters-sticker.jpg",
         description: "A humorous fishing-themed sticker.",
         keywords: ["master", "baiters", "sticker", "fishing", "humor"]
@@ -43,7 +43,7 @@ const products = [
     {
         id: 'bwp-sticker',
         name: "BWP Sticker",
-        price: 2.88,
+        price: 3.88,
         image: "images/products/bwp-stick/bwp-stick.jpg",
         description: "Show your support with our BackWater Pursuits logo sticker.",
         keywords: ["bwp", "sticker", "logo", "fishing", "backwater", "pursuits"]

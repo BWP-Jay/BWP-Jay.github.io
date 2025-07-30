@@ -57,7 +57,10 @@
     <div hidden id="snipcart" 
          data-api-key="NDZjZjYxOTItYTkwZS00MmEyLWE4NzEtMjQyYTIyMTA1ZWE1NjM4ODA0MDgyNjI3MzA0NDkx"
          data-config-cart-notice="All orders include a small handling fee that will be applied at checkout."
-         data-config-cart-redirect="false"></div>
+         data-config-cart-redirect="false"
+         data-config-modal-style="side"
+         data-config-shipping-address-required="true"
+         data-config-shipping-address-validator="true"></div>
 </head>
 <body class="bg-gray-100 min-h-screen overflow-y-auto overflow-x-hidden">
     <!-- Navigation -->
@@ -120,7 +123,7 @@
                         <p class="text-accent font-bold mb-4">$29.88</p>
                         <button 
                             class="snipcart-add-item w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300"
-                            data-item-id="wishin-fishin-M"
+                            data-item-id="wishin-fishin"
                             data-item-price="29.88"
                             data-item-weight="170"
                             data-item-description="A comfortable and stylish cotton t-shirt for fishing enthusiasts."
@@ -164,7 +167,7 @@
                         
                         <button 
                             class="snipcart-add-item w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300"
-                            data-item-id="fishin-dark-orange-M"
+                            data-item-id="fishin-dark-orange"
                             data-item-price="26.00"
                             data-item-weight="170"
                             data-item-description="A comfortable and stylish Dri-Fit shirt for fishing enthusiasts."
@@ -193,7 +196,7 @@
                         <p class="text-accent font-bold mb-4">$26.00</p>
                         <button 
                             class="snipcart-add-item w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300"
-                            data-item-id="down-fish-M"
+                            data-item-id="down-fish"
                             data-item-price="26.00"
                             data-item-weight="170"
                             data-item-description="A comfortable and stylish Dri-Fit shirt for fishing enthusiasts."
@@ -219,7 +222,7 @@
                         <p class="text-accent font-bold mb-4">$26.00</p>
                         <button 
                             class="snipcart-add-item w-full bg-primary text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300"
-                            data-item-id="dtf-M"
+                            data-item-id="dtf"
                             data-item-price="26.00"
                             data-item-weight="170"
                             data-item-description="A comfortable and stylish Dri-Fit shirt for fishing enthusiasts."
@@ -296,6 +299,10 @@
 
     <script src="script.js"></script>
     <script src="search.js"></script>
+    <script src="js/snipcart-error-handler.js"></script>
+    <script src="js/price-validator.js"></script>
+    <script src="js/cart-utils.js"></script>
+    <script src="js/price-checker.js"></script>
     <script>
         // Function to change Fishin' in the Dark product image based on color selection
         function changeFishinDarkColor(color) {
