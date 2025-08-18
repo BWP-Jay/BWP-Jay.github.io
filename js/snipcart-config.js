@@ -1,20 +1,7 @@
 // Snipcart Configuration
 const SNIPCART_CONFIG = {
     apiKey: 'NDZjZjYxOTItYTkwZS00MmEyLWE4NzEtMjQyYTIyMTA1ZWE1NjM4ODA0MDgyNjI3MzA0NDkx',
-    currency: 'usd',
-    taxRate: 0.07, // 7% tax rate
-    shippingRates: [
-        {
-            name: 'Standard Shipping',
-            price: 5.00,
-            description: '3-5 business days'
-        },
-        {
-            name: 'Express Shipping',
-            price: 10.00,
-            description: '1-2 business days'
-        }
-    ]
+    currency: 'usd'
 };
 
 // Initialize Snipcart
