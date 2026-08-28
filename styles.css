@@ -631,7 +631,7 @@ footer {
     height: auto;
 }
 
-@media (min-height: 820px) {
+@media (min-height: 820px) and (max-width: 899px) {
     .shop-hero:not(.shop-hero--brand) {
         align-items: flex-end;
     }
@@ -650,6 +650,52 @@ footer {
     object-position: 62% 38%;
     transform: scale(1.04);
     animation: shop-hero-ken 18s ease-out forwards;
+}
+
+/* Desktop: text left, full portrait photo right (shows angler + fish) */
+@media (min-width: 900px) {
+    .shop-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(380px, 48%);
+        align-items: stretch;
+    }
+
+    .shop-hero__media {
+        position: relative;
+        inset: auto;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        left: auto;
+        grid-column: 2;
+        grid-row: 1;
+        z-index: 0;
+        min-height: 100%;
+        background: linear-gradient(180deg, #0d2315 0%, #1a472a 100%);
+    }
+
+    .shop-hero__img {
+        object-fit: contain;
+        object-position: center center;
+        transform: none;
+        animation: none;
+    }
+
+    .shop-hero__veil {
+        background:
+            linear-gradient(90deg, rgba(13, 35, 21, 0.96) 0%, rgba(13, 35, 21, 0.82) 34%, rgba(13, 35, 21, 0.15) 52%, transparent 68%),
+            linear-gradient(180deg, rgba(13, 35, 21, 0.2) 0%, transparent 45%, rgba(13, 35, 21, 0.55) 100%);
+    }
+
+    .shop-hero__content {
+        grid-column: 1;
+        grid-row: 1;
+        align-self: center;
+        justify-self: start;
+        margin: 0;
+        max-width: 36rem;
+        padding: 3.5rem 2rem 3.5rem max(1.5rem, calc((100% - 72rem) / 2 + 1rem));
+    }
 }
 
 .shop-hero__veil {
