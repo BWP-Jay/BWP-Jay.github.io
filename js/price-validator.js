@@ -6,7 +6,7 @@ class PriceValidator {
             'fishin-dark-green': 26.00,
             'dtf': 26.00,
             'down-fish': 26.00,
-            'wishin-fishin': 29.88,
+            'wishin-fishin': 28.00,
             'master-baiters-sticker': 3.88,
             'bwp-sticker': 3.88
         };

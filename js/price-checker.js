@@ -2,7 +2,7 @@
 class PriceChecker {
     constructor() {
         this.expectedPrices = {
-            'wishin-fishin': 29.88,
+            'wishin-fishin': 28.00,
             'fishin-dark-orange': 26.00,
             'fishin-dark-green': 26.00,
             'down-fish': 26.00,

@@ -3,7 +3,7 @@ const products = [
     {
         id: 'wishin-fishin',
         name: "Wishin' I was Fishin Unisex 100% Cotton Tee",
-        price: 29.88,
+        price: 28.00,
         image: "images/products/wishin-fishin/wishin-fishin-front.jpg",
         description: "Experience the perfect blend of comfort and style with our Wishin' I was Fishin 100% Cotton T-Shirt.",
         keywords: ["wishin", "fishin", "cotton", "tee", "shirt", "fishing", "apparel"]
